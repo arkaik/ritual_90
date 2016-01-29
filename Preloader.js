@@ -31,8 +31,11 @@ BasicGame.Preloader.prototype = {
 
 	    this.load.image('base1', 'res/base1.png');
 	    this.load.image('base2', 'res/base2.png');
-	    //this.load.image('tetris3', 'assets/sprites/tetrisblock3.png');
-	    //this.load.image('hotdog', 'assets/sprites/hotdog.png');
+	    this.load.image('gorra1', 'res/gorra1.png');
+	    this.load.image('gorra2', 'res/gorra2.png');
+	    this.load.image('pentinatA1', 'res/pentinatA1.png');
+	    this.load.image('pentinatA2', 'res/pentinatA2.png');
+	    this.load.image('pentinatA3', 'res/pentinatA3.png');
 	    //this.load.image('starfield', 'assets/skies/deep-space.jpg');
 
 	},
