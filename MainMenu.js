@@ -14,16 +14,9 @@ BasicGame.MainMenu.prototype = {
 
 		this.stage.backgroundColor = '#0072bc';
 
-		var json_data = this.cache.getJSON("data");
-
-		for (var i = 0; i < json_data.options.length; ++i)
-		{
-			var text = this.add.text(100, 100*(i+1), json_data.options[i], { fill: '#ffffff' });
-    		text.setShadow(2, 2, 'rgba(0,0,0,0.5)', 0);
-		}
-
+		var text = this.add.text(100, 100, "Menu principal", { fill: '#ffffff' });
 		//var text = game.add.text(100, 100, phaserJSON.version, { fill: '#ffffff' });
-    	//text.setShadow(2, 2, 'rgba(0,0,0,0.5)', 0);
+    	text.setShadow(2, 2, 'rgba(0,0,0,0.5)', 0);
 
 	    //this.spriteTopLeft = this.add.sprite(0, 0, 'tetris3');
 
