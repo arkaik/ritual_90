@@ -1,7 +1,7 @@
 BasicGame.MainMenu = function (game) {
 
 	this.bg;
-	this.spriteTopLeft;
+	this.player;
 	this.spriteTopRight;
 	this.spriteBottomLeft;
 	this.spriteBottomRight;
@@ -18,7 +18,7 @@ BasicGame.MainMenu.prototype = {
 		//var text = game.add.text(100, 100, phaserJSON.version, { fill: '#ffffff' });
     	text.setShadow(2, 2, 'rgba(0,0,0,0.5)', 0);
 
-	    //this.spriteTopLeft = this.add.sprite(0, 0, 'tetris3');
+	    this.player = new Player(this, this.game.width/2, this.game.height/2);
 
 	    //this.spriteTopRight = this.add.sprite(this.game.width, 0, 'tetris1');
 	    //this.spriteTopRight.anchor.set(1, 0);
@@ -56,6 +56,12 @@ BasicGame.MainMenu.prototype = {
 	    //this.spriteBottomRight.x = this.game.width;
 	    //this.spriteBottomRight.y = this.game.height;
 
+	},
+
+	switchToGame: function ()
+	{
+		// En este espacio se puede introducir código para mostrar los avatares y el código de Socket.io
+		this.state.start("game");
 	}
 
 };
