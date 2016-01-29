@@ -22,6 +22,8 @@ BasicGame.Game = function (game) {
     //	You can use any of these from any function within this State.
     //	But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
 
+    this.avatar = new Player(this, this.game.width/2, this.game.height/2);
+    this.add.existing(this.avatar);
 };
 
 BasicGame.Game.prototype = {

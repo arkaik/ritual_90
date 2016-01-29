@@ -18,7 +18,11 @@ BasicGame.MainMenu.prototype = {
 		//var text = game.add.text(100, 100, phaserJSON.version, { fill: '#ffffff' });
     	text.setShadow(2, 2, 'rgba(0,0,0,0.5)', 0);
 
-	    this.player = new Player(this, this.game.width/2, this.game.height/2);
+	    var toGame = this.add.text(100, 300, "Jugar", { font: '24px Arial', fill: '#fff' });
+	    toGame.inputEnabled = true;
+    	toGame.events.onInputUp.add(function () {
+	        this.switchToGame();
+    	});
 
 	    //this.spriteTopRight = this.add.sprite(this.game.width, 0, 'tetris1');
 	    //this.spriteTopRight.anchor.set(1, 0);
