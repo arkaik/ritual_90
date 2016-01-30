@@ -19,9 +19,13 @@ BasicGame.MainMenu.prototype = {
 		background.anchor.set(0.5);
 
 
-		var toTama = this.add.text(100, 400, "Tamagotchi", { font: '24px Arial', fill: '#000' });
+		var toTama = this.add.text(100, 300, "Tamagotchi", { font: '24px Arial', fill: '#000' });
 	    toTama.inputEnabled = true;
     	toTama.events.onInputUp.add(this.switchToTama(this));
+
+    	var toPizza = this.add.text(100, 350, "Pizza", { font: '24px Arial', fill: '#000' });
+	    toPizza.inputEnabled = true;
+    	toPizza.events.onInputUp.add(this.switchToPizza(this));
 
 		var playBtn = this.add.sprite(290, 150, 'playButton');
 	    playBtn.anchor.set(0.5);
@@ -35,9 +39,7 @@ BasicGame.MainMenu.prototype = {
 	    aboutBtn.events.onInputDown.add(this.switchToSync(this), this);
 	    aboutBtn.scale.setTo(0.25, 0.25);
 	   
-    	var toPizza = this.add.text(100, 600, "Pizza", { font: '24px Arial', fill: '#000' });
-	    toPizza.inputEnabled = true;
-    	toPizza.events.onInputUp.add(this.switchToPizza(this));
+    	
 
 	},
 
@@ -49,9 +51,9 @@ BasicGame.MainMenu.prototype = {
 
 	shutdown: function()
 	{
-		/*this.world.forEach(function (item){
+		this.world.forEach(function (item){
 			item.destroy();
-		})*/
+		});
 	},
 
 	//Callback pel botó provisional a Game

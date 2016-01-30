@@ -115,8 +115,9 @@ BasicGame.Sync.prototype = {
 
     shutdown: function ()
     {
-        //Borrar los objetos aquí
-        //this.avatar.destroy();
+        this.world.forEach(function (item){
+            item.destroy();
+        });
     }
 
 };
