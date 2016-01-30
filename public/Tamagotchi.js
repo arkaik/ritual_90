@@ -17,7 +17,22 @@ BasicGame.Tamagotchi = function (game) {
 BasicGame.Tamagotchi.prototype = {
 
     pt_game: this,
-
+    preload: function() {
+        this.load.image('tamagotchi1', 'res/tamagotchi1.png');
+        this.load.image('tamagotchi2', 'res/tamagotchi2.png');
+        this.load.image('tamagotchi3', 'res/tamagotchi3.png');
+        this.load.image('tamagotchiBase', 'res/tamagotchiBase.png');
+        this.load.image('tamaA1', 'res/tamaA1.png');
+        this.load.image('tamaA2', 'res/tamaA2.png');
+        this.load.image('tamaB1', 'res/tamaB1.png');
+        this.load.image('tamaB2', 'res/tamaB1.png');
+        this.load.image('tamaC1', 'res/tamaC1.png');
+        this.load.image('tamaC2', 'res/tamaC2.png');
+        this.load.image('tamaFood', 'res/tamaFood.png');
+        this.load.atlasJSONHash('tama_anim1', 'res/tama_anim1.png', 'res/tama_anim1.json');
+        this.load.atlasJSONHash('tama_anim2', 'res/tama_anim2.png', 'res/tama_anim2.json');
+        this.load.atlasJSONHash('tama_anim3', 'res/tama_anim3.png', 'res/tama_anim3.json');
+    },
 	create: function () {
         var tam_array = ['tamagotchi1', 'tamagotchi2', 'tamagotchi3'];
         var marco = this.rnd.between(0, tam_array.length-1);
@@ -27,7 +42,7 @@ BasicGame.Tamagotchi.prototype = {
         this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
         this.generalBackgroundSprite.scale.setTo(0.26,0.26);
 
-        var quit_text = this.add.text(0,100, "Quit", { font: '24px Arial', fill: '#fff' });
+        var quit_text = this.add.text(0,0, "Quit", { font: '24px Lemiesz', fill: '#fff' });
         quit_text.inputEnabled = true;
         quit_text.events.onInputUp.add(this.quitGame());
 

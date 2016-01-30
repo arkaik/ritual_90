@@ -16,7 +16,13 @@ BasicGame.Game.prototype = {
 
 	create: function () {
 
-        this.stage.backgroundColor = '#cc72bc';
+        this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
+        this.generalBackgroundSprite.scale.setTo(0.25,0.25);
+
+        var toMenu = this.add.button(0, 0, "Menu", { font: '24px Lemiesz', fill: '#000' });
+        toMenu.inputEnabled = true;
+        toMenu.events.onInputUp.add(this.switchToMenu);
+
         console.log(this.receivedPlayers);
         this.players = [];
         for (var i = 0; i < this.receivedPlayers.length; ++i) {
