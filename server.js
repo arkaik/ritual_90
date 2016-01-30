@@ -12,7 +12,7 @@ app.get('/', function(req, res){
 
 var sockets    = [];
 var numPlayers = 0;
-var maxPlayers = 1;
+var maxPlayers = 2;
 var numGames   = 1;
 var currentMiniGame = 0;
 var players = [];
@@ -89,13 +89,14 @@ io.on('connection', function(socket) {
   });
 
   socket.on('disconnect', function(){
-    if (socket in sockets) {
+    if (sockets.indexOf(socket) != -1) {
+      console.log('user disconnceted');
       io.emit('userDisconnected', socket.username);
       --numPlayers;
       players.slice[socket.playerNum, socket.playerNum+1];
       sockets.slice[socket.playerNum, socket.playerNum+1];
+      io.emit('goToWaitRoom');
     }
-    io.emit('goToWaitRoom');
   }); 
 });
 
