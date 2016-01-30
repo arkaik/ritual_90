@@ -81,6 +81,7 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('tamavolution', 'res/audio/tamaEvolve.wav');
 		this.load.audio('tamamusic', 'res/audio/tamaMusic.wav');
 		this.load.audio('tamafeed', 'res/audio/tamaFeed.wav');
+		this.load.audio('select', 'res/audio/Select.wav');
 
 		
 

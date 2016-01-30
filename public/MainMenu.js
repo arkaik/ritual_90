@@ -9,7 +9,6 @@ BasicGame.MainMenu = function (game) {
 };
 
 BasicGame.MainMenu.prototype = {
-
 	create: function () {
 
 
@@ -39,7 +38,7 @@ BasicGame.MainMenu.prototype = {
 	    aboutBtn.events.onInputDown.add(this.switchToSync(this), this);
 	    aboutBtn.scale.setTo(0.25, 0.25);
 	   
-    	
+    	this.selAudio = this.add.audio('select');
 
 	},
 
@@ -61,8 +60,10 @@ BasicGame.MainMenu.prototype = {
 	{
 		return function()
 		{
+			game.selAudio.play();
 			game.state.start('Sync');
 		}
+		
 	},
 	switchToTama: function (game)
 	{
