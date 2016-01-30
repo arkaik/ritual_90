@@ -16,6 +16,8 @@ BasicGame.Tamagotchi = function (game) {
 
 BasicGame.Tamagotchi.prototype = {
 
+    pt_game: this,
+
 	create: function () {
         var tam_array = ['tamagotchi1', 'tamagotchi2', 'tamagotchi3'];
         var marco = this.rnd.between(0, tam_array.length-1);
@@ -54,6 +56,10 @@ BasicGame.Tamagotchi.prototype = {
         this.jumpButton.onUp.add(this.released,this);
 
         this.timeSpent = new Date().getTime();
+        var self = this;
+        socket.on('minigameFinished', function(players, winner) {
+            self.backToWaitRoom(players, winner);
+        });
 
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
@@ -85,7 +91,7 @@ BasicGame.Tamagotchi.prototype = {
             this.tamagotchiSprite.position.y += 10;
         }
         else if (this.texturaActual === 'tamaC2') {
-            //Emit tama-finish;
+            socket.emit('tamagotchiFinished', this.timeSpent);
         }
         this.foodCount = 0;
     },
@@ -102,6 +108,10 @@ BasicGame.Tamagotchi.prototype = {
         }
 
 	},
+
+    backToWaitRoom: function (players, winner) {
+        pt_game.state.start('Game', true, false, players, winner);
+    },
 
     pressed: function(key)
     {

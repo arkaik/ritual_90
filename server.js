@@ -29,7 +29,7 @@ io.on('connection', function(socket) {
     console.log('startMiniGame ' + currentMiniGame);
     io.emit('startMiniGame', currentMiniGame);
     for (s in sockets) s.lastResult = null;
-    setTimeout(endGame, 5000);
+    //setTimeout(endGame, 5000);
   }
   function endGame() {
     console.log('finishMiniGame');
@@ -80,9 +80,10 @@ io.on('connection', function(socket) {
     }
   });
   
-  socket.on('tamagotchiFinished', function(msg) {
+  socket.on('tamagotchiFinished', function(timeSpent) {
     if (currentMiniGame == 0) {
-      io.emit('chatMessage', {username: socket.username, msg: msg});
+      socket.player.score += 10;
+      io.emit('minigameFinished', players, socket.playerNum);
     }
   });
 
