@@ -26,6 +26,7 @@ BasicGame.MainMenu.prototype = {
 	    toTama.inputEnabled = true;
     	toTama.events.onInputUp.add(this.switchToTama(this));
 
+
 	    //this.spriteTopRight = this.add.sprite(this.game.width, 0, 'tetris1');
 	    //this.spriteTopRight.anchor.set(1, 0);
 
