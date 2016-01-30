@@ -10,7 +10,7 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-var sockets    = [];
+var socks    = [];
 var numPlayers = 0;
 var maxPlayers = 2;
 var numGames   = 1;
@@ -28,7 +28,7 @@ io.on('connection', function(socket) {
   function startGame() {
     console.log('startMiniGame ' + currentMiniGame);
     io.emit('startMiniGame', currentMiniGame);
-    for (s in sockets) s.lastResult = null;
+    for (s in socks) s.lastResult = null;
     //setTimeout(endGame, 5000);
   }
   function endGame() {
@@ -42,12 +42,12 @@ io.on('connection', function(socket) {
     
     if (/*allReceived*/true) {
       // calcular guanyador a partir de les puntiacions rebudes
-      var winner = sockets[0];
+      var winner = socks[0];
       var minScore = -1;
-      for (s in sockets) {
+      for (s in socks) {
         if (s.lastScore < minScore) {
           minScore = s.lastScore;
-          winner = sockets.playerNum;
+          winner = socks.playerNum;
         }
       }
       io.emit('sendWinner', winner);
@@ -68,7 +68,7 @@ io.on('connection', function(socket) {
     console.log(socket.username + '(' + socket.playerNum +') connected to server!');
     //console.log(data. + '(' + socket.playerNum +') connected to server!');
     ++numPlayers;
-    sockets += socket;
+    socks += socket;
     io.emit('newPlayerConnected', socket.username);
     socket.emit('connectionACK', socket.playerNum);
     console.log('a user has connected!');
@@ -88,14 +88,17 @@ io.on('connection', function(socket) {
     }
   });
 
-  socket.on('disconnect', function(){
-    if (sockets.indexOf(socket) != -1) {
-      console.log('user disconnceted');
+  socket.on('disconnect', function() {
+    if (socks.indexOf(socket) != -1) {
+      console.log('user disconnected');
       io.emit('userDisconnected', socket.username);
       --numPlayers;
+      console.log('playerNum:' + socket.playerNum);
       players.slice[socket.playerNum, socket.playerNum+1];
-      sockets.slice[socket.playerNum, socket.playerNum+1];
+      socks.slice[socket.playerNum, socket.playerNum+1];
       io.emit('goToWaitRoom');
+      console.log('players len:' + players.length);
+      console.log('socks len:' + socks.length);
     }
   }); 
 });

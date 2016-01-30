@@ -84,11 +84,6 @@ BasicGame.Sync.prototype = {
         socket.on('goToWaitRoom', function() {
                 self.state.start('Sync');
         });
-
-        socket.on('minigameFinished', function(players, winner) {
-            self.backToWaitRoom(players, winner);
-        });
-
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
