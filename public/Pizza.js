@@ -7,7 +7,7 @@ BasicGame.Pizza = function (game) {
 
     this.alreadyChosenOne = false;
 
-    this.chosen = 1
+    this.chosen = 7;
 
 
 
@@ -77,6 +77,11 @@ BasicGame.Pizza.prototype = {
         else {
             this.textureF = 0;
             this.chosen = 6;
+        }
+
+        if (this.chosen == 7) {
+            this.textureE = 0;
+            this.chosen = 5;
         }
 
         this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
