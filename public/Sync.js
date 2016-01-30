@@ -32,6 +32,10 @@ BasicGame.Sync.prototype = {
     playerId: undefined,
 
 	create: function () {
+
+        this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
+        this.generalBackgroundSprite.scale.setTo(0.26,0.26);
+        
         pt_game = this;
         var self = this;
         this.avatar = new Player(this, this.game.width/2, this.game.height/2);
