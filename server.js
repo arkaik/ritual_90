@@ -51,7 +51,7 @@ io.on('connection', function(socket) {
         }
       }
       io.emit('sendWinner', winner);
-      currentMiniGame++;
+      currentMiniGame = (currentMiniGame+1)%numGames;
       setTimeout(startGame, 1000);
     }
   });

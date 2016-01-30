@@ -4,6 +4,8 @@ BasicGame.Game = function (game) {
 
 BasicGame.Game.prototype = {
 
+    pt_game: this,
+
     init: function (players) {
         this.receivedPlayers = players;
     },
@@ -23,6 +25,11 @@ BasicGame.Game.prototype = {
         }
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+
+        socket.on('startMiniGame', function(gameId) {
+            pt_game.state.start(games[gameId]);
+        });
+
 
 	},
 
