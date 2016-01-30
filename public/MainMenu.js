@@ -20,7 +20,7 @@ BasicGame.MainMenu.prototype = {
 
 	    var toGame = this.add.text(100, 300, "Jugar", { font: '24px Arial', fill: '#000' });
 	    toGame.inputEnabled = true;
-    	toGame.events.onInputUp.add(this.switchToGame(this));
+    	toGame.events.onInputUp.add(this.switchToSync(this));
 
 	    //this.spriteTopRight = this.add.sprite(this.game.width, 0, 'tetris1');
 	    //this.spriteTopRight.anchor.set(1, 0);
@@ -71,11 +71,11 @@ BasicGame.MainMenu.prototype = {
 	},
 
 	//Callback pel botó provisional a Game
-	switchToGame: function (game)
+	switchToSync: function (game)
 	{
 		return function()
 		{
-			game.state.start('Game');
+			game.state.start('Sync');
 		}
 	}
 };

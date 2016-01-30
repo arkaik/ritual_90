@@ -63,7 +63,7 @@ io.on('connection', function(socket) {
     io.emit('newPlayerConnected', socket.username);
     socket.emit('connectionACK', socket.playerNum);
     console.log('a user has connected!');
-    if (numPlayers == maxPlayers) {
+    if (numPlayers === maxPlayers) {
       io.emit('allPlayersConnected');
       setTimeOut(startGame, 1000);
     }
