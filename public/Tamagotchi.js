@@ -17,7 +17,8 @@ BasicGame.Tamagotchi = function (game) {
 BasicGame.Tamagotchi.prototype = {
 
 	create: function () {
-
+        var tam_array = ['tamagotchi1', 'tamagotchi2', 'tamagotchi3'];
+        var marco = game.rnd.between(0, tam_array.length-1);
         //this.avatar = new Player(this, this.game.width/2, this.game.height/2);
         //this.add.existing(this.avatar);
 
@@ -40,7 +41,7 @@ BasicGame.Tamagotchi.prototype = {
         this.tamagotchiFoodSprite.y = this.foodPositionY;
         this.tamagotchiFoodSprite.scale.setTo(0.25,0.25);
 
-        this.tamagotchiScreenSprite = this.add.sprite(0, 0, 'tamagotchi1');
+        this.tamagotchiScreenSprite = this.add.sprite(0, 0, tam_array[marco]);
         this.tamagotchiScreenSprite.x = this.positionX;
         this.tamagotchiScreenSprite.y = this.positionY;
         this.tamagotchiScreenSprite.scale.setTo(0.25,0.25);
