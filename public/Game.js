@@ -22,6 +22,8 @@ BasicGame.Game.prototype = {
             var player = new Player(this, x, y);
             player.setFromData(pData);
             this.add.existing(player);
+
+            this.add.text((this.world.width/5)*(i+1), this.world.height*0.9, pData.username, {font: "24px Consola", fill: "#fff"});
         }
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!

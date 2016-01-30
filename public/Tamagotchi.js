@@ -75,11 +75,16 @@ BasicGame.Tamagotchi.prototype = {
         if (this.texturaActual === 'tamaA2') {
             this.texturaActual = 'tamaB2';
             this.tamagotchiSprite.loadTexture('tama_anim2', 'tama1');
-            this.foodCount = 0;
         }
-        else if (this.texturaActual == 'tamaB2') {
-            this.foodCount = 0;
+        else if (this.texturaActual === 'tamaB2') {
+            this.texturaActual = 'tamaC2';
+            this.tamagotchiSprite.loadTexture('tama_anim3', 'tama2');
+            this.tamagotchiSprite.position.y += 10;
         }
+        else if (this.texturaActual === 'tamaC2') {
+            //Emit tama-finish;
+        }
+        this.foodCount = 0;
     },
 
 	quitGame: function () {
