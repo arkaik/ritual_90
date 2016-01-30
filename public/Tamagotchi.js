@@ -50,17 +50,14 @@ BasicGame.Tamagotchi.prototype = {
         this.jumpButton.onDown.add(this.pressed,this);
         this.jumpButton.onUp.add(this.released,this);
 
+        this.timeSpent = new Date().getTime();
+
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
 	},
 
 	update: function () {
-
-        //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-		//this.avatar.cap.rotation += 0.1;
-
-
 
         if (this.foodCount >= this.foodLimit ) {
             this.grow();
@@ -82,7 +79,6 @@ BasicGame.Tamagotchi.prototype = {
         }
         else if (this.texturaActual == 'tamaB2') {
             this.foodCount = 0;
-            //Socket.io, fin del minijuego o similar
         }
     },
 

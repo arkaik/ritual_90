@@ -79,11 +79,13 @@ io.on('connection', function(socket) {
       setTimeout(startGame, 4000);
     }
   });
-  /*
-  socket.on('chatMessage', function(msg){
-    if (msg !== '') io.emit('chatMessage', {username: socket.username, msg: msg});
+  
+  socket.on('tamagotchiFinished', function(msg) {
+    if (currentMiniGame == 0) {
+      io.emit('chatMessage', {username: socket.username, msg: msg});
+    }
   });
-  */
+
   socket.on('disconnect', function(){
     if (socket.username !== null) {
       io.emit('userDisconnected', socket.username);

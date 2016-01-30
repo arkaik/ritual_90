@@ -43,7 +43,9 @@ BasicGame.Preloader.prototype = {
 	    this.load.image('tamaA1', 'res/tamaA1.png');
 	    this.load.image('tamaA2', 'res/tamaA2.png');
 	    this.load.image('tamaB1', 'res/tamaB1.png');
-	    this.load.image('tamaB2', 'res/tamaB2.png');
+	    this.load.image('tamaB2', 'res/tamaB1.png');
+	    this.load.image('tamaC1', 'res/tamaC1.png');
+	    this.load.image('tamaC2', 'res/tamaC2.png');
 	    this.load.image('tamaFood', 'res/tamaFood.png');
 	    this.load.image('pentinatB1', 'res/pentinatB1.png');
 	    this.load.image('pentinatB2', 'res/pentinatB2.png');
