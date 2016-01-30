@@ -18,7 +18,7 @@ BasicGame.MainMenu.prototype = {
 		//var text = game.add.text(100, 100, phaserJSON.version, { fill: '#ffffff' });
     	text.setShadow(2, 2, 'rgba(0,0,0,0.5)', 0);
 
-	    var toGame = this.add.text(100, 300, "Jugar", { font: '24px Arial', fill: '#fff' });
+	    var toGame = this.add.text(100, 300, "Jugar", { font: '24px Arial', fill: '#000' });
 	    toGame.inputEnabled = true;
     	toGame.events.onInputUp.add(this.switchToGame(this));
 
@@ -43,7 +43,9 @@ BasicGame.MainMenu.prototype = {
 
 	resize: function (width, height) {
 
-		//this.world.foreach();
+		this.world.forEach(function(item) {
+			console.log(item.position.x+", "+item.position.y);
+		});
 		//	If the game container is resized this function will be called automatically.
 		//	You can use it to align sprites that should be fixed in place and other responsive display things.
 
@@ -60,6 +62,14 @@ BasicGame.MainMenu.prototype = {
 	    //this.spriteBottomRight.y = this.game.height;
 
 	},
+
+	shutdown: function()
+	{
+		this.world.forEach(function (item){
+			item.destroy();
+		})
+	},
+
 	//Callback pel botó provisional a Game
 	switchToGame: function (game)
 	{

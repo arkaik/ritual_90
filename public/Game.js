@@ -32,7 +32,7 @@ BasicGame.Game.prototype = {
         this.avatar = new Player(this, this.game.width/2, this.game.height/2);
         this.add.existing(this.avatar);
 
-        var quit_text = this.add.text(0,100, "Quit", { font: '24px Arial', fill: '#fff' });
+        var quit_text = this.add.text(0,0, "Quit", { font: '24px Arial', fill: '#fff' });
         quit_text.inputEnabled = true;
         quit_text.events.onInputUp.add(this.quitGame());
 
