@@ -18,7 +18,7 @@ BasicGame.Tamagotchi.prototype = {
 
 	create: function () {
         var tam_array = ['tamagotchi1', 'tamagotchi2', 'tamagotchi3'];
-        var marco = game.rnd.between(0, tam_array.length-1);
+        var marco = this.rnd.between(0, tam_array.length-1);
         //this.avatar = new Player(this, this.game.width/2, this.game.height/2);
         //this.add.existing(this.avatar);
 
