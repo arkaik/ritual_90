@@ -1,4 +1,5 @@
 var socket;
+var myPlayerId;
 
 var games   = ["Tamagotchi", "Pizza"];
 var bases   = ["base1", "base2"];

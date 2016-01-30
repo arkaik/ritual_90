@@ -29,7 +29,7 @@ BasicGame.Sync.prototype = {
     
     pt_game: this,
 
-    playerId: undefined,
+    //playerId: undefined,
 
 	create: function () {
 
@@ -68,7 +68,8 @@ BasicGame.Sync.prototype = {
 
         socket.on('connectionACK', function(id) {
             console.log('connected successfully! you are player ' + id);
-            this.playerId = id;
+            //this.playerId = id;
+            myPlayerId = id;
         });
 
         socket.on('newPlayerConnected', function(username) {
