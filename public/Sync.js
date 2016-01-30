@@ -29,6 +29,8 @@ BasicGame.Sync.prototype = {
     
     pt_game: this,
 
+    playerId: undefined,
+
 	create: function () {
         pt_game = this;
         var self = this;
@@ -60,6 +62,7 @@ BasicGame.Sync.prototype = {
 
         socket.on('connectionACK', function(id) {
             console.log('connected successfully! you are player ' + id);
+            this.playerId = id;
         });
 
         socket.on('newPlayerConnected', function(username) {
@@ -104,7 +107,7 @@ BasicGame.Sync.prototype = {
         console.log('outside nextSate');
         console.log(players);
         console.log('username: ' + players[1]['username'] + ', head: '+ players[1].headSpriteId);
-        pt_game.state.start('Game');
+        pt_game.state.start('Game', true, false, players);
     },
 
     shutdown: function ()
