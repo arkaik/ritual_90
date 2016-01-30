@@ -17,7 +17,8 @@ BasicGame.Game.prototype = {
 	create: function () {
 
         this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
-        this.generalBackgroundSprite.scale.setTo(0.25,0.25);
+        this.generalBackgroundSprite.width = this.world.width;
+        this.generalBackgroundSprite.height = this.world.height;
 
         var toMenu = this.add.button(0, 0, "quitButton", this.quitGame());
         toMenu.scale.setTo(0.25,0.25);

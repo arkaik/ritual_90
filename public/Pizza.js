@@ -85,9 +85,8 @@ BasicGame.Pizza.prototype = {
         this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
         this.generalBackgroundSprite.scale.setTo(0.26,0.26);
 
-        var quit_text = this.add.text(0,100, "Quit", { font: '24px Arial', fill: '#fff' });
-        quit_text.inputEnabled = true;
-        quit_text.events.onInputUp.add(this.quitGame());
+        var quit_btn = this.add.button(0,0, "quitButton", this.quitGame());
+        quit_btn.scale.setTo(0.25, 0.25);
 
         this.boxSprite = this.add.sprite(0, 0, 'box');
         //this.boxSprite.x = 200;
@@ -130,24 +129,26 @@ BasicGame.Pizza.prototype = {
         }
 
         key1 = this.input.keyboard.addKey(Phaser.Keyboard.ONE);
-        key1.onDown.add(this.pressed1, this);
+        key1.onDown.add(this.pressedi(1), this);
 
         key2 = this.input.keyboard.addKey(Phaser.Keyboard.TWO);
-        key2.onDown.add(this.pressed2, this);
+        key2.onDown.add(this.pressedi(2), this);
 
         key3 = this.input.keyboard.addKey(Phaser.Keyboard.THREE);
-        key3.onDown.add(this.pressed3, this);
+        key3.onDown.add(this.pressedi(3), this);
 
         key4 = this.input.keyboard.addKey(Phaser.Keyboard.FOUR);
-        key4.onDown.add(this.pressed4, this);
+        key4.onDown.add(this.pressedi(4), this);
 
         key5 = this.input.keyboard.addKey(Phaser.Keyboard.FIVE);
-        key5.onDown.add(this.pressed5, this);
+        key5.onDown.add(this.pressedi(5), this);
 
         key6 = this.input.keyboard.addKey(Phaser.Keyboard.SIX);
-        key6.onDown.add(this.pressed6, this);
+        key6.onDown.add(this.pressedi(6), this);
 
 
+        this.infotext = this.add.text(this.world.centerX, 100, "Choose one with number keys!", {font: "28px Lemiesz", fill: "#000"} )
+        this.infotext.anchor.setTo(0.5,0.5);
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
@@ -161,60 +162,19 @@ BasicGame.Pizza.prototype = {
       console.log("booooo")
     },
 
-    pressed1: function () {
-        if (this.chosen == 1) {
-            this.winner();
-        }
-        else {
-            this.looser();
-        }
-    },
-
-    pressed2: function () {
-        if (this.chosen == 2) {
-            this.winner();
-        }
-        else {
-            this.looser();
+    pressedi: function (i)
+    {
+        return function()
+        {
+            if (this.chosen == i) {
+                this.winner();
+            }
+            else {
+                this.looser();
+            }    
         }
     },
-
-    pressed3: function () {
-        if (this.chosen == 3) {
-            this.winner();
-        }
-        else {
-            this.looser();
-        }
-    },
-
-    pressed4: function () {
-        if (this.chosen == 4) {
-            this.winner();
-        }
-        else {
-            this.looser();
-        }
-    },
-
-    pressed5: function () {
-        if (this.chosen == 5) {
-            this.winner();
-        }
-        else {
-            this.looser();
-        }
-    },
-
-    pressed6: function () {
-        if (this.chosen == 6) {
-            this.winner();
-        }
-        else {
-            this.looser();
-        }
-    },
-
+   
 
 	update: function () {
 

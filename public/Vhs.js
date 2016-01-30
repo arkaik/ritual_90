@@ -77,15 +77,18 @@ BasicGame.Vhs.prototype = {
           //  self.backToWaitRoom(players, winner);
         //});
 
+        this.infotext = this.add.text(this.world.centerX, 100, "Scroll your mouse WHEEL to rewind!", {font: "28px Lemiesz", fill: "#000"} )
+        this.infotext.anchor.setTo(0.5,0.5);
+        
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
         var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel"; //FF doesn't recognize mousewheel as of FF3.x
  
-if (document.attachEvent) //if IE (and Opera depending on user setting)
-    document.attachEvent("on"+mousewheelevt, this.displaywheel);
-else if (document.addEventListener) //WC3 browsers
-    document.addEventListener(mousewheelevt, this.displaywheel, false);
+        if (document.attachEvent) //if IE (and Opera depending on user setting)
+            document.attachEvent("on"+mousewheelevt, this.displaywheel);
+        else if (document.addEventListener) //WC3 browsers
+            document.addEventListener(mousewheelevt, this.displaywheel, false);
 
 	},
 
