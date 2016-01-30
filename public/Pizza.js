@@ -16,10 +16,6 @@ BasicGame.Pizza.prototype = {
 
         this.tamagotchiSprite = this.add.sprite(0, 0, 'tamaA2');
 
-        
-        
-
-
         this.tamagotchiSprite.scale.setTo(0.25,0.25);
 
 
@@ -46,7 +42,6 @@ BasicGame.Pizza.prototype = {
         {
     		//	Here you should destroy anything you no longer need.
     		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
-            pt_game.avatar.destroy();
 
     		//	Then let's go back to the main menu.
             pt_game.state.start('MainMenu');
