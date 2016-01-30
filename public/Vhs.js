@@ -9,6 +9,8 @@ BasicGame.Vhs = function (game) {
     this.stepsDistance = this.totalFoodSteps/this.foodLimit;
     this.stepCount = 0;
 
+    this.percentage = 0;
+
 
 
     this.vhss = ['VHS1','VHS2','VHS3','VHS4'];
@@ -28,6 +30,7 @@ BasicGame.Vhs.prototype = {
 
         var quit_btn = this.add.button(0,0, "quitButton", this.quitGame());
         quit_btn.scale.setTo(0.25, 0.25);
+
 
         /*
 
@@ -54,11 +57,12 @@ BasicGame.Vhs.prototype = {
 
         */
         this.vhs = this.add.sprite(0, 0, this.vhss[this.texturNow]);
-        this.vhs.x = 0
-        this.vhs.y = 100
+        this.vhs.x = 50
+        this.vhs.y = 130
         this.vhs.scale.setTo(0.25,0.25);
 
 
+        this.labelP = this.add.text(350,680, "Rewinded "+this.percentage+" of 100", { font: '24px Lemiesz', fill: '#000' });
 
 
         this.timeSpent = new Date().getTime();
@@ -113,9 +117,16 @@ else if (document.addEventListener) //WC3 browsers
     },
 
     update: function () {
+        
+
         if (this.rewindCount >= this.rewindLimit) {
             //posa aqui el codi de quan has avabat
+            this.labelP.setText("Rewinded "+100+" of 100");
             console.log('wiiiiiii')
+        }
+        else {
+            this.percentage = this.rewindCount/100;
+            this.labelP.setText("Rewinded "+Math.floor(this.percentage)+" of 100");
         }
     },
 
