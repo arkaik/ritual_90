@@ -40,6 +40,12 @@ BasicGame.Game.prototype = {
         next_text.inputEnabled = true;
         next_text.events.onInputUp.add(this.quitGame());
 
+        socket.on('connect', function () {
+            console.log('user connected!');
+            var username = prompt("Enter your username:") || "anon";
+            socket.emit('userConnected', username);
+        });
+
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 

@@ -23,15 +23,18 @@ function getRandomInt(min, max) {
 io.on('connection', function(socket) {
 
   function startGame() {
+    console.log('startMiniGame ' + currentMiniGame);
     io.emit('startMiniGame', currentMiniGame);
     for (s in sockets) s.lastResult = null;
     setTimeOut(endGame, 5000);
   }
   function endgame() {
+    console.log('finishMiniGame');
     io.emit('finishMiniGame');
   }
 
   socket.on('endOfGame', function(result) {
+    console.log('player ' + socket.playerNum + ': endOfGame');
     socket.lastScore = result.score;
     
     if (/*allReceived*/true) {
@@ -51,9 +54,10 @@ io.on('connection', function(socket) {
   });
 
   socket.on('userConnected', function(username) {
-    // socket.username = username;
     if (numPlayers > maxPlayers) return;
     socket.playerNum = numPlayers;
+    socket.username  = username;
+    console.log(socket.playerNum + 'connected to server!');
     ++numPlayers;
     sockets += socket;
     console.log('a user has connected!');
