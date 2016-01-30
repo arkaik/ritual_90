@@ -12,7 +12,7 @@ app.get('/', function(req, res){
 
 var sockets    = [];
 var numPlayers = 0;
-var maxPlayers = 2;
+var maxPlayers = 1;
 var numGames   = 1;
 var currentMiniGame = 0;
 var players = [];
@@ -58,8 +58,6 @@ io.on('connection', function(socket) {
 
   socket.on('userConnected', function(data) {
     if (numPlayers > maxPlayers) return;
-    //console.log(data);
-    // TODO OK
 
     socket.playerNum = numPlayers;
     socket.username  = data.username;
@@ -85,15 +83,19 @@ io.on('connection', function(socket) {
       socket.player.score += 10;
       io.emit('minigameFinished', players, socket.playerNum);
       currentMiniGame = (currentMiniGame + 1)%numGames;
+      ++currentMiniGame;
+      setTimeout(startGame, 4000);
     }
   });
 
   socket.on('disconnect', function(){
-    if (socket.username !== null) {
+    if (socket in sockets) {
       io.emit('userDisconnected', socket.username);
       --numPlayers;
+      players.slice[socket.playerNum, socket.playerNum+1];
+      sockets.slice[socket.playerNum, socket.playerNum+1];
     }
-    io.emit('chatMessage', {username: 'System', msg: socket.username + ' has disconnected from the server.'});
+    io.emit('goToWaitRoom');
   }); 
 });
 

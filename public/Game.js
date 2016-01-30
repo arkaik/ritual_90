@@ -27,7 +27,7 @@ BasicGame.Game.prototype = {
         for (var i = 0; i < this.receivedPlayers.length; ++i) {
             var pData = this.receivedPlayers[i];
             var x = (this.world.width/5)*(i+1) + 20;
-            var y = this.world.centerY;
+            var y = this.world.centerY + 80;
             var player = new Player(this, x, y);
             player.setFromData(pData);
             this.add.existing(player);
@@ -35,8 +35,11 @@ BasicGame.Game.prototype = {
             this.add.text((this.world.width/5)*(i+1), this.world.height*0.9, pData.username, {font: "24px Consola", fill: "#fff"});
             this.add.text((this.world.width/5)*(i+1), this.world.height*0.9 + 32, pData.score, {font: "24px Consola", fill: "#fff"});
         }
-        //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
+
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+        this.wsMeh = this.add.sprite(this.game.width-200, 0, "willSmoothMeh");
+        //this.wsMeh.anchor.setTo(0.5,0.5);
+        this.wsMeh.scale.setTo(0.2, 0.2);
 
         socket.on('startMiniGame', function(gameId) {
             pt_game.state.start(games[gameId]);
