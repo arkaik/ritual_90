@@ -64,14 +64,14 @@ BasicGame.Tamagotchi.prototype = {
 
         if (this.foodCount >= this.foodLimit ) {
             this.grow();
+            this.tamagotchiFoodSprite.y = this.foodPositionY;
         }
-/*
-        if (this.jumpButton.OnUp) {
-            this.foodCount ++;
-            console.log(this.foodCount);
-        }
-*/
 	},
+
+    moveFood: function () {
+        this.tamagotchiFoodSprite.y += this.tamagotchiFoodSprite.width;
+        this.stepCount -= 1;
+    },
 
     grow: function() {
         console.log("Grow");
@@ -103,7 +103,11 @@ BasicGame.Tamagotchi.prototype = {
     {
         this.tamagotchiSprite.frameName = 'tama2';
         this.foodCount++;
-        console.log(this.foodCount);
+        this.stepCount += this.stepsDistance;
+        if (this.stepCount > 1) {
+            this.moveFood();
+        }
+        //console.log(this.foodCount);
     },
 
     released: function(key)
