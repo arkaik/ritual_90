@@ -161,6 +161,24 @@ BasicGame.Tamagotchi.prototype = {
         });
 
         this.tamamusic.stop();
+
+        this.cache.removeImage('tamagotchi1');
+        this.cache.removeImage('tamagotchi2');
+        this.cache.removeImage('tamagotchi3');
+        this.cache.removeImage('tamagotchiBase', 'res/tamagotchiBase.png');
+        this.cache.removeImage('tamaA1', 'res/tamaA1.png');
+        this.cache.removeImage('tamaA2', 'res/tamaA2.png');
+        this.cache.removeImage('tamaB1', 'res/tamaB1.png');
+        this.cache.removeImage('tamaB2', 'res/tamaB1.png');
+        this.cache.removeImage('tamaC1', 'res/tamaC1.png');
+        this.cache.removeImage('tamaC2', 'res/tamaC2.png');
+        this.cache.removeImage('tamaFood', 'res/tamaFood.png');
+        this.cache.removeJSON('tama_anim1');
+        this.cache.removeJSON('tama_anim2');
+        this.cache.removeJSON('tama_anim3');
+        this.cache.removeImage('tama_anim1');
+        this.cache.removeImage('tama_anim2');
+        this.cache.removeImage('tama_anim3');
     }
 
 };
