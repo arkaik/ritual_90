@@ -1,4 +1,4 @@
-BasicGame.VHS = function (game) {
+BasicGame.Vhs = function (game) {
     this.foodCount = 0;
     this.foodLimit = 20;
     this.texturaActual = 'tamaA2';
@@ -14,9 +14,7 @@ BasicGame.VHS = function (game) {
 
 };
 
-BasicGame.VHS.prototype = {
-
-    pt_game: this,
+BasicGame.Vhs.prototype = {
 
 	create: function () {
         var tam_array = ['tamagotchi1', 'tamagotchi2', 'tamagotchi3'];
@@ -30,6 +28,8 @@ BasicGame.VHS.prototype = {
         var quit_text = this.add.text(0,100, "Quit", { font: '24px Arial', fill: '#fff' });
         quit_text.inputEnabled = true;
         quit_text.events.onInputUp.add(this.quitGame());
+
+        /*
 
         this.tamagotchiBaseSprite = this.add.sprite(this.po, 0, 'tamagotchiBase');
         this.tamagotchiBaseSprite.x = this.positionX;
@@ -51,28 +51,59 @@ BasicGame.VHS.prototype = {
         this.tamagotchiScreenSprite.y = this.positionY;
         this.tamagotchiScreenSprite.scale.setTo(0.25,0.25);
 
-        this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        this.jumpButton.onDown.add(this.pressed,this);
-        this.jumpButton.onUp.add(this.released,this);
+
+        */
+        this.vhs = this.add.sprite(0, 0, 'VHS1');
+        this.vhs.x = 0
+        this.vhs.y = 100
+        this.vhs.scale.setTo(0.25,0.25);
+
+
+        key1 = this.input.keyboard.addKey(Phaser.Keyboard.W);
+        key1.onDown.add(this.pressed1, this);
+
+        key1 = this.input.keyboard.addKey(Phaser.Keyboard.E);
+        key1.onDown.add(this.pressed2, this);
+
+        key1 = this.input.keyboard.addKey(Phaser.Keyboard.D);
+        key1.onDown.add(this.pressed3, this);
+
+        key1 = this.input.keyboard.addKey(Phaser.Keyboard.S);
+        key1.onDown.add(this.pressed4, this);
 
         this.timeSpent = new Date().getTime();
         var self = this;
-        socket.on('minigameFinished', function(players, winner) {
-            self.backToWaitRoom(players, winner);
-        });
+        //socket.on('minigameFinished', function(players, winner) {
+          //  self.backToWaitRoom(players, winner);
+        //});
 
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
 	},
 
-	update: function () {
 
-        if (this.foodCount >= this.foodLimit ) {
-            this.grow();
-            this.tamagotchiFoodSprite.y = this.foodPositionY;
-        }
-	},
+    pressed1: function () {
+        this.vhs.loadTexture('VHS1');
+    },
+
+    pressed2: function () {
+        this.vhs.loadTexture('VHS2');
+
+    },
+
+    pressed3: function () {
+        this.vhs.loadTexture('VHS3');
+    },
+
+    pressed4: function () {
+        this.vhs.loadTexture('VHS4');
+    },
+
+    update: function () {
+
+        console.log()
+    },
 
     moveFood: function () {
         this.tamagotchiFoodSprite.y += this.tamagotchiFoodSprite.width;
@@ -80,20 +111,7 @@ BasicGame.VHS.prototype = {
     },
 
     grow: function() {
-        console.log("Grow");
-        if (this.texturaActual === 'tamaA2') {
-            this.texturaActual = 'tamaB2';
-            this.tamagotchiSprite.loadTexture('tama_anim2', 'tama1');
-        }
-        else if (this.texturaActual === 'tamaB2') {
-            this.texturaActual = 'tamaC2';
-            this.tamagotchiSprite.loadTexture('tama_anim3', 'tama2');
-            this.tamagotchiSprite.position.y += 10;
-        }
-        else if (this.texturaActual === 'tamaC2') {
-            socket.emit('tamagotchiFinished', this.timeSpent);
-        }
-        this.foodCount = 0;
+
     },
 
 	quitGame: function () {
@@ -115,18 +133,13 @@ BasicGame.VHS.prototype = {
 
     pressed: function(key)
     {
-        this.tamagotchiSprite.frameName = 'tama2';
-        this.foodCount++;
-        this.stepCount += this.stepsDistance;
-        if (this.stepCount > 1) {
-            this.moveFood();
-        }
+
         //console.log(this.foodCount);
     },
 
     released: function(key)
     {
-        this.tamagotchiSprite.frameName = 'tama1';
+
     }
 
 };

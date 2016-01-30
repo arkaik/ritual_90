@@ -40,6 +40,10 @@ BasicGame.MainMenu.prototype = {
 	   
     	this.selAudio = this.add.audio('select');
 
+    	var toVhs = this.add.text(400, 700, "VHS", { font: '24px Arial', fill: '#000' });
+	    toVhs.inputEnabled = true;
+    	toVhs.events.onInputUp.add(this.switchToVhs(this));
+
 	},
 
 	update: function () {
@@ -80,6 +84,14 @@ BasicGame.MainMenu.prototype = {
 		return function()
 		{
 			game.state.start('Pizza');
+		}
+	},
+
+		switchToVhs: function (game)
+	{
+		return function()
+		{
+			game.state.start('Vhs');
 		}
 	}
 };
