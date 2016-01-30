@@ -5,6 +5,12 @@ BasicGame.Tamagotchi = function (game) {
     this.tamagotchiSprite;
     this.positionX = 300;
     this.positionY = 200;
+    this.foodPositionX = 480;
+    this.foodPositionY = 340;
+
+    this.totalFoodSteps = 14;
+    this.stepsDistance = this.totalFoodSteps/this.foodLimit;
+    this.stepCount = 0;
 
 };
 
@@ -25,8 +31,8 @@ BasicGame.Tamagotchi.prototype = {
         this.tamagotchiBaseSprite.scale.setTo(0.25,0.25);
 
         this.tamagotchiSprite = this.add.sprite(0, 0, 'tama_anim1', 'tama1');    
-        this.tamagotchiSprite.x = this.foodPositionX;
-        this.tamagotchiSprite.y = this.foodPositionY;
+        this.tamagotchiSprite.x = this.positionX;
+        this.tamagotchiSprite.y = this.positionY;
         this.tamagotchiSprite.scale.setTo(0.25,0.25);
 
         this.tamagotchiFoodSprite = this.add.sprite(0, 0, 'tamaFood');
