@@ -69,6 +69,9 @@ BasicGame.Preloader.prototype = {
 		this.load.image('pizza3', 'res/pizza3.png');
 		this.load.image('pizza4', 'res/pizza4.png');
 
+		this.load.image('retroFont', 'res/font.png');
+
+
 
 	    //this.load.image('starfield', 'assets/skies/deep-space.jpg');
 
