@@ -53,6 +53,8 @@ BasicGame.Preloader.prototype = {
 	    this.load.image('samarreta3', 'res/samarreta3.png');
 	    this.load.image('samarreta4', 'res/samarreta4.png');
 	    this.load.image('samarreta5', 'res/samarreta5.png');
+	    this.load.atlasJSONHash('tama_anim1', 'res/tama_anim1.png', 'res/tama_anim1.json');
+	    this.load.atlasJSONHash('tama_anim2', 'res/tama_anim2.png', 'res/tama_anim2.json');
 	    //this.load.image('starfield', 'assets/skies/deep-space.jpg');
 
 	},

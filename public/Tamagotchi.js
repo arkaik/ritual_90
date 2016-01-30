@@ -3,13 +3,12 @@ BasicGame.Tamagotchi = function (game) {
     this.foodLimit = 20;
     this.texturaActual = 'tamaA2';
     this.tamagotchiSprite;
+    this.positionX = 300;
+    this.positionY = 200;
 
 };
 
 BasicGame.Tamagotchi.prototype = {
-
-    
-
 
 	create: function () {
 
@@ -20,17 +19,29 @@ BasicGame.Tamagotchi.prototype = {
         quit_text.inputEnabled = true;
         quit_text.events.onInputUp.add(this.quitGame());
 
-        this.tamagotchiSprite = this.add.sprite(0, 0, 'tamaA2');
+        this.tamagotchiBaseSprite = this.add.sprite(this.po, 0, 'tamagotchiBase');
+        this.tamagotchiBaseSprite.x = this.positionX;
+        this.tamagotchiBaseSprite.y = this.positionY;
+        this.tamagotchiBaseSprite.scale.setTo(0.25,0.25);
 
-        
-        
-
-
+        this.tamagotchiSprite = this.add.sprite(0, 0, 'tama_anim1', 'tama1');    
+        this.tamagotchiSprite.x = this.foodPositionX;
+        this.tamagotchiSprite.y = this.foodPositionY;
         this.tamagotchiSprite.scale.setTo(0.25,0.25);
 
+        this.tamagotchiFoodSprite = this.add.sprite(0, 0, 'tamaFood');
+        this.tamagotchiFoodSprite.x = this.foodPositionX;
+        this.tamagotchiFoodSprite.y = this.foodPositionY;
+        this.tamagotchiFoodSprite.scale.setTo(0.25,0.25);
+
+        this.tamagotchiScreenSprite = this.add.sprite(0, 0, 'tamagotchi1');
+        this.tamagotchiScreenSprite.x = this.positionX;
+        this.tamagotchiScreenSprite.y = this.positionY;
+        this.tamagotchiScreenSprite.scale.setTo(0.25,0.25);
 
         this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.jumpButton.onDown.add(this.pressed,this);
+        this.jumpButton.onUp.add(this.released,this);
 
 
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
@@ -57,20 +68,15 @@ BasicGame.Tamagotchi.prototype = {
 	},
 
     grow: function() {
-        if (this.texturaActual == 'tamaA2') {
-            this.texturaActual = 'tamaA1';
-            this.tamagotchiSprite.loadTexture('tamaA1');
-            this.foodCount = 0;
-        }
-        else if (this.texturaActual == 'tamaA1') {
+        console.log("Grow");
+        if (this.texturaActual === 'tamaA2') {
             this.texturaActual = 'tamaB2';
-            this.tamagotchiSprite.loadTexture('tamaB2');
+            this.tamagotchiSprite.loadTexture('tama_anim2', 'tama1');
             this.foodCount = 0;
         }
         else if (this.texturaActual == 'tamaB2') {
-            this.texturaActual = 'tamaB1';
-            this.tamagotchiSprite.loadTexture('tamaB1');
             this.foodCount = 0;
+            //Socket.io, fin del minijuego o similar
         }
     },
 
@@ -80,7 +86,6 @@ BasicGame.Tamagotchi.prototype = {
         {
     		//	Here you should destroy anything you no longer need.
     		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
-            pt_game.avatar.destroy();
 
     		//	Then let's go back to the main menu.
             pt_game.state.start('MainMenu');
@@ -90,8 +95,14 @@ BasicGame.Tamagotchi.prototype = {
 
     pressed: function(key)
     {
-        this.foodCount ++;
+        this.tamagotchiSprite.frameName = 'tama2';
+        this.foodCount++;
         console.log(this.foodCount);
+    },
+
+    released: function(key)
+    {
+        this.tamagotchiSprite.frameName = 'tama1';
     }
 
 };
