@@ -37,7 +37,11 @@ BasicGame.MainMenu.prototype = {
 	    aboutBtn.inputEnabled = true;
 	    aboutBtn.events.onInputDown.add(this.switchToSync(this), this);
 	    aboutBtn.scale.setTo(0.25, 0.25);
-	    
+	   
+
+    	var toPizza = this.add.text(100, 500, "Pizza", { font: '24px Arial', fill: '#000' });
+	    toPizza.inputEnabled = true;
+    	toPizza.events.onInputUp.add(this.switchToPizza(this));
 
 	},
 
@@ -67,6 +71,14 @@ BasicGame.MainMenu.prototype = {
 		return function()
 		{
 			game.state.start('Tamagotchi');
+		}
+	},
+	
+	switchToPizza: function (game)
+	{
+		return function()
+		{
+			game.state.start('Pizza');
 		}
 	}
 };
