@@ -19,9 +19,8 @@ BasicGame.Game.prototype = {
         this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
         this.generalBackgroundSprite.scale.setTo(0.25,0.25);
 
-        var toMenu = this.add.button(0, 0, "Menu", { font: '24px Lemiesz', fill: '#000' });
-        toMenu.inputEnabled = true;
-        toMenu.events.onInputUp.add(this.switchToMenu);
+        var toMenu = this.add.button(0, 0, "quitButton", this.quitGame());
+        toMenu.scale.setTo(0.25,0.25);
 
         console.log(this.receivedPlayers);
         this.players = [];

@@ -83,12 +83,17 @@ BasicGame.Vhs.prototype = {
         var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel"; //FF doesn't recognize mousewheel as of FF3.x
  
 if (document.attachEvent) //if IE (and Opera depending on user setting)
-    document.attachEvent("on"+mousewheelevt, function(e){alert('Mouse wheel movement detected!')});
+    document.attachEvent("on"+mousewheelevt, this.displaywheel);
 else if (document.addEventListener) //WC3 browsers
-    document.addEventListener(mousewheelevt, function(e){alert('Mouse wheel movement detected!')}, false);
+    document.addEventListener(mousewheelevt, this.displaywheel, false);
 
 	},
 
+    displaywheel: function (e) {
+        var evt=window.event || e; //equalize event object
+        var delta=evt.detail? evt.detail*(-120) : evt.wheelDelta; //check for detail first so Opera uses that instead of wheelDelta
+        console.log(delta);        
+    },
 
     pressed1: function () {
         this.vhs.loadTexture('VHS1');
