@@ -23,13 +23,13 @@ BasicGame.MainMenu.prototype = {
 	    toTama.inputEnabled = true;
     	toTama.events.onInputUp.add(this.switchToTama(this));
 
-		var playBtn = this.add.sprite(300, 165, 'playButton');
+		var playBtn = this.add.sprite(290, 150, 'playButton');
 	    playBtn.anchor.set(0.5);
 	    playBtn.inputEnabled = true;
 	    playBtn.events.onInputDown.add(this.switchToSync(this), this);
 	    playBtn.scale.setTo(0.25, 0.25);
 
-    	var aboutBtn = this.add.sprite(300, 310, 'aboutButton');
+    	var aboutBtn = this.add.sprite(290, 260, 'aboutButton');
 	    aboutBtn.anchor.set(0.5);
 	    aboutBtn.inputEnabled = true;
 	    aboutBtn.events.onInputDown.add(this.switchToSync(this), this);
