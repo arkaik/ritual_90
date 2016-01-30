@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/arkaik/ritual_90#readme",
   "dependencies": {
+    "express": "^4.13.4",
     "socket.io": "^1.4.5"
   }
 }
