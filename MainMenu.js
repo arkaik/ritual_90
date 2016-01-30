@@ -43,6 +43,7 @@ BasicGame.MainMenu.prototype = {
 
 	resize: function (width, height) {
 
+		this.world.foreach();
 		//	If the game container is resized this function will be called automatically.
 		//	You can use it to align sprites that should be fixed in place and other responsive display things.
 
