@@ -40,6 +40,11 @@ BasicGame.Preloader.prototype = {
 	    this.load.image('tamagochi2', 'res/tamagochi2.png');
 	    this.load.image('tamagochi3', 'res/tamagochi3.png');
 	    this.load.image('tamagochiBase', 'res/tamagochiBase.png');
+	    this.load.image('tamaA1', 'res/tamaA1');
+	    this.load.image('tamaA2', 'res/tamaA2');
+	    this.load.image('tamaB1', 'res/tamaB1');
+	    this.load.image('tamaB2', 'res/tamaB2');
+	    this.load.image('tamaFood', 'res/tamaFood');
 	    //this.load.image('starfield', 'assets/skies/deep-space.jpg');
 
 	},
