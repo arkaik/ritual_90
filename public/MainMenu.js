@@ -9,7 +9,6 @@ BasicGame.MainMenu = function (game) {
 };
 
 BasicGame.MainMenu.prototype = {
-
 	create: function () {
 
 
@@ -19,11 +18,11 @@ BasicGame.MainMenu.prototype = {
 		background.anchor.set(0.5);
 
 
-		var toTama = this.add.text(100, 300, "Tamagotchi", { font: '24px Arial', fill: '#000' });
+		var toTama = this.add.text(100, 300, "Tamagotchi", { font: '24px Lemiesz', fill: '#000' });
 	    toTama.inputEnabled = true;
     	toTama.events.onInputUp.add(this.switchToTama(this));
 
-    	var toPizza = this.add.text(100, 350, "Pizza", { font: '24px Arial', fill: '#000' });
+    	var toPizza = this.add.text(100, 350, "Pizza", { font: '24px Lemiesz', fill: '#000' });
 	    toPizza.inputEnabled = true;
     	toPizza.events.onInputUp.add(this.switchToPizza(this));
 
@@ -39,7 +38,11 @@ BasicGame.MainMenu.prototype = {
 	    aboutBtn.events.onInputDown.add(this.switchToSync(this), this);
 	    aboutBtn.scale.setTo(0.25, 0.25);
 	   
-    	
+    	this.selAudio = this.add.audio('select');
+
+    	var toVhs = this.add.text(400, 700, "VHS", { font: '24px Arial', fill: '#000' });
+	    toVhs.inputEnabled = true;
+    	toVhs.events.onInputUp.add(this.switchToVhs(this));
 
 	},
 
@@ -54,6 +57,8 @@ BasicGame.MainMenu.prototype = {
 		this.world.forEach(function (item){
 			item.destroy();
 		});
+
+		this.selAudio.destroy();
 	},
 
 	//Callback pel botó provisional a Game
@@ -61,8 +66,10 @@ BasicGame.MainMenu.prototype = {
 	{
 		return function()
 		{
+			game.selAudio.play();
 			game.state.start('Sync');
 		}
+		
 	},
 	switchToTama: function (game)
 	{
@@ -77,6 +84,14 @@ BasicGame.MainMenu.prototype = {
 		return function()
 		{
 			game.state.start('Pizza');
+		}
+	},
+
+		switchToVhs: function (game)
+	{
+		return function()
+		{
+			game.state.start('Vhs');
 		}
 	}
 };

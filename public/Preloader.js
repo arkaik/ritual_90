@@ -38,17 +38,7 @@ BasicGame.Preloader.prototype = {
 	    this.load.image('pentinatA1', 'res/pentinatA1.png');
 	    this.load.image('pentinatA2', 'res/pentinatA2.png');
 	    this.load.image('pentinatA3', 'res/pentinatA3.png');
-	    this.load.image('tamagotchi1', 'res/tamagotchi1.png');
-	    this.load.image('tamagotchi2', 'res/tamagotchi2.png');
-	    this.load.image('tamagotchi3', 'res/tamagotchi3.png');
-	    this.load.image('tamagotchiBase', 'res/tamagotchiBase.png');
-	    this.load.image('tamaA1', 'res/tamaA1.png');
-	    this.load.image('tamaA2', 'res/tamaA2.png');
-	    this.load.image('tamaB1', 'res/tamaB1.png');
-	    this.load.image('tamaB2', 'res/tamaB1.png');
-	    this.load.image('tamaC1', 'res/tamaC1.png');
-	    this.load.image('tamaC2', 'res/tamaC2.png');
-	    this.load.image('tamaFood', 'res/tamaFood.png');
+	    
 	    this.load.image('pentinatB1', 'res/pentinatB1.png');
 	    this.load.image('pentinatB2', 'res/pentinatB2.png');
 	    this.load.image('pentinatB3', 'res/pentinatB3.png');
@@ -57,15 +47,14 @@ BasicGame.Preloader.prototype = {
 	    this.load.image('samarreta3', 'res/samarreta3.png');
 	    this.load.image('samarreta4', 'res/samarreta4.png');
 	    this.load.image('samarreta5', 'res/samarreta5.png');
-	    this.load.atlasJSONHash('tama_anim1', 'res/tama_anim1.png', 'res/tama_anim1.json');
-	    this.load.atlasJSONHash('tama_anim2', 'res/tama_anim2.png', 'res/tama_anim2.json');
-	    this.load.atlasJSONHash('tama_anim3', 'res/tama_anim3.png', 'res/tama_anim3.json');
+	    
 	    this.load.image('pantalons1', 'res/pantalons1.png');
 	    this.load.image('pantalons2', 'res/pantalons2.png');
 	    this.load.image('pantalons3', 'res/pantalons3.png');
 	    this.load.image('pantalons4', 'res/pantalons4.png');
 	    this.load.image('aboutButton', 'res/title_screen/aboutBtn.png');
 	    this.load.image('playButton', 'res/title_screen/playBtn.png');
+	    this.load.image('quitButton', 'res/title_screen/quitBtn.png');
 	    this.load.image('titleScreenBackground', 'res/title_screen/titleScreenBlank.png');
 
 	   	this.load.image('box', 'res/box.png');
@@ -77,6 +66,10 @@ BasicGame.Preloader.prototype = {
 		this.load.image('willSmoothHappy', 'res/godCamWin.png');
 		this.load.image('willSmoothMeh', 'res/godCamOk.png');
 		this.load.image('willSmoothSad', 'res/godCamLose.png');
+		this.load.image('VHS1', 'res/VHS1.png');
+		this.load.image('VHS2', 'res/VHS2.png');
+		this.load.image('VHS3', 'res/VHS3.png');
+		this.load.image('VHS4', 'res/VHS4.png');
 
 		this.load.image('generalBackground', 'res/generalBackground.png');
 
@@ -85,6 +78,7 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('tamavolution', 'res/audio/tamaEvolve.wav');
 		this.load.audio('tamamusic', 'res/audio/tamaMusic.wav');
 		this.load.audio('tamafeed', 'res/audio/tamaFeed.wav');
+		this.load.audio('select', 'res/audio/Select.wav');
 
 		
 
