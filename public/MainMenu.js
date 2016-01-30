@@ -22,6 +22,10 @@ BasicGame.MainMenu.prototype = {
 	    toGame.inputEnabled = true;
     	toGame.events.onInputUp.add(this.switchToSync(this));
 
+		var toTama = this.add.text(100, 400, "Tamagotchi", { font: '24px Arial', fill: '#000' });
+	    toTama.inputEnabled = true;
+    	toTama.events.onInputUp.add(this.switchToTama(this));
+
 	    //this.spriteTopRight = this.add.sprite(this.game.width, 0, 'tetris1');
 	    //this.spriteTopRight.anchor.set(1, 0);
 
@@ -76,6 +80,13 @@ BasicGame.MainMenu.prototype = {
 		return function()
 		{
 			game.state.start('Sync');
+		}
+	},
+	switchToTama: function (game)
+	{
+		return function()
+		{
+			game.state.start('Tamagotchi');
 		}
 	}
 };
