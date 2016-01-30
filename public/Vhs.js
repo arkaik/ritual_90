@@ -10,7 +10,6 @@ BasicGame.Vhs = function (game) {
     this.stepCount = 0;
 
 
-
     this.vhss = ['VHS1','VHS2','VHS3','VHS4'];
 
 
@@ -75,9 +74,9 @@ BasicGame.Vhs.prototype = {
 
         var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel"; //FF doesn't recognize mousewheel as of FF3.x
  
-if (document.attachEvent) //if IE (and Opera depending on user setting)
+    if (document.attachEvent) //if IE (and Opera depending on user setting)
     document.attachEvent("on"+mousewheelevt, this.displaywheel());
-else if (document.addEventListener) //WC3 browsers
+    else if (document.addEventListener) //WC3 browsers
     document.addEventListener(mousewheelevt, this.displaywheel(), false);
 
 	}, 
@@ -102,7 +101,7 @@ else if (document.addEventListener) //WC3 browsers
                     pt_game.rewindCount +=2;*/
                 if (pt_game.rollUp > 1000) {
                     pt_game.rotate();
-                    pt_game.rollUp =- 1000
+                    pt_game.rollUp =- 1000;
                 }
             }
         };
@@ -115,14 +114,13 @@ else if (document.addEventListener) //WC3 browsers
     update: function () {
         if (this.rewindCount >= this.rewindLimit) {
             //posa aqui el codi de quan has avabat
-            console.log('wiiiiiii')
+            //console.log('wiiiiiii')
         }
     },
 
 
     rotate: function () {
         if (this.texturNow == 3) {
-            console.log('pene');
             this.texturNow = 0;
             this.vhs.loadTexture(this.vhss[this.texturNow]);
 
