@@ -1,24 +1,25 @@
 BasicGame.Vhs = function (game) {
-    this.foodCount = 0;
-    this.foodLimit = 20;
-    this.texturaActual = 'tamaA2';
-    this.tamagotchiSprite;
-    this.positionX = 300;
-    this.positionY = 200;
-    this.foodPositionX = 480;
-    this.foodPositionY = 340;
+
+
+    this.rollUp = 1;
+    this.rewindLimit = 10000;
+    this.rewindCount = 1;
 
     this.totalFoodSteps = 14;
     this.stepsDistance = this.totalFoodSteps/this.foodLimit;
     this.stepCount = 0;
 
+
+
+    this.vhss = ['VHS1','VHS2','VHS3','VHS4'];
+
+
+        this.texturNow = 0
 };
 
 BasicGame.Vhs.prototype = {
 
 	create: function () {
-        var tam_array = ['tamagotchi1', 'tamagotchi2', 'tamagotchi3'];
-        var marco = this.rnd.between(0, tam_array.length-1);
         //this.avatar = new Player(this, this.game.width/2, this.game.height/2);
         //this.add.existing(this.avatar);
 
@@ -53,23 +54,13 @@ BasicGame.Vhs.prototype = {
 
 
         */
-        this.vhs = this.add.sprite(0, 0, 'VHS1');
+        this.vhs = this.add.sprite(0, 0, this.vhss[this.texturNow]);
         this.vhs.x = 0
         this.vhs.y = 100
         this.vhs.scale.setTo(0.25,0.25);
 
 
-        key1 = this.input.keyboard.addKey(Phaser.Keyboard.W);
-        key1.onDown.add(this.pressed1, this);
 
-        key1 = this.input.keyboard.addKey(Phaser.Keyboard.E);
-        key1.onDown.add(this.pressed2, this);
-
-        key1 = this.input.keyboard.addKey(Phaser.Keyboard.D);
-        key1.onDown.add(this.pressed3, this);
-
-        key1 = this.input.keyboard.addKey(Phaser.Keyboard.S);
-        key1.onDown.add(this.pressed4, this);
 
         this.timeSpent = new Date().getTime();
         var self = this;
@@ -83,47 +74,62 @@ BasicGame.Vhs.prototype = {
         var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel"; //FF doesn't recognize mousewheel as of FF3.x
  
 if (document.attachEvent) //if IE (and Opera depending on user setting)
-    document.attachEvent("on"+mousewheelevt, this.displaywheel);
+    document.attachEvent("on"+mousewheelevt, this.displaywheel());
 else if (document.addEventListener) //WC3 browsers
-    document.addEventListener(mousewheelevt, this.displaywheel, false);
+    document.addEventListener(mousewheelevt, this.displaywheel(), false);
 
-	},
+	}, 
 
-    displaywheel: function (e) {
-        var evt=window.event || e; //equalize event object
-        var delta=evt.detail? evt.detail*(-120) : evt.wheelDelta; //check for detail first so Opera uses that instead of wheelDelta
-        console.log(delta);        
+    pt_game: this,
+
+    displaywheel: function () {
+        var pt_game = this;
+        return function (e) {
+            var evt=window.event || e; //equalize event object
+            var delta=evt.detail? evt.detail*(-120) : evt.wheelDelta; //check for detail first so Opera uses that instead of wheelDelta
+            console.log("displaywheel");
+            if (delta > 0) {
+                pt_game.rewindCount+=delta;
+                pt_game.rollUp+=delta;
+                console.log(""+delta+", "+pt_game.rewindCount);
+                /*if (delta >= 100 ) {
+                    pt_game.rewindCount ++;
+                    console.log(pt_game.rewindCount); 
+                }
+                else if (delta >= 200)
+                    pt_game.rewindCount +=2;*/
+                if (pt_game.rollUp > 1000) {
+                    pt_game.rotate();
+                    pt_game.rollUp =- 1000
+                }
+            }
+        };
     },
 
-    pressed1: function () {
-        this.vhs.loadTexture('VHS1');
-    },
-
-    pressed2: function () {
-        this.vhs.loadTexture('VHS2');
-
-    },
-
-    pressed3: function () {
-        this.vhs.loadTexture('VHS3');
-    },
-
-    pressed4: function () {
-        this.vhs.loadTexture('VHS4');
+    addRewind: function () {
+        this.rewindCount ++;
     },
 
     update: function () {
-
-        console.log()
+        if (this.rewindCount >= this.rewindLimit) {
+            //posa aqui el codi de quan has avabat
+            console.log('wiiiiiii')
+        }
     },
 
-    moveFood: function () {
-        this.tamagotchiFoodSprite.y += this.tamagotchiFoodSprite.width;
-        this.stepCount -= 1;
-    },
 
-    grow: function() {
+    rotate: function () {
+        if (this.texturNow == 3) {
+            console.log('pene');
+            this.texturNow = 0;
+            this.vhs.loadTexture(this.vhss[this.texturNow]);
 
+        }
+        else {
+            this.texturNow ++;
+            this.vhs.loadTexture(this.vhss[this.texturNow]);
+            console.log(this.texturNow);
+        }
     },
 
 	quitGame: function () {
