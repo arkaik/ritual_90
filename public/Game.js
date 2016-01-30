@@ -30,21 +30,25 @@ BasicGame.Game.prototype = {
             var x = (this.world.width/5)*(i+1) + 20;
             var y = this.world.centerY + 80;
             var player = new Player(this, x, y);
+            this.players.push(player);
             player.setFromData(pData);
             this.add.existing(player);
 
-            this.add.text((this.world.width/5)*(i+1), this.world.height*0.9, pData.username, {font: "24px Consola", fill: "#fff"});
-            this.add.text((this.world.width/5)*(i+1), this.world.height*0.9 + 32, pData.score, {font: "24px Consola", fill: "#fff"});
+            this.add.text((this.world.width/5)*(i+1), this.world.height*0.9, pData.username, {font: '24px Lemiesz', fill: '#000' });
+            this.add.text((this.world.width/5)*(i+1), this.world.height*0.9 + 32, pData.score, {font: "24px Lemiesz", fill: "#000"});
         }
 
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         this.wsMeh = this.add.sprite(this.game.width-200, 0, "willSmoothMeh");
         //this.wsMeh.anchor.setTo(0.5,0.5);
-        this.wsMeh.scale.setTo(0.2, 0.2);
+        this.wsMeh.scale.setTo(0.25, 0.25);
 
         socket.on('startMiniGame', function(gameId) {
             pt_game.state.start(games[gameId]);
         });
+
+        console.log('Your player id is ' + myPlayerId + '!');
+        console.log('YOUR score is... ' + this.players[myPlayerId].score + '!');
 
 
 	},
