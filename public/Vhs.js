@@ -25,9 +25,8 @@ BasicGame.Vhs.prototype = {
         this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
         this.generalBackgroundSprite.scale.setTo(0.26,0.26);
 
-        var quit_text = this.add.text(0,100, "Quit", { font: '24px Arial', fill: '#fff' });
-        quit_text.inputEnabled = true;
-        quit_text.events.onInputUp.add(this.quitGame());
+        var quit_btn = this.add.button(0,0, "quitButton", this.quitGame());
+        quit_btn.scale.setTo(0.25, 0.25);
 
         /*
 
@@ -155,6 +154,17 @@ BasicGame.Vhs.prototype = {
     released: function(key)
     {
 
+    },
+    shutdown: function()
+    {
+
+        var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel";
+
+        if (document.detachEvent)
+            document.detachEvent ('on'+mousewheelevt,this.displaywheel);
+        if (document.removeEventListener) 
+            document.removeEventListener (mousewheelevt,this.displaywheel,false);
+         
     }
 
 };
