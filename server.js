@@ -12,9 +12,12 @@ app.get('/', function(req, res){
 
 var sockets    = [];
 var numPlayers = 0;
-var maxPlayers = 4;
+var maxPlayers = 2;
 var numGames   = 1;
 var currentMiniGame = 0;
+var players = [];
+
+var Player = require('./sPlayer');
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -53,10 +56,14 @@ io.on('connection', function(socket) {
     }
   });
 
-  socket.on('userConnected', function(username) {
+  socket.on('userConnected', function(data) {
     if (numPlayers > maxPlayers) return;
     socket.playerNum = numPlayers;
-    socket.username  = username;
+    socket.username  = data.username;
+    data.id = socket.playerNum;
+    var player = new Player(data);
+    socket.player = player;
+    players += player;
     console.log(socket.username + '(' + socket.playerNum +') connected to server!');
     ++numPlayers;
     sockets += socket;
@@ -64,8 +71,8 @@ io.on('connection', function(socket) {
     socket.emit('connectionACK', socket.playerNum);
     console.log('a user has connected!');
     if (numPlayers === maxPlayers) {
-      io.emit('allPlayersConnected');
-      setTimeout(startGame, 1000);
+      io.emit('allPlayersConnected', players);
+      setTimeout(startGame, 4000);
     }
   });
   /*

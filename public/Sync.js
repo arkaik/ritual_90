@@ -26,9 +26,12 @@ BasicGame.Sync = function (game) {
 };
 
 BasicGame.Sync.prototype = {
+    
+    pt_game: this,
 
 	create: function () {
-
+        pt_game = this;
+        var self = this;
         this.avatar = new Player(this, this.game.width/2, this.game.height/2);
         this.add.existing(this.avatar);
 
@@ -45,7 +48,14 @@ BasicGame.Sync.prototype = {
         socket.on('connect', function () {
             console.log('user connected!');
             var username = prompt("Enter your username:") || "anon";
-            socket.emit('userConnected', username);
+            var data = {
+                username: username,
+                headSpriteId: self.avatar.id_cap,
+                shirtSpriteId: self.avatar.id_tshirt,
+                legsSpriteId: self.avatar.id_jeans,
+                bodySpriteId: self.avatar.id_base
+            };
+            socket.emit('userConnected', data);
         });
 
         socket.on('connectionACK', function(id) {
@@ -60,7 +70,8 @@ BasicGame.Sync.prototype = {
             console.log('Player ' + username + ' has left the room!');
         });
         var self = this;
-        socket.on('allPlayersConnected', self.nextState());
+        
+        socket.on('allPlayersConnected', self.nextState);
 
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
@@ -88,15 +99,12 @@ BasicGame.Sync.prototype = {
 
 	},
 
-    nextState: function () {
-        var pt_game = this;
+    nextState: function (players) {
+        //var pt_game = this;
         console.log('outside nextSate');
-        return function()
-        {
-            //  Then let's go back to the main menu.
-            console.log('inside nextSate');
-            pt_game.state.start('Game');
-        }
+        console.log(players);
+        console.log('username: ' + players[1]['username'] + ', head: '+ players[1].headSpriteId);
+        pt_game.state.start('Game');
     },
 
     shutdown: function ()

@@ -49,7 +49,6 @@ BasicGame.Tamagotchi.prototype = {
         this.jumpButton.onDown.add(this.pressed,this);
         this.jumpButton.onUp.add(this.released,this);
 
-
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
