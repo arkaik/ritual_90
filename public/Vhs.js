@@ -1,4 +1,4 @@
-BasicGame.Tamagotchi = function (game) {
+BasicGame.VHS = function (game) {
     this.foodCount = 0;
     this.foodLimit = 20;
     this.texturaActual = 'tamaA2';
@@ -14,7 +14,7 @@ BasicGame.Tamagotchi = function (game) {
 
 };
 
-BasicGame.Tamagotchi.prototype = {
+BasicGame.VHS.prototype = {
 
     pt_game: this,
 
