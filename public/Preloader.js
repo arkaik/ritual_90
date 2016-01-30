@@ -43,7 +43,9 @@ BasicGame.Preloader.prototype = {
 	    this.load.image('tamaA1', 'res/tamaA1.png');
 	    this.load.image('tamaA2', 'res/tamaA2.png');
 	    this.load.image('tamaB1', 'res/tamaB1.png');
-	    this.load.image('tamaB2', 'res/tamaB2.png');
+	    this.load.image('tamaB2', 'res/tamaB1.png');
+	    this.load.image('tamaC1', 'res/tamaC1.png');
+	    this.load.image('tamaC2', 'res/tamaC2.png');
 	    this.load.image('tamaFood', 'res/tamaFood.png');
 	    this.load.image('pentinatB1', 'res/pentinatB1.png');
 	    this.load.image('pentinatB2', 'res/pentinatB2.png');
@@ -55,6 +57,7 @@ BasicGame.Preloader.prototype = {
 	    this.load.image('samarreta5', 'res/samarreta5.png');
 	    this.load.atlasJSONHash('tama_anim1', 'res/tama_anim1.png', 'res/tama_anim1.json');
 	    this.load.atlasJSONHash('tama_anim2', 'res/tama_anim2.png', 'res/tama_anim2.json');
+	    this.load.atlasJSONHash('tama_anim3', 'res/tama_anim3.png', 'res/tama_anim3.json');
 	    this.load.image('pantalons1', 'res/pantalons1.png');
 	    this.load.image('pantalons2', 'res/pantalons2.png');
 	    this.load.image('pantalons3', 'res/pantalons3.png');

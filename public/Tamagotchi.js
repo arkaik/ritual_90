@@ -17,7 +17,8 @@ BasicGame.Tamagotchi = function (game) {
 BasicGame.Tamagotchi.prototype = {
 
 	create: function () {
-
+        var tam_array = ['tamagotchi1', 'tamagotchi2', 'tamagotchi3'];
+        var marco = this.rnd.between(0, tam_array.length-1);
         //this.avatar = new Player(this, this.game.width/2, this.game.height/2);
         //this.add.existing(this.avatar);
 
@@ -40,7 +41,7 @@ BasicGame.Tamagotchi.prototype = {
         this.tamagotchiFoodSprite.y = this.foodPositionY;
         this.tamagotchiFoodSprite.scale.setTo(0.25,0.25);
 
-        this.tamagotchiScreenSprite = this.add.sprite(0, 0, 'tamagotchi1');
+        this.tamagotchiScreenSprite = this.add.sprite(0, 0, tam_array[marco]);
         this.tamagotchiScreenSprite.x = this.positionX;
         this.tamagotchiScreenSprite.y = this.positionY;
         this.tamagotchiScreenSprite.scale.setTo(0.25,0.25);
@@ -49,17 +50,14 @@ BasicGame.Tamagotchi.prototype = {
         this.jumpButton.onDown.add(this.pressed,this);
         this.jumpButton.onUp.add(this.released,this);
 
+        this.timeSpent = new Date().getTime();
+
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
 	},
 
 	update: function () {
-
-        //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-		//this.avatar.cap.rotation += 0.1;
-
-
 
         if (this.foodCount >= this.foodLimit ) {
             this.grow();
@@ -77,12 +75,16 @@ BasicGame.Tamagotchi.prototype = {
         if (this.texturaActual === 'tamaA2') {
             this.texturaActual = 'tamaB2';
             this.tamagotchiSprite.loadTexture('tama_anim2', 'tama1');
-            this.foodCount = 0;
         }
-        else if (this.texturaActual == 'tamaB2') {
-            this.foodCount = 0;
-            //Socket.io, fin del minijuego o similar
+        else if (this.texturaActual === 'tamaB2') {
+            this.texturaActual = 'tamaC2';
+            this.tamagotchiSprite.loadTexture('tama_anim3', 'tama2');
+            this.tamagotchiSprite.position.y += 10;
         }
+        else if (this.texturaActual === 'tamaC2') {
+            //Emit tama-finish;
+        }
+        this.foodCount = 0;
     },
 
 	quitGame: function () {

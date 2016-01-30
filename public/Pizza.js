@@ -127,6 +127,7 @@ BasicGame.Pizza.prototype = {
 
         var labelPizza4 = this.add.text(200+this.separation*3, this.pizzasY-60, "4", { font: '46px Arial', fill: '#fff' });
 
+
         var labelPizza5 = this.add.text(200+this.separation*4, this.pizzasY-60, "5", { font: '46px Arial', fill: '#fff' });
 
         var labelPizza6 = this.add.text(200+this.separation*5, this.pizzasY-60, "6", { font: '46px Arial', fill: '#fff' });
@@ -232,7 +233,6 @@ BasicGame.Pizza.prototype = {
         {
     		//	Here you should destroy anything you no longer need.
     		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
-            pt_game.avatar.destroy();
 
     		//	Then let's go back to the main menu.
             pt_game.state.start('MainMenu');
