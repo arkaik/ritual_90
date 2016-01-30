@@ -56,6 +56,10 @@ BasicGame.Game.prototype = {
             console.log('Player ' + username + ' has entered the room!');
         });
 
+        socket.on('userDisconnected', function(username) {
+            console.log('Player ' + username + ' has left the room!');
+        });
+
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 

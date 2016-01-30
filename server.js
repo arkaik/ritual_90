@@ -74,6 +74,10 @@ io.on('connection', function(socket) {
   });
   */
   socket.on('disconnect', function(){
+    if (socket.username !== null) {
+      io.emit('userDisconnected', socket.username);
+      --numPlayers;
+    }
     io.emit('chatMessage', {username: 'System', msg: socket.username + ' has disconnected from the server.'});
   }); 
 });
