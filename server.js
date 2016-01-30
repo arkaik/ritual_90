@@ -12,7 +12,7 @@ app.get('/', function(req, res){
 
 var sockets    = [];
 var numPlayers = 0;
-var maxPlayers = 4;
+var maxPlayers = 2;
 var numGames   = 1;
 var currentMiniGame = 0;
 var players = [];
