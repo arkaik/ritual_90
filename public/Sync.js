@@ -52,7 +52,7 @@ BasicGame.Sync.prototype = {
         next_text.inputEnabled = true;
         next_text.events.onInputUp.add(this.quitGame());*/
 
-        socket = io.connect('http://192.168.232.212:4242');
+        socket = io.connect('http://localhost:4242');
         socket.on('connect', function () {
             console.log('user connected!');
             var username = prompt("Enter your username:") || "anon";
@@ -81,6 +81,10 @@ BasicGame.Sync.prototype = {
         var self = this;
         
         socket.on('allPlayersConnected', self.nextState);
+
+        socket.on('minigameFinished', function(players, winner) {
+            self.backToWaitRoom(players, winner);
+        });
 
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!

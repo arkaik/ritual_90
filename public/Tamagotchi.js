@@ -42,9 +42,8 @@ BasicGame.Tamagotchi.prototype = {
         this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
         this.generalBackgroundSprite.scale.setTo(0.26,0.26);
 
-        var quit_text = this.add.text(0,0, "Quit", { font: '24px Lemiesz', fill: '#fff' });
-        quit_text.inputEnabled = true;
-        quit_text.events.onInputUp.add(this.quitGame());
+        var quit_btn = this.add.button(0,0, "quitButton", this.quitGame());
+        quit_btn.scale.setTo(0.25,0.25);
 
         this.tamagotchiBaseSprite = this.add.sprite(this.po, 0, 'tamagotchiBase');
         this.tamagotchiBaseSprite.x = this.positionX;
@@ -72,9 +71,6 @@ BasicGame.Tamagotchi.prototype = {
 
         this.timeSpent = new Date().getTime();
         var self = this;
-        socket.on('minigameFinished', function(players, winner) {
-            self.backToWaitRoom(players, winner);
-        });
 
         this.evoSound = this.add.audio('tamavolution');
         this.feedSound = this.add.audio('tamafeed');
@@ -117,7 +113,7 @@ BasicGame.Tamagotchi.prototype = {
             this.tamagotchiSprite.position.y += 10;
         }
         else if (this.texturaActual === 'tamaC2') {
-            socket.emit('tamagotchiFinished', this.timeSpent);
+            if (socket != null) socket.emit('tamagotchiFinished', this.timeSpent);
         }
         this.foodCount = 0;
     },
