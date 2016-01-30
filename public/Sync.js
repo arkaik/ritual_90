@@ -112,7 +112,7 @@ BasicGame.Sync.prototype = {
         //var pt_game = this;
         console.log('outside nextSate');
         console.log(players);
-        console.log('username: ' + players[1]['username'] + ', head: '+ players[1].headSpriteId);
+        console.log('username: ' + players[0]['username'] + ', head: '+ players[0].headSpriteId);
         pt_game.state.start('Game', true, false, players);
     },
 
