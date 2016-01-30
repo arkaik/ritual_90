@@ -58,13 +58,17 @@ io.on('connection', function(socket) {
 
   socket.on('userConnected', function(data) {
     if (numPlayers > maxPlayers) return;
+    //console.log(data);
+    // TODO OK
+
     socket.playerNum = numPlayers;
     socket.username  = data.username;
     data.id = socket.playerNum;
     var player = new Player(data);
     socket.player = player;
-    players += player;
+    players.push(player);
     console.log(socket.username + '(' + socket.playerNum +') connected to server!');
+    //console.log(data. + '(' + socket.playerNum +') connected to server!');
     ++numPlayers;
     sockets += socket;
     io.emit('newPlayerConnected', socket.username);
