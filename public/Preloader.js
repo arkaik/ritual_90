@@ -63,6 +63,12 @@ BasicGame.Preloader.prototype = {
 		this.load.image('pizza3', 'res/pizza3.png');
 		this.load.image('pizza4', 'res/pizza4.png');
 
+		this.load.image('VHS1', 'res/VHS1.png');
+		this.load.image('VHS2', 'res/VHS2.png');
+		this.load.image('VHS3', 'res/VHS3.png');
+		this.load.image('VHS4', 'res/VHS4.png');
+
+
 		this.load.image('generalBackground', 'res/generalBackground.png');
 
 		this.load.image('retroFont', 'res/font.png');
