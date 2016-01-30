@@ -59,8 +59,8 @@ BasicGame.Sync.prototype = {
         socket.on('userDisconnected', function(username) {
             console.log('Player ' + username + ' has left the room!');
         });
-
-        socket.on('allPlayersConnected', this.nextState);
+        var self = this;
+        socket.on('allPlayersConnected', self.nextState());
 
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
@@ -90,10 +90,11 @@ BasicGame.Sync.prototype = {
 
     nextState: function () {
         var pt_game = this;
-        return function(username)
+        console.log('outside nextSate');
+        return function()
         {
             //  Then let's go back to the main menu.
-            console.log
+            console.log('inside nextSate');
             pt_game.state.start('Game');
         }
     },

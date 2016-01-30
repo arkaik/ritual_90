@@ -26,9 +26,9 @@ io.on('connection', function(socket) {
     console.log('startMiniGame ' + currentMiniGame);
     io.emit('startMiniGame', currentMiniGame);
     for (s in sockets) s.lastResult = null;
-    setTimeOut(endGame, 5000);
+    setTimeout(endGame, 5000);
   }
-  function endgame() {
+  function endGame() {
     console.log('finishMiniGame');
     io.emit('finishMiniGame');
   }
@@ -49,7 +49,7 @@ io.on('connection', function(socket) {
       }
       io.emit('sendWinner', winner);
       currentMiniGame++;
-      setTimeOut(startGame, 1000);
+      setTimeout(startGame, 1000);
     }
   });
 
@@ -65,7 +65,7 @@ io.on('connection', function(socket) {
     console.log('a user has connected!');
     if (numPlayers === maxPlayers) {
       io.emit('allPlayersConnected');
-      setTimeOut(startGame, 1000);
+      setTimeout(startGame, 1000);
     }
   });
   /*
