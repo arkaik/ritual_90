@@ -81,9 +81,11 @@ BasicGame.Sync.prototype = {
         var self = this;
         
         socket.on('allPlayersConnected', self.nextState);
+        
         socket.on('goToWaitRoom', function() {
                 self.state.start('Sync');
         });
+
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 

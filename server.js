@@ -13,7 +13,7 @@ app.get('/', function(req, res){
 var socks    = [];
 var numPlayers = 0;
 var maxPlayers = 2;
-var numGames   = 1;
+var numGames   = 2;
 var currentMiniGame = 0;
 var players = [];
 
@@ -83,7 +83,16 @@ io.on('connection', function(socket) {
       socket.player.score += 10;
       io.emit('minigameFinished', players, socket.playerNum);
       currentMiniGame = (currentMiniGame + 1)%numGames;
-      ++currentMiniGame;
+      setTimeout(startGame, 4000);
+    }
+  });
+
+
+  socket.on('pizzaFinished', function() {
+    if (currentMiniGame == 1) {
+      socket.player.scoer += 10;
+      io.emit('minigameFinished', players, socket.playerNum);
+      currentMiniGame = (currentMiniGame + 1)%numGames;
       setTimeout(startGame, 4000);
     }
   });

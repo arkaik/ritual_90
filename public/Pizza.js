@@ -154,11 +154,12 @@ BasicGame.Pizza.prototype = {
 	},
 
     winner: function () {
-      console.log("wiiiii")
+      console.log("wiiiii");
+      socket.emit('pizzaFinished');
     },
 
     looser: function () {
-      console.log("booooo")
+      console.log("booooo");
     },
 
     pressed1: function () {
