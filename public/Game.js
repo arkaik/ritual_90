@@ -28,7 +28,6 @@ BasicGame.Game = function (game) {
 BasicGame.Game.prototype = {
 
 	create: function () {
-        console.log('Game');
 
         this.avatar = new Player(this, this.game.width/2, this.game.height/2);
         this.add.existing(this.avatar);
@@ -36,6 +35,10 @@ BasicGame.Game.prototype = {
         var quit_text = this.add.text(0,100, "Quit", { font: '24px Arial', fill: '#fff' });
         quit_text.inputEnabled = true;
         quit_text.events.onInputUp.add(this.quitGame());
+
+        var next_text = this.add.text(0, this.game.width-100, "Next", { font: '24px Arial', fill: '#fff' });
+        next_text.inputEnabled = true;
+        next_text.events.onInputUp.add(this.quitGame());
 
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
@@ -55,12 +58,28 @@ BasicGame.Game.prototype = {
         {
     		//	Here you should destroy anything you no longer need.
     		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
-            pt_game.avatar.destroy();
+            //pt_game.avatar.destroy();
 
     		//	Then let's go back to the main menu.
             pt_game.state.start('MainMenu');
         }
 
-	}
+	},
+
+    nextState: function () {
+        var pt_game = this;
+        return function()
+        {
+
+            //  Then let's go back to the main menu.
+            pt_game.state.start('Tamagotchi');
+        }
+    },
+
+    shutdown: function ()
+    {
+        //Borrar los objetos aquí
+        this.avatar.destroy();
+    }
 
 };

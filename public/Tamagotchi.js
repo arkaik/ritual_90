@@ -5,7 +5,6 @@ BasicGame.Tamagotchi = function (game) {
 BasicGame.Tamagotchi.prototype = {
 
 	create: function () {
-        console.log('Game');
 
         this.avatar = new Player(this, this.game.width/2, this.game.height/2);
         this.add.existing(this.avatar);
