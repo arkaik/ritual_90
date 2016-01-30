@@ -79,6 +79,9 @@ BasicGame.Pizza.prototype = {
             this.chosen = 6;
         }
 
+        this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
+        this.generalBackgroundSprite.scale.setTo(0.26,0.26);
+
         var quit_text = this.add.text(0,100, "Quit", { font: '24px Arial', fill: '#fff' });
         quit_text.inputEnabled = true;
         quit_text.events.onInputUp.add(this.quitGame());
@@ -126,7 +129,6 @@ BasicGame.Pizza.prototype = {
         var labelPizza3 = this.add.text(200+this.separation*2, this.pizzasY-60, "3", { font: '46px Arial', fill: '#fff' });
 
         var labelPizza4 = this.add.text(200+this.separation*3, this.pizzasY-60, "4", { font: '46px Arial', fill: '#fff' });
-
 
         var labelPizza5 = this.add.text(200+this.separation*4, this.pizzasY-60, "5", { font: '46px Arial', fill: '#fff' });
 
