@@ -3,6 +3,7 @@ var socket;
 bases = ["base1", "base2"];
 caps = ["gorra1","gorra2","pentinatA1","pentinatA2", "pentinatA3","pentinatB1","pentinatB2", "pentinatB3"];
 tshirts = ["samarreta1", "samarreta2", "samarreta3", "samarreta4", "samarreta5"];
+jeans = ["pantalons1","pantalons2","pantalons3","pantalons4"]
 // Clase Player
 Player = function (game, x, y) {
 	var id_base = game.rnd.between(0, bases.length-1);
@@ -15,6 +16,10 @@ Player = function (game, x, y) {
     var id_tshirt = game.rnd.between(0, tshirts.length-1);
     this.tshirt = this.addChild(game.make.sprite(0, 0, tshirts[id_tshirt])); //Sustituir 'mummy' por hat y otros objetos característicos.
     this.tshirt.anchor.setTo(0.5,0.5);
+
+    var id_jeans = game.rnd.between(0, jeans.length-1);
+    this.jeans = this.addChild(game.make.sprite(0, 0, jeans[id_jeans])); //Sustituir 'mummy' por hat y otros objetos característicos.
+    this.jeans.anchor.setTo(0.5,0.5);
 
     this.anchor.setTo(0.5,0.5);
     this.scale.setTo(0.25,0.25);
