@@ -1,7 +1,8 @@
 var socket;
 
-var bases = ["base1", "base2"];
-var caps = ["gorra1","gorra2","pentinatA1","pentinatA2", "pentinatA3","pentinatB1","pentinatB2", "pentinatB3"];
+var games   = ["Tamagotchi", "Pizza"];
+var bases   = ["base1", "base2"];
+var caps    = ["gorra1","gorra2","pentinatA1","pentinatA2", "pentinatA3","pentinatB1","pentinatB2", "pentinatB3"];
 var tshirts = ["samarreta1", "samarreta2", "samarreta3", "samarreta4", "samarreta5"];
 var jeans = ["pantalons1","pantalons2","pantalons3","pantalons4"]
 // Clase Player
