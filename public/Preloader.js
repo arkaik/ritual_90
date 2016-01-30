@@ -45,6 +45,14 @@ BasicGame.Preloader.prototype = {
 	    this.load.image('tamaB1', 'res/tamaB1');
 	    this.load.image('tamaB2', 'res/tamaB2');
 	    this.load.image('tamaFood', 'res/tamaFood');
+	    this.load.image('pentinatB1', 'res/pentinatB1');
+	    this.load.image('pentinatB2', 'res/pentinatB2');
+	    this.load.image('pentinatB3', 'res/pentinatB3');
+	    this.load.image('samarreta1', 'res/samarreta1');
+	    this.load.image('samarreta2', 'res/samarreta2');
+	    this.load.image('samarreta3', 'res/samarreta3');
+	    this.load.image('samarreta4', 'res/samarreta4');
+	    this.load.image('samarreta5', 'res/samarreta5');
 	    //this.load.image('starfield', 'assets/skies/deep-space.jpg');
 
 	},
