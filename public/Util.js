@@ -10,7 +10,7 @@ Player = function (game, x, y) {
     Phaser.Sprite.call(this, game, x, y, bases[this.id_base]); //Sustituir 'bunny' por imagen jugador
 
     this.id_cap = game.rnd.between(0, caps.length-1);
-    console.log(this.id_cap);
+    //console.log(this.id_cap);
     this.cap = this.addChild(game.make.sprite(0, 0, caps[this.id_cap])); //Sustituir 'mummy' por hat y otros objetos característicos.
     this.cap.anchor.setTo(0.5,0.5);
 
@@ -25,6 +25,24 @@ Player = function (game, x, y) {
     this.anchor.setTo(0.5,0.5);
     this.scale.setTo(0.25,0.25);
     this.score = 0;
+
+    this.setFromData = function(data) {
+        this.id_base = data.bodySpriteId;
+        Phaser.Sprite.prototype.loadTexture.call(this, bases[this.id_base]); //Sustituir 'bunny' por imagen jugador
+
+        this.id_cap = data.headSpriteId;
+        //console.log(this.id_cap);
+        this.cap.loadTexture(caps[this.id_cap]);
+
+        this.id_tshirt = data.shirtSpriteId;
+        this.tshirt.loadTexture(tshirts[this.id_tshirt]);
+
+        this.id_jeans = data.legsSpriteId;
+        this.jeans.loadTexture(jeans[this.id_jeans]);
+        this.score = data.score;
+        this.playerId = data.id;
+        this.username = data.username;
+    }
 
 };
 
