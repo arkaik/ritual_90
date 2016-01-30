@@ -1,8 +1,14 @@
 BasicGame.Pizza = function (game) {
     this.separation = 130;
-    this.pizzasY = 300;
+    this.pizzasY = 360;
     this.chosenOne = "x";
-    pizzasScaleTo = 0.20;
+    this.pizzasScaleTo = 0.20;
+
+    this.pizzas = ["pizza1","pizza2","pizza3","pizza4"];
+
+    this.alreadyChosenOne = false;
+
+
 
 };
 
@@ -14,6 +20,58 @@ BasicGame.Pizza.prototype = {
         //this.avatar = new Player(this, this.game.width/2, this.game.height/2);
         //this.add.existing(this.avatar);
 
+        this.textureA = this.rnd.between(0, this.pizzas.length-1);
+
+        if (this.textureA == 0) {
+            this.alreadyChosenOne = true;
+        }
+        if (this.alreadyChosenOne) {
+            this.textureB = this.rnd.between(1, this.pizzas.length-1);
+        }
+        else {
+            this.textureB = this.rnd.between(0, this.pizzas.length-1);
+        }
+
+        if (this.textureB == 0) {
+            this.alreadyChosenOne = true;
+        }
+        if (this.alreadyChosenOne) {
+            this.textureC = this.rnd.between(1, this.pizzas.length-1);
+        }
+        else {
+            this.textureC = this.rnd.between(0, this.pizzas.length-1);
+        }
+
+        if (this.textureC == 0) {
+            this.alreadyChosenOne = true;
+        }
+        if (this.alreadyChosenOne) {
+            this.textureD = this.rnd.between(1, this.pizzas.length-1);
+        }
+        else {
+            this.textureD = this.rnd.between(0, this.pizzas.length-1);
+        }
+
+        if (this.textureD == 0) {
+            this.alreadyChosenOne = true;
+        }
+        if (this.alreadyChosenOne) {
+            this.textureE = this.rnd.between(1, this.pizzas.length-1);
+        }
+        else {
+            this.textureE = this.rnd.between(0, this.pizzas.length-1);
+        }
+
+        if (this.textureE == 0) {
+            this.alreadyChosenOne = true;
+        }
+        if (this.alreadyChosenOne) {
+            this.textureF = this.rnd.between(1, this.pizzas.length-1);
+        }
+        else {
+            this.textureF = 0;
+        }
+
         var quit_text = this.add.text(0,100, "Quit", { font: '24px Arial', fill: '#fff' });
         quit_text.inputEnabled = true;
         quit_text.events.onInputUp.add(this.quitGame());
@@ -23,35 +81,35 @@ BasicGame.Pizza.prototype = {
         //this.boxSprite.y = this.pizzasY;
         this.boxSprite.scale.setTo(0.26,0.26);
 
-        this.pizzaASprite = this.add.sprite(0, 0, 'pizza1');
+        this.pizzaASprite = this.add.sprite(0, 0, this.pizzas[this.textureA]);
         this.pizzaASprite.x = 100;
         this.pizzaASprite.y = this.pizzasY;
-        this.pizzaASprite.scale.setTo(pizzasScaleTo,pizzasScaleTo);
+        this.pizzaASprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
 
-        this.pizzaBSprite = this.add.sprite(0, 0, 'pizza1');
+        this.pizzaBSprite = this.add.sprite(0, 0, this.pizzas[this.textureB]);
         this.pizzaBSprite.x = this.pizzaASprite.x + this.separation;
         this.pizzaBSprite.y = this.pizzasY;
-        this.pizzaBSprite.scale.setTo(pizzasScaleTo,pizzasScaleTo);
+        this.pizzaBSprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
 
-        this.pizzaCSprite = this.add.sprite(0, 0, 'pizza1');
+        this.pizzaCSprite = this.add.sprite(0, 0, this.pizzas[this.textureC]);
         this.pizzaCSprite.x = this.pizzaBSprite.x + this.separation;
         this.pizzaCSprite.y = this.pizzasY;
-        this.pizzaCSprite.scale.setTo(pizzasScaleTo,pizzasScaleTo);
+        this.pizzaCSprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
 
-        this.pizzaDSprite = this.add.sprite(0, 0, 'pizza1');
+        this.pizzaDSprite = this.add.sprite(0, 0, this.pizzas[this.textureD]);
         this.pizzaDSprite.x = this.pizzaASprite.x + this.separation*3;
         this.pizzaDSprite.y = this.pizzasY;
-        this.pizzaDSprite.scale.setTo(pizzasScaleTo,pizzasScaleTo);
+        this.pizzaDSprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
 
-        this.pizzaESprite = this.add.sprite(0, 0, 'pizza1');
+        this.pizzaESprite = this.add.sprite(0, 0, this.pizzas[this.textureE]);
         this.pizzaESprite.x = this.pizzaASprite.x + this.separation*4;
         this.pizzaESprite.y = this.pizzasY;
-        this.pizzaESprite.scale.setTo(pizzasScaleTo,pizzasScaleTo);
+        this.pizzaESprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
 
-        this.pizzaFSprite = this.add.sprite(0, 0, 'pizza1');
+        this.pizzaFSprite = this.add.sprite(0, 0, this.pizzas[this.textureF]);
         this.pizzaFSprite.x = this.pizzaASprite.x + this.separation*5;
         this.pizzaFSprite.y = this.pizzasY;
-        this.pizzaFSprite.scale.setTo(pizzasScaleTo,pizzasScaleTo);
+        this.pizzaFSprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
 
 
 
