@@ -6,8 +6,12 @@ BasicGame.Game.prototype = {
 
     pt_game: this,
 
-    init: function (players) {
-        this.receivedPlayers = players;
+    init: function () {
+        this.receivedPlayers = arguments[0];
+        if (arguments.length === 2) {
+            var winnerId = arguments[1];
+            console.log('The winner is ' + arguments[0][winnerId].username);
+        } 
     },
 
 	create: function () {
@@ -24,6 +28,7 @@ BasicGame.Game.prototype = {
             this.add.existing(player);
 
             this.add.text((this.world.width/5)*(i+1), this.world.height*0.9, pData.username, {font: "24px Consola", fill: "#fff"});
+            this.add.text((this.world.width/5)*(i+1), this.world.height*0.9 + 20, pData.score, {font: "24px Consola", fill: "#fff"});
         }
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
