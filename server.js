@@ -12,7 +12,7 @@ app.get('/', function(req, res){
 
 var sockets    = [];
 var numPlayers = 0;
-var maxPlayers = 2;
+var maxPlayers = 4;
 var numGames   = 1;
 var currentMiniGame = 0;
 var players = [];
@@ -84,6 +84,7 @@ io.on('connection', function(socket) {
     if (currentMiniGame == 0) {
       socket.player.score += 10;
       io.emit('minigameFinished', players, socket.playerNum);
+      currentMiniGame = (currentMiniGame + 1)%numGames;
     }
   });
 
