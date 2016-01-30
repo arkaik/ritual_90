@@ -18,9 +18,6 @@ BasicGame.MainMenu.prototype = {
 		background.height = this.world.height;
 		background.anchor.set(0.5);
 
-		var text = this.add.text(100, 100, "Menu principal", { fill: '#ffffff' });
-		//var text = game.add.text(100, 100, phaserJSON.version, { fill: '#ffffff' });
-    	text.setShadow(2, 2, 'rgba(0,0,0,0.5)', 0);
 
 		var toTama = this.add.text(100, 400, "Tamagotchi", { font: '24px Arial', fill: '#000' });
 	    toTama.inputEnabled = true;
@@ -38,8 +35,7 @@ BasicGame.MainMenu.prototype = {
 	    aboutBtn.events.onInputDown.add(this.switchToSync(this), this);
 	    aboutBtn.scale.setTo(0.25, 0.25);
 	   
-
-    	var toPizza = this.add.text(100, 500, "Pizza", { font: '24px Arial', fill: '#000' });
+    	var toPizza = this.add.text(100, 600, "Pizza", { font: '24px Arial', fill: '#000' });
 	    toPizza.inputEnabled = true;
     	toPizza.events.onInputUp.add(this.switchToPizza(this));
 
