@@ -61,6 +61,14 @@ BasicGame.Tamagotchi.prototype = {
             self.backToWaitRoom(players, winner);
         });
 
+        this.evoSound = this.add.audio('tamavolution');
+        this.feedSound = this.add.audio('tamafeed');
+        this.feedSound.volume -= 0.5;
+
+        this.tamamusic = this.add.audio('tamamusic');
+        this.tamamusic.loop = true;
+        this.tamamusic.play();
+
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
@@ -75,11 +83,14 @@ BasicGame.Tamagotchi.prototype = {
 	},
 
     moveFood: function () {
+        this.feedSound.play();
         this.tamagotchiFoodSprite.y += this.tamagotchiFoodSprite.width;
         this.stepCount -= 1;
+
     },
 
     grow: function() {
+        this.evoSound.play();
         console.log("Grow");
         if (this.texturaActual === 'tamaA2') {
             this.texturaActual = 'tamaB2';
@@ -127,6 +138,14 @@ BasicGame.Tamagotchi.prototype = {
     released: function(key)
     {
         this.tamagotchiSprite.frameName = 'tama1';
+    },
+    shutdown: function()
+    {
+        this.world.forEach(function (item){
+            item.destroy();
+        });
+
+        this.tamamusic.stop();
     }
 
 };

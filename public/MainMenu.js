@@ -51,9 +51,9 @@ BasicGame.MainMenu.prototype = {
 
 	shutdown: function()
 	{
-		/*this.world.forEach(function (item){
+		this.world.forEach(function (item){
 			item.destroy();
-		})*/
+		});
 	},
 
 	//Callback pel botó provisional a Game

@@ -78,6 +78,10 @@ BasicGame.Preloader.prototype = {
 
 		this.load.image('retroFont', 'res/font.png');
 
+		this.load.audio('tamavolution', 'res/audio/tamaEvolve.wav');
+		this.load.audio('tamamusic', 'res/audio/tamaMusic.wav');
+		this.load.audio('tamafeed', 'res/audio/tamaFeed.wav');
+
 		
 
 
