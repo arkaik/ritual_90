@@ -9,8 +9,6 @@ BasicGame.Pizza = function (game) {
 
     this.chosen = 7;
 
-
-
 };
 
 BasicGame.Pizza.prototype = {
@@ -126,18 +124,10 @@ BasicGame.Pizza.prototype = {
         this.pizzaFSprite.y = this.pizzasY;
         this.pizzaFSprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
 
-
-        var labelPizza1 = this.add.text(200+this.separation*0, this.pizzasY-60, "1", { font: '46px Arial', fill: '#fff' });
-
-        var labelPizza2 = this.add.text(200+this.separation*1, this.pizzasY-60, "2", { font: '46px Arial', fill: '#fff' });
-
-        var labelPizza3 = this.add.text(200+this.separation*2, this.pizzasY-60, "3", { font: '46px Arial', fill: '#fff' });
-
-        var labelPizza4 = this.add.text(200+this.separation*3, this.pizzasY-60, "4", { font: '46px Arial', fill: '#fff' });
-
-        var labelPizza5 = this.add.text(200+this.separation*4, this.pizzasY-60, "5", { font: '46px Arial', fill: '#fff' });
-
-        var labelPizza6 = this.add.text(200+this.separation*5, this.pizzasY-60, "6", { font: '46px Arial', fill: '#fff' });
+        for (i = 0; i < 6; i++)
+        {
+            var labelPizza = this.add.text(200+this.separation*i, this.pizzasY-60, ""+(i+1)+"", { font: '46px Arial', fill: '#fff' });    
+        }
 
         key1 = this.input.keyboard.addKey(Phaser.Keyboard.ONE);
         key1.onDown.add(this.pressed1, this);
