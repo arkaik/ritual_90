@@ -26,16 +26,12 @@ BasicGame.MainMenu.prototype = {
 	    toPizza.inputEnabled = true;
     	toPizza.events.onInputUp.add(this.switchToPizza(this));
 
-		var playBtn = this.add.sprite(290, 150, 'playButton');
+		var playBtn = this.add.button(290, 150, 'playButton', this.switchToSync(this));
 	    playBtn.anchor.set(0.5);
-	    playBtn.inputEnabled = true;
-	    playBtn.events.onInputDown.add(this.switchToSync(this), this);
 	    playBtn.scale.setTo(0.25, 0.25);
 
-    	var aboutBtn = this.add.sprite(290, 260, 'aboutButton');
+    	var aboutBtn = this.add.button(290, 260, 'aboutButton', this.switchToSync(this));
 	    aboutBtn.anchor.set(0.5);
-	    aboutBtn.inputEnabled = true;
-	    aboutBtn.events.onInputDown.add(this.switchToSync(this), this);
 	    aboutBtn.scale.setTo(0.25, 0.25);
 	   
     	this.selAudio = this.add.audio('select');

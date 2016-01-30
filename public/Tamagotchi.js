@@ -65,6 +65,9 @@ BasicGame.Tamagotchi.prototype = {
         this.tamagotchiScreenSprite.y = this.positionY;
         this.tamagotchiScreenSprite.scale.setTo(0.25,0.25);
 
+        this.infotext = this.add.text(this.world.centerX, 100, "Press SPACE to feed", {font: "28px Lemiesz", fill: "#000"} )
+        this.infotext.anchor.setTo(0.5,0.5);
+
         this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.jumpButton.onDown.add(this.pressed,this);
         this.jumpButton.onUp.add(this.released,this);
