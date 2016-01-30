@@ -62,6 +62,14 @@ BasicGame.Preloader.prototype = {
 	    this.load.image('aboutButton', 'res/title_screen/aboutBtn.png');
 	    this.load.image('playButton', 'res/title_screen/playBtn.png');
 	    this.load.image('titleScreenBackground', 'res/title_screen/titleScreenBlank.png');
+
+	   	this.load.image('box', 'res/box.png');
+	   	this.load.image('pizza1', 'pizza1/box.png');
+		this.load.image('pizza2', 'pizza2/box.png');
+		this.load.image('pizza3', 'pizza3/box.png');
+		this.load.image('pizza4', 'pizza4/box.png');
+
+
 	    //this.load.image('starfield', 'assets/skies/deep-space.jpg');
 
 	},
