@@ -45,6 +45,9 @@ BasicGame.Sync.prototype = {
         quit_text.inputEnabled = true;
         quit_text.events.onInputUp.add(this.quitGame());
 
+
+        var messageText = this.add.text(this.game.width/3, 5, "Looking for opponents...", { font: '24px Arial', fill: '#000' });
+
         /*var next_text = this.add.text(0, 200, "Next", { font: '24px Arial', fill: '#fff' });
         next_text.inputEnabled = true;
         next_text.events.onInputUp.add(this.quitGame());*/
