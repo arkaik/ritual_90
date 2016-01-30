@@ -25,6 +25,7 @@ BasicGame.MainMenu.prototype = {
 		var toTama = this.add.text(100, 400, "Tamagotchi", { font: '24px Arial', fill: '#000' });
 	    toTama.inputEnabled = true;
     	toTama.events.onInputUp.add(this.switchToTama(this));
+<<<<<<< Updated upstream
 		*/
 
 		var background = this.add.image(this.world.centerX, this.world.centerY, 'titleScreenBackground');
@@ -39,6 +40,13 @@ BasicGame.MainMenu.prototype = {
 	    aboutBtn.events.onInputDown.add(this.switchToSync(this), this);
 	    aboutBtn.scale.setTo(0.25, 0.25);
 	    
+=======
+
+    	var toPizza = this.add.text(100, 500, "Pizza", { font: '24px Arial', fill: '#000' });
+	    toPizza.inputEnabled = true;
+    	toPizza.events.onInputUp.add(this.switchToPizza(this));
+
+>>>>>>> Stashed changes
 	    //this.spriteTopRight = this.add.sprite(this.game.width, 0, 'tetris1');
 	    //this.spriteTopRight.anchor.set(1, 0);
 
@@ -78,6 +86,13 @@ BasicGame.MainMenu.prototype = {
 		return function()
 		{
 			game.state.start('Tamagotchi');
+		}
+	},
+		switchToPizza: function (game)
+	{
+		return function()
+		{
+			game.state.start('Pizza');
 		}
 	}
 };

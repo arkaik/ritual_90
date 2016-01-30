@@ -12,6 +12,7 @@
 	<script src="Sync.js"></script>
 	<script src="Game.js"></script>
 	<script src="Tamagotchi.js"></script>
+	<script src="Pizza.js"></script>
     <style>
         body {
             margin: 0;
@@ -33,6 +34,7 @@ window.onload = function() {
 	game.state.add('Sync', BasicGame.Sync);
 	game.state.add('Game', BasicGame.Game);
 	game.state.add('Tamagotchi', BasicGame.Tamagotchi);
+	game.state.add('Pizza' , BasicGame.Pizza);
 	//	Now start the Boot state.
 	game.state.start('Boot');
 };
