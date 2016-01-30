@@ -17,7 +17,7 @@ BasicGame.MainMenu.prototype = {
 		var text = this.add.text(100, 100, "Menu principal", { fill: '#ffffff' });
 		//var text = game.add.text(100, 100, phaserJSON.version, { fill: '#ffffff' });
     	text.setShadow(2, 2, 'rgba(0,0,0,0.5)', 0);
-
+    	/*
 	    var toGame = this.add.text(100, 300, "Jugar", { font: '24px Arial', fill: '#000' });
 	    toGame.inputEnabled = true;
     	toGame.events.onInputUp.add(this.switchToSync(this));
@@ -25,7 +25,19 @@ BasicGame.MainMenu.prototype = {
 		var toTama = this.add.text(100, 400, "Tamagotchi", { font: '24px Arial', fill: '#000' });
 	    toTama.inputEnabled = true;
     	toTama.events.onInputUp.add(this.switchToTama(this));
+		*/
 
+		var background = this.add.image(this.world.centerX, this.world.centerY, this.world.width, this.world.height, 'titleScreenBackground');
+		//background.scale.setTo(0.25);
+		background.anchor.set(0.5);
+
+    	var aboutBtn = this.add.sprite(this.world.centerX, this.world.centerY, 'playButton');
+	    aboutBtn.anchor.set(0.5);
+	    aboutBtn.inputEnabled = true;
+	    //text = game.add.text(250, 16, '', { fill: '#ffffff' });
+	    aboutBtn.events.onInputDown.add(this.switchToSync(this), this);
+	    aboutBtn.scale.setTo(0.25, 0.25);
+	    
 	    //this.spriteTopRight = this.add.sprite(this.game.width, 0, 'tetris1');
 	    //this.spriteTopRight.anchor.set(1, 0);
 

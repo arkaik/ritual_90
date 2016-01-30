@@ -59,6 +59,9 @@ BasicGame.Preloader.prototype = {
 	    this.load.image('pantalons2', 'res/pantalons2.png');
 	    this.load.image('pantalons3', 'res/pantalons3.png');
 	    this.load.image('pantalons4', 'res/pantalons4.png');
+	    this.load.image('aboutButton', 'res/title_screen/aboutBtn.png');
+	    this.load.image('playButton', 'res/title_screen/playBtn.png');
+	    this.load.image('titleScreenBackground', 'res/title_screen/titleScreenBlank.png');
 	    //this.load.image('starfield', 'assets/skies/deep-space.jpg');
 
 	},
