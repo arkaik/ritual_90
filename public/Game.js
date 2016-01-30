@@ -24,6 +24,8 @@ BasicGame.Game.prototype = {
 
         console.log(this.receivedPlayers);
         this.players = [];
+        var maxScore = 0;
+        var minScore = Infinity;
         for (var i = 0; i < this.receivedPlayers.length; ++i) {
             var pData = this.receivedPlayers[i];
             var x = (this.world.width/5)*(i+1) + 20;
@@ -32,22 +34,28 @@ BasicGame.Game.prototype = {
             this.players.push(player);
             player.setFromData(pData);
             this.add.existing(player);
+            if (pData.score > maxScore) maxScore = pData.score;
+            if (pData.score < minScore) minScore = pData.score;
 
             this.add.text((this.world.width/5)*(i+1), this.world.height*0.9, pData.username, {font: '24px Lemiesz', fill: '#000' });
             this.add.text((this.world.width/5)*(i+1), this.world.height*0.9 + 32, pData.score, {font: "24px Lemiesz", fill: "#000"});
         }
 
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-        this.wsMeh = this.add.sprite(this.game.width-200, 0, "willSmoothMeh");
+        var w0llSm00thFace = "willSmoothMeh";
+        var myScore = this.players[myPlayerId].score;
+        if (myScore == minScore && myScore < maxScore) w0llSm00thFace = "willSmoothSad";
+        else if (myScore == maxScore && myScore > minScore) w0llSm00thFace = "willSmoothHappy";
+        this.godCam = this.add.sprite(this.game.width-200, 0, w0llSm00thFace);
         //this.wsMeh.anchor.setTo(0.5,0.5);
-        this.wsMeh.scale.setTo(0.25, 0.25);
+        this.godCam.scale.setTo(0.25, 0.25);
 
         socket.on('startMiniGame', function(gameId) {
             pt_game.state.start(games[gameId]);
         });
 
         console.log('Your player id is ' + myPlayerId + '!');
-        console.log('YOUR score is... ' + this.players[myPlayerId].score + '!');
+        console.log('YOUR score is... ' + myScore + '!');
 
 
 	},
