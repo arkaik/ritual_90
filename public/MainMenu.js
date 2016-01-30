@@ -27,8 +27,9 @@ BasicGame.MainMenu.prototype = {
     	toTama.events.onInputUp.add(this.switchToTama(this));
 		*/
 
-		var background = this.add.image(this.world.centerX, this.world.centerY, this.world.width, this.world.height, 'titleScreenBackground');
-		//background.scale.setTo(0.25);
+		var background = this.add.image(this.world.centerX, this.world.centerY, 'titleScreenBackground');
+		background.width = this.world.width;
+		background.height = this.world.height;
 		background.anchor.set(0.5);
 
     	var aboutBtn = this.add.sprite(this.world.centerX, this.world.centerY, 'playButton');
