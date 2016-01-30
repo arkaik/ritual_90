@@ -31,24 +31,24 @@ io.on('connection', function(socket) {
     io.emit('finishMiniGame');
   }
 
-  socket.on('endOfGame', function(result)) {
+  socket.on('endOfGame', function(result) {
     socket.lastScore = result.score;
     
     if (/*allReceived*/true) {
-    // calcular guanyador a partir de les puntiacions rebudes
-    var winner = sockets[0];
-    var minScore = -1;
-    for (s in sockets) {
-      if (s.lastScore < minScore) {
-        minScore = s.lastScore;
-        winner = sockets.playerNum;
+      // calcular guanyador a partir de les puntiacions rebudes
+      var winner = sockets[0];
+      var minScore = -1;
+      for (s in sockets) {
+        if (s.lastScore < minScore) {
+          minScore = s.lastScore;
+          winner = sockets.playerNum;
+        }
       }
+      io.emit('sendWinner', winner);
+      currentMiniGame++;
+      setTimeOut(startGame, 1000);
     }
-    io.emit('sendWinner', winner);
-    currentMiniGame++;
-    setTimeOut(startGame, 1000);
-    }
-  }
+  });
 
   socket.on('userConnected', function(username) {
     // socket.username = username;
