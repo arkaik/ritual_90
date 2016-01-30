@@ -1,10 +1,10 @@
 BasicGame.MainMenu = function (game) {
 
-	this.bg;
-	this.player;
-	this.spriteTopRight;
-	this.spriteBottomLeft;
-	this.spriteBottomRight;
+	//this.bg;
+	//this.player;
+	//this.spriteTopRight;
+	//this.spriteBottomLeft;
+	//this.spriteBottomRight;
 
 };
 
@@ -43,9 +43,9 @@ BasicGame.MainMenu.prototype = {
 
 	resize: function (width, height) {
 
-		this.world.forEach(function(item) {
+		/*this.world.forEach(function(item) {
 			console.log(item.position.x+", "+item.position.y);
-		});
+		});*/
 		//	If the game container is resized this function will be called automatically.
 		//	You can use it to align sprites that should be fixed in place and other responsive display things.
 
@@ -65,9 +65,9 @@ BasicGame.MainMenu.prototype = {
 
 	shutdown: function()
 	{
-		this.world.forEach(function (item){
+		/*this.world.forEach(function (item){
 			item.destroy();
-		})
+		})*/
 	},
 
 	//Callback pel botó provisional a Game

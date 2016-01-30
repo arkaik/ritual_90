@@ -57,9 +57,11 @@ io.on('connection', function(socket) {
     if (numPlayers > maxPlayers) return;
     socket.playerNum = numPlayers;
     socket.username  = username;
-    console.log(socket.playerNum + 'connected to server!');
+    console.log(socket.username + '(' + socket.playerNum +') connected to server!');
     ++numPlayers;
     sockets += socket;
+    io.emit('newPlayerConnected', socket.username);
+    socket.emit('connectionACK', socket.playerNum);
     console.log('a user has connected!');
     if (numPlayers == maxPlayers) {
       io.emit('allPlayersConnected');

@@ -36,14 +36,24 @@ BasicGame.Game.prototype = {
         quit_text.inputEnabled = true;
         quit_text.events.onInputUp.add(this.quitGame());
 
-        var next_text = this.add.text(0, this.game.width-100, "Next", { font: '24px Arial', fill: '#fff' });
+        /*var next_text = this.add.text(0, 200, "Next", { font: '24px Arial', fill: '#fff' });
         next_text.inputEnabled = true;
-        next_text.events.onInputUp.add(this.quitGame());
+        next_text.events.onInputUp.add(this.quitGame());*/
+
+        socket = io.connect('http://localhost:4242');
 
         socket.on('connect', function () {
             console.log('user connected!');
             var username = prompt("Enter your username:") || "anon";
             socket.emit('userConnected', username);
+        });
+
+        socket.on('connectionACK', function(id) {
+            console.log('connected successfully! you are player ' + id);
+        });
+
+        socket.on('newPlayerConnected', function(username) {
+            console.log('Player ' + username + ' has entered the room!');
         });
 
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
@@ -85,7 +95,7 @@ BasicGame.Game.prototype = {
     shutdown: function ()
     {
         //Borrar los objetos aquí
-        this.avatar.destroy();
+        //this.avatar.destroy();
     }
 
 };
