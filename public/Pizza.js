@@ -14,7 +14,7 @@ BasicGame.Pizza.prototype = {
         quit_text.inputEnabled = true;
         quit_text.events.onInputUp.add(this.quitGame());
 
-        this.tamagotchiSprite = this.add.sprite(0, 0, 'tamaA2');
+        this.tamagotchiSprite = this.add.sprite(0, 0, 'pizza1');
 
         
         
