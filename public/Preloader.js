@@ -53,6 +53,10 @@ BasicGame.Preloader.prototype = {
 	    this.load.image('samarreta3', 'res/samarreta3.png');
 	    this.load.image('samarreta4', 'res/samarreta4.png');
 	    this.load.image('samarreta5', 'res/samarreta5.png');
+	    this.load.image('pantalons1', 'res/pantalons1.png');
+	    this.load.image('pantalons2', 'res/pantalons2.png');
+	    this.load.image('pantalons3', 'res/pantalons3.png');
+	    this.load.image('pantalons4', 'res/pantalons4.png');
 	    //this.load.image('starfield', 'assets/skies/deep-space.jpg');
 
 	},
