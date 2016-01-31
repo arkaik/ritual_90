@@ -164,6 +164,7 @@ BasicGame.Pizza.prototype = {
             game.hand.loadTexture('armgrab');
             game.pizzagrab.play();
             console.log("Gotcha "+(k+1));
+            game.time.events.add(Phaser.Timer.SECOND * 0.2, function() { this.hand.loadTexture('armselect');}, game);
             if (game.pizzas[k] == game.winnerPizza) {
                 game.add.text(200+game.separation*(k), game.pizzasY-100, "Yay!", {font:"28px Lemiesz", fill:"#006400"});
                 game.winner();
@@ -172,7 +173,7 @@ BasicGame.Pizza.prototype = {
                 game.add.text(200+game.separation*(k), game.pizzasY-100, "Nope", {font:"28px Lemiesz", fill:"#640000"});
                 game.looser();
             }
-            game.time.events.add(Phaser.Timer.SECOND * 0.25, function() { this.hand.loadTexture('armselect');}, game);
+            
         } 
     }
 };

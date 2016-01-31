@@ -1,5 +1,6 @@
 var socket;
 var myPlayerId;
+var menumusic;
 
 var games   = ["Tamagotchi", "Pizza", "VHS", "Floppy"];
 var bases   = ["base1", "base2"];

@@ -38,7 +38,8 @@ BasicGame.Intro.prototype = {
 		this.world.forEach(function (item){
 			item.destroy();
 		});
-
+		menumusic.fadeOut(1000);
+		menumusic.stop();
 		this.selAudio.destroy();
 	},
 

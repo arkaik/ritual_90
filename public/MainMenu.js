@@ -17,10 +17,10 @@ BasicGame.MainMenu.prototype = {
 		background.height = this.world.height;
 		background.anchor.set(0.5);
 
-		this.menumusic = this.add.audio('menumusic');
-		this.menumusic.loop = true;
-		this.menumusic.volume += 0.25;
-        this.menumusic.play();
+		menumusic = this.add.audio('menumusic');
+		menumusic.loop = true;
+		menumusic.volume += 0.25;
+        menumusic.play();
 
 		var toTama = this.add.text(100, 300, "Tamagotchi", { font: '24px Lemiesz', fill: '#000' });
 	    toTama.inputEnabled = true;
@@ -62,9 +62,9 @@ BasicGame.MainMenu.prototype = {
 			item.destroy();
 		});
 
-		this.selAudio.destroy();
-		this.menumusic.stop();
-		this.menumusic.destroy();
+		//this.selAudio.destroy();
+		//this.menumusic.stop();
+		//this.menumusic.destroy();
 	},
 
 	//Callback pel botó provisional a Game
@@ -74,7 +74,7 @@ BasicGame.MainMenu.prototype = {
 		return function()
 		{
 			game.selAudio.play();
-			game.state.start(statestring);
+			game.time.events.add(Phaser.Timer.SECOND * 0.5, function() { this.state.start(statestring);}, game);
 		}
 	},
 
