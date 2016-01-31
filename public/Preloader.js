@@ -70,7 +70,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image('VHS2', 'res/VHS2.png');
 		this.load.image('VHS3', 'res/VHS3.png');
 		this.load.image('VHS4', 'res/VHS4.png');
-		
+
 		this.load.image('godcam_ok', 'res/godCamOk.png');
 
 		this.load.image('generalBackground', 'res/generalBackground.png');
@@ -92,8 +92,18 @@ BasicGame.Preloader.prototype = {
 
 	create: function () {
 
-		this.state.start('MainMenu');
+		var playBtn = this.add.button(this.world.centerX, this.world.height*0.8, "playButton", this.switchToMenu());
+		playBtn.scale.setTo(0.25,0.25);
+		playBtn.anchor.setTo(0.5,0.5);
 
+	},
+
+	switchToMenu: function ()
+	{
+		var pt_game = this;
+		return function() {
+			pt_game.state.start('MainMenu');	
+		}		
 	}
 
 };
