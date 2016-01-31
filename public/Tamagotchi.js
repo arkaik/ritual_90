@@ -17,27 +17,13 @@ BasicGame.Tamagotchi = function (game) {
 BasicGame.Tamagotchi.prototype = {
 
     pt_game: this,
-    preload: function() {
-        this.load.image('tamagotchi1', 'res/tamagotchi1.png');
-        this.load.image('tamagotchi2', 'res/tamagotchi2.png');
-        this.load.image('tamagotchi3', 'res/tamagotchi3.png');
-        this.load.image('tamagotchiBase', 'res/tamagotchiBase.png');
-        this.load.image('tamaA1', 'res/tamaA1.png');
-        this.load.image('tamaA2', 'res/tamaA2.png');
-        this.load.image('tamaB1', 'res/tamaB1.png');
-        this.load.image('tamaB2', 'res/tamaB1.png');
-        this.load.image('tamaC1', 'res/tamaC1.png');
-        this.load.image('tamaC2', 'res/tamaC2.png');
-        this.load.image('tamaFood', 'res/tamaFood.png');
-        this.load.atlasJSONHash('tama_anim1', 'res/tama_anim1.png', 'res/tama_anim1.json');
-        this.load.atlasJSONHash('tama_anim2', 'res/tama_anim2.png', 'res/tama_anim2.json');
-        this.load.atlasJSONHash('tama_anim3', 'res/tama_anim3.png', 'res/tama_anim3.json');
-    },
 	create: function () {
         var tam_array = ['tamagotchi1', 'tamagotchi2', 'tamagotchi3'];
         var marco = this.rnd.between(0, tam_array.length-1);
         //this.avatar = new Player(this, this.game.width/2, this.game.height/2);
         //this.add.existing(this.avatar);
+
+        this.texturaActual = 'tamaA2';
 
         this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
         this.generalBackgroundSprite.scale.setTo(0.26,0.26);
@@ -116,10 +102,12 @@ BasicGame.Tamagotchi.prototype = {
         }
         else if (this.texturaActual === 'tamaB2') {
             this.texturaActual = 'tamaC2';
-            this.tamagotchiSprite.loadTexture('tama_anim3', 'tama2');
+            this.tamagotchiSprite.loadTexture('tama_anim3', 'tama1');
             this.tamagotchiSprite.position.y += 10;
         }
         else if (this.texturaActual === 'tamaC2') {
+            //this.texturaActual = "tamaA2";
+            //this.tamagotchiSprite.loadTexture('tama_anim1', 'tama1');
             if (socket != null) socket.emit('tamagotchiFinished', this.timeSpent);
         }
         this.foodCount = 0;
@@ -131,7 +119,8 @@ BasicGame.Tamagotchi.prototype = {
         {
     		//	Here you should destroy anything you no longer need.
     		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
-            this.texturaActual = 'tamaA2';
+            //pt_game.texturaActual = 'tamaA2';
+            //pt_game.tamagotchiSprite.loadTexture('tama_anim2', 'tama1');
     		//	Then let's go back to the main menu.
             pt_game.state.start('MainMenu');
         }
@@ -165,23 +154,6 @@ BasicGame.Tamagotchi.prototype = {
 
         this.tamamusic.stop();
 
-        this.cache.removeImage('tamagotchi1');
-        this.cache.removeImage('tamagotchi2');
-        this.cache.removeImage('tamagotchi3');
-        this.cache.removeImage('tamagotchiBase', 'res/tamagotchiBase.png');
-        this.cache.removeImage('tamaA1', 'res/tamaA1.png');
-        this.cache.removeImage('tamaA2', 'res/tamaA2.png');
-        this.cache.removeImage('tamaB1', 'res/tamaB1.png');
-        this.cache.removeImage('tamaB2', 'res/tamaB1.png');
-        this.cache.removeImage('tamaC1', 'res/tamaC1.png');
-        this.cache.removeImage('tamaC2', 'res/tamaC2.png');
-        this.cache.removeImage('tamaFood', 'res/tamaFood.png');
-        this.cache.removeJSON('tama_anim1');
-        this.cache.removeJSON('tama_anim2');
-        this.cache.removeJSON('tama_anim3');
-        this.cache.removeImage('tama_anim1');
-        this.cache.removeImage('tama_anim2');
-        this.cache.removeImage('tama_anim3');
     }
 
 };

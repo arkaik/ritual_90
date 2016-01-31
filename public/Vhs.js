@@ -70,7 +70,7 @@ BasicGame.Vhs.prototype = {
           //  self.backToWaitRoom(players, winner);
         //});
 
-        this.infotext = this.add.text(this.world.centerX, 100, "Scroll your mouse WHEEL to rewind!", {font: "28px Lemiesz", fill: "#000"} )
+        this.infotext = this.add.text(this.world.centerX, 100, "Scroll your mouse WHEEL\nto rewind the cassette!", {font: "28px Lemiesz", fill: "#000"} )
         this.infotext.anchor.setTo(0.5,0.5);
         
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
@@ -103,9 +103,9 @@ BasicGame.Vhs.prototype = {
                 }
                 else if (delta >= 200)
                     pt_game.rewindCount +=2;*/
-                if (pt_game.rollUp > 1000) {
+                if (pt_game.rollUp > 300) {
                     pt_game.rotate();
-                    pt_game.rollUp =- 1000;
+                    pt_game.rollUp =- 400;
                 }
             }
         };
