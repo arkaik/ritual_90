@@ -40,6 +40,10 @@ BasicGame.MainMenu.prototype = {
 	    toVhs.inputEnabled = true;
     	toVhs.events.onInputUp.add(this.switchToVhs(this));
 
+    	var toFloppy = this.add.text(400, 400, "Floppy", { font: '24px Lemiesz', fill: '#000' });
+	    toFloppy.inputEnabled = true;
+    	toFloppy.events.onInputUp.add(this.switchToFloppy(this));
+
 	},
 
 	update: function () {
@@ -88,6 +92,14 @@ BasicGame.MainMenu.prototype = {
 		return function()
 		{
 			game.state.start('Vhs');
+		}
+	},
+
+	switchToFloppy: function (game)
+	{
+		return function()
+		{
+			game.state.start('Floppy');
 		}
 	}
 };

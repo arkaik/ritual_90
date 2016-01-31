@@ -71,6 +71,11 @@ BasicGame.Preloader.prototype = {
 		this.load.image('VHS3', 'res/VHS3.png');
 		this.load.image('VHS4', 'res/VHS4.png');
 
+		this.load.image('floppy', 'res/floppy.png');
+		this.load.image('insert1', 'res/insert1.png');
+		this.load.image('insert2', 'res/insert2.png');
+		this.load.image('torre', 'res/torre.png');
+
 		this.load.image('godcam_ok', 'res/godCamOk.png');
 
 		this.load.image('generalBackground', 'res/generalBackground.png');
