@@ -80,7 +80,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image('godcam_ok', 'res/godCamOk.png');
 
 		this.load.image('armgrab','res/armGrab.png');
-		this.load.image('armSelect','res/armSelect.png');
+		this.load.image('armselect','res/armSelect.png');
 
 		this.load.image('retroFont', 'res/font.png');
 
@@ -93,6 +93,12 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('pizzamusic','res/audio/pizzaMusic.wav');
 		this.load.audio('vhsmusic','res/audio/vhsmusic.wav');
 		this.load.audio('vhsrewind','res/audio/VHSRewind.wav');
+
+		this.load.audio('failSound','res/audio/fail.wav');
+		this.load.audio('floppyInsert','res/audio/floppyinsert.wav');
+		this.load.audio('floppyMusic','res/audio/floppyMusic.wav');
+
+
 
 		this.load.image('tamagotchi1', 'res/tamagotchi1.png');
         this.load.image('tamagotchi2', 'res/tamagotchi2.png');
