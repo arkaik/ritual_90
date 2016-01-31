@@ -29,7 +29,7 @@ BasicGame.MainMenu.prototype = {
 	    toPizza.inputEnabled = true;
     	toPizza.events.onInputUp.add(this.switchTo('Pizza'));
 
-		var playBtn = this.add.button(290, 150, 'playButton', this.switchTo('Sync'));
+		var playBtn = this.add.button(290, 150, 'playButton', this.switchTo('Intro'));
 	    playBtn.anchor.set(0.5);
 	    playBtn.scale.setTo(0.25, 0.25);
 

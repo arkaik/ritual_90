@@ -17,7 +17,7 @@ BasicGame.Preloader.prototype = {
 		//	These are the assets we loaded in Boot.js
 		//	A nice sparkly background and a loading progress bar
 
-		this.background = this.add.sprite(0, 0, 'intro');
+		this.background = this.add.sprite(0, 0, 'generalBackground');
 		this.background.width = this.world.width;
 		this.background.height = this.world.height;
 		//this.preloadBar = this.add.sprite(300, 400, 'preloaderBar');
@@ -74,7 +74,7 @@ BasicGame.Preloader.prototype = {
 
 		this.load.image('godcam_ok', 'res/godCamOk.png');
 
-		this.load.image('generalBackground', 'res/generalBackground.png');
+		
 
 		this.load.image('retroFont', 'res/font.png');
 
@@ -104,18 +104,8 @@ BasicGame.Preloader.prototype = {
 
 	create: function () {
 
-		var playBtn = this.add.button(this.world.centerX, this.world.height*0.8, "letsButton", this.switchToMenu());
-		playBtn.scale.setTo(0.25,0.25);
-		playBtn.anchor.setTo(0.5,0.5);
+		this.state.start('MainMenu');
 
-	},
-
-	switchToMenu: function ()
-	{
-		var pt_game = this;
-		return function() {
-			pt_game.state.start('MainMenu');	
-		}		
 	}
 
 };

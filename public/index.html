@@ -16,6 +16,7 @@
 	<script src="Tamagotchi.js"></script>
 	<script src="Pizza.js"></script>
 	<script src="Vhs.js"></script>
+	<script src="Intro.js"></script>
     <style>
         body {
             margin: 0;
@@ -41,6 +42,7 @@ window.onload = function() {
 	game.state.add('Pizza' , BasicGame.Pizza);
 	game.state.add('Vhs' , BasicGame.Vhs);
 	game.state.add('About', BasicGame.About);
+	game.state.add('Intro', BasicGame.Intro);
 	//	Now start the Boot state.
 	game.state.start('Boot');
 };

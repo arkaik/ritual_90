@@ -106,14 +106,10 @@ BasicGame.Vhs.prototype = {
 
         }
         else {
-<<<<<<< HEAD
             this.percentage = this.rewindCount/this.rewindLimit*100;
         
             this.labelP.setText("Rewinded "+Math.floor(this.percentage)+" of 100");
-=======
-            this.percentage = this.rewindCount/100;
-            this.labelP.setText("Rewinded "+Math.floor(this.percentage)+" out of 100");
->>>>>>> c0e54913968d4ecb128b784e57bcefb0aeab5e10
+
         }
     },
 
