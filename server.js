@@ -30,7 +30,7 @@ io.on('connection', function(socket) {
   //if (numPlayers >= maxPlayers) return;
 
   function startGame() {
-    if (numPlayers == maxPlayers) {
+    if (socket.room.players.length == MAX_PL_PER_ROOM) {
       console.log('startMiniGame ' + currentMiniGame);
       io.to(socket.room.id).emit('startMiniGame', socket.room.currentMiniGame);
       for (s in socks) s.lastResult = null;
@@ -71,35 +71,35 @@ io.on('connection', function(socket) {
     io.to(room.id).emit('newPlayerConnected', socket.username);
     socket.emit('connectionACK', socket.playerNum);
     console.log('a user has connected!');
-    if (numPlayers === maxPlayers) {
+    if (socket.room.players.length === MAX_PL_PER_ROOM) {
       io.to(room.id).emit('allPlayersConnected', socket.room.players);
       setTimeout(startGame, 4000);
     }
   });
   
   socket.on('tamagotchiFinished', function(timeSpent) {
-    if (currentMiniGame == 0) {
+    if (socket.room.currentMiniGame == 0) {
       socket.player.score += 10;
       io.to(socket.room.id).emit('minigameFinished', socket.room.players, socket.playerNum);
-      currentMiniGame = (currentMiniGame + 1)%numGames;
+      socket.room.currentMiniGame = (socket.room.currentMiniGame + 1)%numGames;
       setTimeout(startGame, 4000);
     }
   });
 
   socket.on('pizzaFinished', function() {
-    if (currentMiniGame == 1) {
+    if (socket.room.currentMiniGame == 1) {
       socket.player.score += 10;
       io.to(socket.room.id).emit('minigameFinished', socket.room.players, socket.playerNum);
-      currentMiniGame = (currentMiniGame + 1)%numGames;
+      socket.room.currentMiniGame = (socket.room.currentMiniGame + 1)%numGames;
       setTimeout(startGame, 4000);
     }
   });
 
   socket.on('VHSFinished', function() {
-    if (currentMiniGame == 2) {
+    if (socket.room.currentMiniGame == 2) {
       socket.player.score += 15;
       io.to(socket.room.id).emit('minigameFinished', socket.room.players, socket.playerNum);
-      currentMiniGame = (currentMiniGame + 1)%numGames;
+      socket.room.currentMiniGame = (socket.room.currentMiniGame + 1)%numGames;
       setTimeout(startGame, 4000);
     }
   });
@@ -115,6 +115,7 @@ io.on('connection', function(socket) {
       socket.room.players = [];
       //socks = [];
       currentMiniGame = 0;
+      socket.room.currentMiniGame = 0;
       numPlayers = 0;
       var room = socket.room;
       var roomIndex = rooms.indexOf(room);
