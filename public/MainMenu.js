@@ -22,14 +22,6 @@ BasicGame.MainMenu.prototype = {
 		menumusic.volume += 0.25;
         menumusic.play();
 
-		var toTama = this.add.text(100, 300, "Tamagotchi", { font: '24px Lemiesz', fill: '#000' });
-	    toTama.inputEnabled = true;
-    	toTama.events.onInputUp.add(this.switchTo('Tamagotchi'));
-
-    	var toPizza = this.add.text(100, 350, "Pizza", { font: '24px Lemiesz', fill: '#000' });
-	    toPizza.inputEnabled = true;
-    	toPizza.events.onInputUp.add(this.switchTo('Pizza'));
-
 		var playBtn = this.add.button(290, 150, 'playButton', this.switchTo('Intro'));
 	    playBtn.anchor.set(0.5);
 	    playBtn.scale.setTo(0.25, 0.25);
@@ -40,6 +32,14 @@ BasicGame.MainMenu.prototype = {
 	   
     	this.selAudio = this.add.audio('select');
 
+    	/*
+		var toTama = this.add.text(100, 300, "Tamagotchi", { font: '24px Lemiesz', fill: '#000' });
+	    toTama.inputEnabled = true;
+    	toTama.events.onInputUp.add(this.switchTo('Tamagotchi'));
+
+    	var toPizza = this.add.text(100, 350, "Pizza", { font: '24px Lemiesz', fill: '#000' });
+	    toPizza.inputEnabled = true;
+    	toPizza.events.onInputUp.add(this.switchTo('Pizza'));
     	var toVhs = this.add.text(300, 400, "VHS", { font: '24px Lemiesz', fill: '#000' });
 	    toVhs.inputEnabled = true;
     	toVhs.events.onInputUp.add(this.switchTo('VHS'));
@@ -47,6 +47,7 @@ BasicGame.MainMenu.prototype = {
     	var toFloppy = this.add.text(400, 400, "Floppy", { font: '24px Lemiesz', fill: '#000' });
 	    toFloppy.inputEnabled = true;
     	toFloppy.events.onInputUp.add(this.switchToFloppy(this));
+    	*/
 
 	},
 

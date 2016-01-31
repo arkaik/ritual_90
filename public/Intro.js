@@ -15,7 +15,7 @@ BasicGame.Intro.prototype = {
         this.background.scale.setTo(0.26,0.26);
         this.background.width = this.world.width;
 		this.background.height = this.world.height;
-
+		
 		var quit_btn = this.add.button(0,0, "quitButton", this.switchTo('MainMenu'));
         quit_btn.scale.setTo(0.25, 0.25);
 
@@ -37,9 +37,12 @@ BasicGame.Intro.prototype = {
 		this.world.forEach(function (item){
 			item.destroy();
 		});
-		menumusic.fadeOut(1000);
 		menumusic.stop();
-		this.selAudio.destroy();
+		//menumusic.fadeOut(1000);
+		//console.log(menumusic);
+		//menumusic.onFadeComplete.add(function () {
+		//this.stop();
+		//});
 	},
 
 	//Callback pel botó provisional a Game

@@ -111,7 +111,7 @@ BasicGame.Pizza.prototype = {
                 this.add.text(200+this.separation*(i-1), this.pizzasY-100, "Yay!", {font:"30px Lemiesz", fill:"#006400"});
                 
             console.log("wiiiii "+i);
-
+            
                 this.winner();
             }
             else {
