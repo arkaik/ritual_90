@@ -98,7 +98,7 @@ else if (document.addEventListener) //WC3 browsers
         var k = this.rnd.integer();
         var neg = Math.pow(-1, k);
 
-        this.windX = neg * this.rnd.between(120,200);
+        this.windX = neg * this.rnd.between(100,190);
         console.log(this.windX);
 
     },
@@ -107,7 +107,7 @@ else if (document.addEventListener) //WC3 browsers
         var k = this.rnd.integer();
         var neg = Math.pow(-1, k);
 
-        this.windY = neg * this.rnd.between(120,200);
+        this.windY = neg * this.rnd.between(100,190);
         console.log(this.windY);
 
     },
