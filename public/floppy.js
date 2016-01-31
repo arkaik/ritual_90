@@ -14,6 +14,11 @@ BasicGame.Floppy = function (game) {
     this.windX = 0;
     this.windY = 0;
 
+    sweetPointX = 463;
+    sweetPointY = 401;
+
+    sweetMargin = 100;
+
 
     this.vhss = ['VHS1','VHS2','VHS3','VHS4'];
 
@@ -101,6 +106,11 @@ else if (document.addEventListener) //WC3 browsers
     },
 
     update: function () {
+
+        if (floppySprite.x >= (sweetPointX + 100))&&(floppySprite.x >= (sweetPointX + 100)){
+
+        }
+
         /*
 
         if (this.rewindCount >= this.rewindLimit) {
