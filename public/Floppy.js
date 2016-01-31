@@ -14,10 +14,12 @@ BasicGame.Floppy = function (game) {
     this.windX = 0;
     this.windY = 0;
 
-    sweetPointX = 463;
-    sweetPointY = 401;
+    this.sweetPointX = 463;
+    this.sweetPointY = 401;
 
-    sweetMargin = 100;
+    this.sweetMargin = 100;
+
+    this.victory = false;
 
 
     this.vhss = ['VHS1','VHS2','VHS3','VHS4'];
@@ -64,6 +66,10 @@ BasicGame.Floppy.prototype = {
 
         cursors = this.input.keyboard.createCursorKeys();
 
+        this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        this.jumpButton.onDown.add(this.pressed,this);
+        this.jumpButton.onUp.add(this.released,this);
+
         this.timeSpent = new Date().getTime();
         var self = this;
         //socket.on('minigameFinished', function(players, winner) {
@@ -107,9 +113,23 @@ else if (document.addEventListener) //WC3 browsers
 
     update: function () {
 
-        if (floppySprite.x >= (sweetPointX + 100))&&(floppySprite.x >= (sweetPointX + 100)){
-
+        if (this.floppySprite.x >= this.sweetPointX - this.sweetMargin){
+           if (this.floppySprite.x <= this.sweetPointX + this.sweetMargin){
+            if (this.floppySprite.y <= this.sweetPointY + this.sweetMargin) {
+                if (this.floppySprite.y <= this.sweetPointY + this.sweetMargin) {
+                    console.log('wiiiiii');
+                    this.victory = true;
+                }
+            }
         }
+        else {
+            this.victory = false;
+        }
+
+        console.log (this.victory)
+    }
+
+        //console.log(this.floppySprite.x)
 
         /*
 
