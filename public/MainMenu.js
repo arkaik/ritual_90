@@ -41,7 +41,7 @@ BasicGame.MainMenu.prototype = {
 
     	var toVhs = this.add.text(300, 400, "VHS", { font: '24px Lemiesz', fill: '#000' });
 	    toVhs.inputEnabled = true;
-    	toVhs.events.onInputUp.add(this.switchTo('Vhs'));
+    	toVhs.events.onInputUp.add(this.switchTo('VHS'));
 
     	var toFloppy = this.add.text(400, 400, "Floppy", { font: '24px Lemiesz', fill: '#000' });
 	    toFloppy.inputEnabled = true;

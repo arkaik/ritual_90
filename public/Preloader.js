@@ -88,6 +88,10 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('tamafeed', 'res/audio/tamaFeed.wav');
 		this.load.audio('select', 'res/audio/Select.wav');
 		this.load.audio('menumusic','res/audio/menuMusic.mp3');
+		this.load.audio('pizzagrab','res/audio/pizzaGrab.wav');
+		this.load.audio('pizzamusic','res/audio/pizzaMusic.wav');
+		this.load.audio('vhsmusic','res/audio/vhsmusic.wav');
+		this.load.audio('vhsrewind','res/audio/VHSRewind.wav');
 
 		this.load.image('tamagotchi1', 'res/tamagotchi1.png');
         this.load.image('tamagotchi2', 'res/tamagotchi2.png');

@@ -56,8 +56,8 @@ BasicGame.Floppy.prototype = {
         this.makeWindX();
         this.makeWindY();
 
-        this.time.events.repeat(Phaser.Timer.SECOND * 1, 100, this.makeWindY, this);
-        this.time.events.repeat(Phaser.Timer.SECOND * 1, 100, this.makeWindX, this);
+        this.time.events.repeat(Phaser.Timer.SECOND * 1, 150, this.makeWindY, this);
+        this.time.events.repeat(Phaser.Timer.SECOND * 1, 150, this.makeWindX, this);
 
 
         //this.labelP = this.add.text(350,680, "Rewinded "+this.percentage+" of 100", { font: '24px Lemiesz', fill: '#000' });
@@ -90,14 +90,14 @@ else if (document.addEventListener) //WC3 browsers
     makeWindX: function () {
         var k = this.rnd.integer();
         var neg = Math.pow(-1, k);
-        this.windX = neg * this.rnd.between(75,150);
+        this.windX = neg * this.rnd.between(100,200);
         console.log(this.windX);
     },
 
     makeWindY: function () {
         var k = this.rnd.integer();
         var neg = Math.pow(-1, k);
-        this.windY = neg * this.rnd.between(75,150);
+        this.windY = neg * this.rnd.between(100,200);
         console.log(this.windY);
     },
 
@@ -107,7 +107,8 @@ else if (document.addEventListener) //WC3 browsers
 
     update: function () {
 
-        if (floppySprite.x >= (sweetPointX + 100))&&(floppySprite.x >= (sweetPointX + 100)){
+        if (this.floppySprite.x >= (sweetPointX + 100) && this.floppySprite.x >= (sweetPointX + 100))
+        {
 
         }
 
