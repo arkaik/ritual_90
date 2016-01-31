@@ -9,7 +9,8 @@ BasicGame.Pizza = function (game) {
 
 BasicGame.Pizza.prototype = {
 
- 
+    pt_game: this,
+
     create: function () {
         this.pizzas = ["pizza1","pizza2","pizza3","pizza4"];
         this.pizzas.push(this.pizzas[this.rnd.between(1, this.pizzas.length-1)]);
@@ -63,6 +64,10 @@ BasicGame.Pizza.prototype = {
         key6 = this.input.keyboard.addKey(Phaser.Keyboard.SIX);
         key6.onDown.add(this.pressedi(6), this);
 
+        var self = this;
+        socket.on('minigameFinished', function(players, winner) {
+            self.backToWaitRoom(players, winner);
+        });
     },
 
     winner: function () {
@@ -107,5 +112,9 @@ BasicGame.Pizza.prototype = {
             pt_game.state.start('MainMenu');
         }
 
+    },
+
+    backToWaitRoom: function (players, winner) {
+        pt_game.state.start('Game', true, false, players, winner);
     }
 };

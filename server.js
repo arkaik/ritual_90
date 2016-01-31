@@ -87,10 +87,18 @@ io.on('connection', function(socket) {
     }
   });
 
-
   socket.on('pizzaFinished', function() {
     if (currentMiniGame == 1) {
       socket.player.score += 10;
+      io.emit('minigameFinished', players, socket.playerNum);
+      currentMiniGame = (currentMiniGame + 1)%numGames;
+      setTimeout(startGame, 4000);
+    }
+  });
+
+  socket.on('VHSFinished', function() {
+    if (currentMiniGame == 2) {
+      socket.player.score += 15;
       io.emit('minigameFinished', players, socket.playerNum);
       currentMiniGame = (currentMiniGame + 1)%numGames;
       setTimeout(startGame, 4000);

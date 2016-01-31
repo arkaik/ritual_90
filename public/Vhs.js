@@ -19,6 +19,8 @@ BasicGame.Vhs = function (game) {
 };
 
 BasicGame.Vhs.prototype = {
+    
+    pt_game: this,
 
 	create: function () {
         //this.avatar = new Player(this, this.game.width/2, this.game.height/2);
@@ -83,6 +85,10 @@ BasicGame.Vhs.prototype = {
         else if (document.addEventListener) //WC3 browsers
         document.addEventListener(mousewheelevt, this.displaywheel(), false);
 
+        socket.on('minigameFinished', function(players, winner) {
+            self.backToWaitRoom(players, winner);
+        });
+
 	}, 
 
     pt_game: this,
@@ -123,6 +129,7 @@ BasicGame.Vhs.prototype = {
 
             this.labelP.setText("Rewinded "+100+" of 100");
             //console.log('wiiiiiii')
+            socket.emit('VHSFinished');
 
         }
         else {
@@ -143,6 +150,10 @@ BasicGame.Vhs.prototype = {
             this.vhs.loadTexture(this.vhss[this.texturNow]);
             console.log(this.texturNow);
         }
+    },
+
+    backToWaitRoom: function (players, winner) {
+        pt_game.state.start('Game', true, false, players, winner);
     },
 
 	quitGame: function () {
