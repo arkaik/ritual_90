@@ -105,7 +105,7 @@ BasicGame.Vhs.prototype = {
                     pt_game.rewindCount +=2;*/
                 if (pt_game.rollUp > 300) {
                     pt_game.rotate();
-                    pt_game.rollUp =- 400;
+                    pt_game.rollUp =- 300;
                 }
             }
         };
@@ -179,7 +179,7 @@ BasicGame.Vhs.prototype = {
 
         if (document.detachEvent)
             document.detachEvent ('on'+mousewheelevt,this.displaywheel);
-        if (document.removeEventListener) 
+        else if (document.removeEventListener) 
             document.removeEventListener (mousewheelevt,this.displaywheel,false);
          
     }
