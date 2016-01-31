@@ -14,7 +14,7 @@ var rooms = [];  // {id: 'id', players: [p1, p2, ..]}
 var socks    = [];
 var numPlayers = 0;
 var maxPlayers = 2;
-var numGames   = 3;
+var numGames   = 4;
 var currentMiniGame = 0;
 var players = [];
 var playerRoom  = {};
@@ -97,7 +97,16 @@ io.on('connection', function(socket) {
 
   socket.on('VHSFinished', function() {
     if (socket.room.currentMiniGame == 2) {
-      socket.player.score += 15;
+      socket.player.score += 10;
+      io.to(socket.room.id).emit('minigameFinished', socket.room.players, socket.playerNum);
+      socket.room.currentMiniGame = (socket.room.currentMiniGame + 1)%numGames;
+      setTimeout(startGame, 4000);
+    }
+  });
+
+  socket.on('FloppyFinished', function() {
+    if (socket.room.currentMiniGame == 3) {
+      socket.player.score += 10;
       io.to(socket.room.id).emit('minigameFinished', socket.room.players, socket.playerNum);
       socket.room.currentMiniGame = (socket.room.currentMiniGame + 1)%numGames;
       setTimeout(startGame, 4000);

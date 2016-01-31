@@ -26,7 +26,7 @@ BasicGame.Floppy = function (game) {
     this.vhss = ['VHS1','VHS2','VHS3','VHS4'];
 
 
-        this.texturNow = 0
+    this.texturNow = 0
 };
 
 BasicGame.Floppy.prototype = {
@@ -214,7 +214,8 @@ else if (document.addEventListener) //WC3 browsers
     pressed: function(key)
     {
         if (this.victory == true) {
-            console.log('you win!!!')
+            // console.log('you win!!!')
+            socket.emit('FloppyFinished');
         }
         else {
             console.log('wroooong')
