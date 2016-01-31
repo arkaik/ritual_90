@@ -12,6 +12,11 @@ BasicGame.Pizza.prototype = {
     pt_game: this,
 
     create: function () {
+        this.pizzamusic = this.add.audio('pizzamusic');
+        this.pizzagrab = this.add.audio('pizzagrab');
+        this.pizzamusic.loop = true;
+        this.pizzamusic.play();
+
         this.pizzas = ["pizza1","pizza2","pizza3","pizza4"];
         this.pizzas.push(this.pizzas[this.rnd.between(1, this.pizzas.length-1)]);
         this.pizzas.push(this.pizzas[this.rnd.between(1, this.pizzas.length-2)]);
@@ -28,11 +33,21 @@ BasicGame.Pizza.prototype = {
         //this.boxSprite.y = this.pizzasY;
         this.boxSprite.scale.setTo(0.26,0.26);
 
+        function callb (k) {
+            return function()
+            {
+                console.log("Gotcha "+(k+1));
+            }
+        }
+
         for (var i = 0; i < this.pizzas.length; ++i) {
             var pizzaSprite = this.add.sprite(0, 0, this.pizzas[i]);
             pizzaSprite.x = 100 + i*this.separation;
             pizzaSprite.y = this.pizzasY;
             pizzaSprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
+            pizzaSprite.inputEnabled = true;
+            
+            pizzaSprite.events.onInputUp.add(callb(i));
         }
         this.infotext = this.add.text(this.world.centerX, 100, "Choose the best pizza slice!", {font: "28px Lemiesz", fill: "#000"} )
         this.infotext.anchor.setTo(0.5,0.5);
@@ -71,8 +86,7 @@ BasicGame.Pizza.prototype = {
     },
 
     winner: function () {
-      console.log("wiiiii");
-      socket.emit('pizzaFinished');
+      if (socket != null) socket.emit('pizzaFinished');
     },
 
     looser: function () {
@@ -84,9 +98,14 @@ BasicGame.Pizza.prototype = {
         return function()
         {
             if (this.pizzas[i-1] == this.winnerPizza) {
+                this.add.text(200+this.separation*(i-1), this.pizzasY-100, "Yay!", {font:"28px Lemiesz", fill:"#006400"});
+                
+            console.log("wiiiii "+i);
+
                 this.winner();
             }
             else {
+                this.add.text(200+this.separation*(i-1), this.pizzasY-100, "Nope", {font:"28px Lemiesz", fill:"#640000"});
                 this.looser();
             }    
         }
@@ -107,7 +126,7 @@ BasicGame.Pizza.prototype = {
         {
             //  Here you should destroy anything you no longer need.
             //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-
+            pt_game.pizzamusic.stop();
             //  Then let's go back to the main menu.
             pt_game.state.start('MainMenu');
         }

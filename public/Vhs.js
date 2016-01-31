@@ -18,6 +18,15 @@ BasicGame.Vhs.prototype = {
 
 	create: function () {
 
+        this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
+        this.generalBackgroundSprite.scale.setTo(0.26,0.26);
+
+        this.rwsound = this.add.audio('vhsrewind');
+        this.music = this.add.audio('vhsmusic');
+        this.music.loop = true;
+        this.music.volume -= 0.5;
+        this.music.play();
+
         this.rollUp = 1;
         this.rewindLimit = 20000;
         this.rewindCount = 1;
@@ -32,8 +41,7 @@ BasicGame.Vhs.prototype = {
 
         this.texturNow = 0
 
-        this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
-        this.generalBackgroundSprite.scale.setTo(0.26,0.26);
+        
 
         var quit_btn = this.add.button(0,0, "quitButton", this.quitGame());
         quit_btn.scale.setTo(0.25, 0.25);
@@ -69,6 +77,7 @@ BasicGame.Vhs.prototype = {
     displaywheel: function () {
         var pt_game = this;
         return function (e) {
+            pt_game.rwsound.play();
             var evt=window.event || e; //equalize event object
             var delta=evt.detail? evt.detail*(-120) : evt.wheelDelta; //check for detail first so Opera uses that instead of wheelDelta
             console.log("displaywheel");
@@ -153,6 +162,7 @@ BasicGame.Vhs.prototype = {
     shutdown: function()
     {
 
+        this.music.stop();
         var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel";
 
         if (document.detachEvent)

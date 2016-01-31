@@ -59,7 +59,7 @@ BasicGame.Sync.prototype = {
         next_text.inputEnabled = true;
         next_text.events.onInputUp.add(this.quitGame());*/
 
-        socket = io.connect('http://localhost:4242');
+        socket = io.connect('http://192.168.234.63:4242');
         socket.on('connect', function () {
             console.log('user connected!');
             var username = prompt("Enter your username:") || "anon";
