@@ -25,7 +25,7 @@ Player = function (game, x, y) {
     this.jeans.anchor.setTo(0.5,0.5);
 
     this.anchor.setTo(0.5,0.5);
-    this.scale.setTo(0.25,0.25);
+    this.scale.setTo(0.2,0.2);
     
     this.score = 0;
 
