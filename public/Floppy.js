@@ -34,6 +34,13 @@ BasicGame.Floppy.prototype = {
 	create: function () {
         //this.avatar = new Player(this, this.game.width/2, this.game.height/2);
         //this.add.existing(this.avatar);
+        this.sfx = this.add.audio('floppyInsert');
+        this.music = this.add.audio('floppyMusic');
+        this.music.loop = true;
+        this.music.play();
+
+        //this.floppyanim = this.add.sprite(0,0,'floppy_anim');
+
 
         this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
         this.generalBackgroundSprite.scale.setTo(0.26,0.26);
@@ -118,16 +125,14 @@ else if (document.addEventListener) //WC3 browsers
 
     update: function () {
 
-
+    if (this.floppySprite != null) {
         if (this.floppySprite.x >= this.sweetPointX - this.sweetMarginH){
             if (this.floppySprite.x <= this.sweetPointX + this.sweetMarginH){
                 if (this.floppySprite.y >= this.sweetPointY - this.sweetMarginV) {
-                    if (this.floppySprite.y <= this.sweetPointY + this.sweetMarginV) {
+                    if (this.floppySprite.y <= this.sweetPointY + this.sweetMarginV)
                         this.victory = true;
-                    }
-                    else {
+                    else
                         this.victory = false;
-                    }
                 }
                 else {
                     this.victory = false;
@@ -175,6 +180,7 @@ else if (document.addEventListener) //WC3 browsers
         {
             this.floppySprite.body.velocity.y += 250;
         }
+    }
 
         //console.log(this.floppySprite.y+" "+this.floppySprite.x)
     },
@@ -213,11 +219,20 @@ else if (document.addEventListener) //WC3 browsers
 
     pressed: function(key)
     {
+        this.sfx.play();
         if (this.victory == true) {
-            console.log('you win!!!')
+            console.log('you win!!!');
+            this.floppySprite.visible = false;
+            this.floppyanim = this.add.sprite(0,0,'floppy_anim');
+            this.floppyanim.x = 60
+            this.floppyanim.y = 130
+            this.floppyanim.scale.setTo(0.22,0.22);
+            this.floppyanim.animations.add('insert');
+            this.floppyanim.animations.play('insert', 60, false);
+
         }
         else {
-            console.log('wroooong')
+            console.log('wroooong');
         }
         //console.log(this.foodCount);
     },
@@ -228,7 +243,8 @@ else if (document.addEventListener) //WC3 browsers
     },
     shutdown: function()
     {
-
+        this.music.stop();
+        
         var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel";
 
         if (document.detachEvent)

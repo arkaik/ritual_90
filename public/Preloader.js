@@ -93,7 +93,6 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('pizzamusic','res/audio/pizzaMusic.wav');
 		this.load.audio('vhsmusic','res/audio/vhsmusic.wav');
 		this.load.audio('vhsrewind','res/audio/VHSRewind.wav');
-
 		this.load.audio('failSound','res/audio/fail.wav');
 		this.load.audio('floppyInsert','res/audio/floppyinsert.wav');
 		this.load.audio('floppyMusic','res/audio/floppyMusic.wav');
@@ -108,6 +107,7 @@ BasicGame.Preloader.prototype = {
         this.load.atlasJSONHash('tama_anim1', 'res/tama_anim1.png', 'res/tama_anim1.json');
         this.load.atlasJSONHash('tama_anim2', 'res/tama_anim2.png', 'res/tama_anim2.json');
         this.load.atlasJSONHash('tama_anim3', 'res/tama_anim3.png', 'res/tama_anim3.json');
+        this.load.atlasJSONHash('floppy_anim', 'res/floppy_anim.png', 'res/floppy_anim.json');
 
 
 		
