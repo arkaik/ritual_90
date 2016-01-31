@@ -13,7 +13,7 @@ app.get('/', function(req, res){
 var socks    = [];
 var numPlayers = 0;
 var maxPlayers = 2;
-var numGames   = 2;
+var numGames   = 3;
 var currentMiniGame = 0;
 var players = [];
 

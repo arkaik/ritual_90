@@ -3,7 +3,6 @@ BasicGame.Pizza = function (game) {
     this.pizzasY = 360;
     this.pizzasScaleTo = 0.20;
 
-    this.pizzas = ["pizza1","pizza2","pizza3","pizza4"];
     this.winnerPizza = "pizza1";
 
 };
@@ -12,6 +11,7 @@ BasicGame.Pizza.prototype = {
 
  
     create: function () {
+        this.pizzas = ["pizza1","pizza2","pizza3","pizza4"];
         this.pizzas.push(this.pizzas[this.rnd.between(1, this.pizzas.length-1)]);
         this.pizzas.push(this.pizzas[this.rnd.between(1, this.pizzas.length-2)]);
         console.log(this.pizzas);
