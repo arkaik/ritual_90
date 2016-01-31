@@ -107,23 +107,27 @@ io.on('connection', function(socket) {
   socket.on('disconnect', function() {
     if (socks.indexOf(socket) != -1) {
       console.log('user disconnected');
-      io.to(socket.room.id).emit('userDisconnected', socket.username);
-      --numPlayers;
-      console.log('playerNum:' + socket.playerNum);
-      // players.slice[socket.playerNum, socket.playerNum+1];
-      socks.slice[socket.playerNum, socket.playerNum+1];
-      socket.room.players = [];
-      //socks = [];
-      currentMiniGame = 0;
-      socket.room.currentMiniGame = 0;
-      numPlayers = 0;
-      var room = socket.room;
-      var roomIndex = rooms.indexOf(room);
-      if (roomIndex !== -1) rooms.slice[roomIndex, roomIndex+1];
-      for (p in socket.room.players) p.room = undefined;
-      io.to(socket.room.id).emit('goToWaitRoom');
-      console.log('players len:' + players.length);
-      console.log('socks len:' + socks.length);
+      if (socket.room != undefined) {
+        io.to(socket.room.id).emit('userDisconnected', socket.username);
+        --numPlayers;
+        console.log('playerNum:' + socket.playerNum);
+        // players.slice[socket.playerNum, socket.playerNum+1];
+        socks.slice[socket.playerNum, socket.playerNum+1];
+        socket.room.players = [];
+        //socks = [];
+        currentMiniGame = 0;
+        socket.room.currentMiniGame = 0;
+        numPlayers = 0;
+        var room = socket.room;
+        var roomIndex = rooms.indexOf(room);
+        console.log('room to delete: ' + roomIndex);
+        if (roomIndex != -1) rooms.slice(roomIndex, roomIndex+1);
+        console.log('number of rooms: ' + rooms.length);
+        for (p in socket.room.players) p.room = undefined;
+        io.to(socket.room.id).emit('goToWaitRoom');
+        console.log('players len:' + players.length);
+        console.log('socks len:' + socks.length);
+      }
     }
   }); 
 });
