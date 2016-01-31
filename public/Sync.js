@@ -31,12 +31,9 @@ BasicGame.Sync.prototype = {
 
     //playerId: undefined,
     preload: function () {
-        this.intro = this.add.sprite(0,0,'intro');
-        this.intro.scale.setTo(0.26,0.26);
     },
 
 	create: function () {
-
         
         this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
         this.generalBackgroundSprite.scale.setTo(0.26,0.26);

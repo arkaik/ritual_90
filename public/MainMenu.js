@@ -10,7 +10,7 @@ BasicGame.MainMenu = function (game) {
 
 BasicGame.MainMenu.prototype = {
 	create: function () {
-
+		this.add.text(0,0,"Test", { font: '24px Lemiesz', fill: '#000' });
 
 		var background = this.add.image(this.world.centerX, this.world.centerY, 'titleScreenBackground');
 		background.width = this.world.width;
