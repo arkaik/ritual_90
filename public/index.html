@@ -10,12 +10,14 @@
 	<script src="Boot.js"></script>
 	<script src="Preloader.js"></script>
 	<script src="MainMenu.js"></script>
+	<script src="About.js"></script>
 	<script src="Sync.js"></script>
 	<script src="Game.js"></script>
 	<script src="Tamagotchi.js"></script>
 	<script src="Pizza.js"></script>
 	<script src="Vhs.js"></script>
 	<script src="Floppy.js"></script>
+	<script src="Intro.js"></script>
     <style>
         body {
             margin: 0;
@@ -41,6 +43,8 @@ window.onload = function() {
 	game.state.add('Pizza' , BasicGame.Pizza);
 	game.state.add('Vhs' , BasicGame.Vhs);
 	game.state.add('Floppy' , BasicGame.Floppy);
+	game.state.add('About', BasicGame.About);
+	game.state.add('Intro', BasicGame.Intro);
 	//	Now start the Boot state.
 	game.state.start('Boot');
 };

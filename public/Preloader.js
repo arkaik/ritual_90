@@ -17,7 +17,7 @@ BasicGame.Preloader.prototype = {
 		//	These are the assets we loaded in Boot.js
 		//	A nice sparkly background and a loading progress bar
 
-		this.background = this.add.sprite(0, 0, 'intro');
+		this.background = this.add.sprite(0, 0, 'generalBackground');
 		this.background.width = this.world.width;
 		this.background.height = this.world.height;
 		//this.preloadBar = this.add.sprite(300, 400, 'preloaderBar');
@@ -55,6 +55,7 @@ BasicGame.Preloader.prototype = {
 	    this.load.image('aboutButton', 'res/title_screen/aboutBtn.png');
 	    this.load.image('playButton', 'res/title_screen/playBtn.png');
 	    this.load.image('quitButton', 'res/title_screen/quitBtn.png');
+	    this.load.image('letsButton', 'res/title_screen/letsBtn.png');
 	    this.load.image('titleScreenBackground', 'res/title_screen/titleScreenBlank.png');
 
 	   	this.load.image('box', 'res/box.png');
@@ -78,7 +79,7 @@ BasicGame.Preloader.prototype = {
 
 		this.load.image('godcam_ok', 'res/godCamOk.png');
 
-		this.load.image('generalBackground', 'res/generalBackground.png');
+		
 
 		this.load.image('retroFont', 'res/font.png');
 
@@ -86,6 +87,17 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('tamamusic', 'res/audio/tamaMusic.wav');
 		this.load.audio('tamafeed', 'res/audio/tamaFeed.wav');
 		this.load.audio('select', 'res/audio/Select.wav');
+		this.load.audio('menumusic','res/audio/menuMusic.mp3');
+
+		this.load.image('tamagotchi1', 'res/tamagotchi1.png');
+        this.load.image('tamagotchi2', 'res/tamagotchi2.png');
+        this.load.image('tamagotchi3', 'res/tamagotchi3.png');
+        this.load.image('tamagotchiBase', 'res/tamagotchiBase.png');
+        this.load.image('tamaFood', 'res/tamaFood.png');
+        this.load.atlasJSONHash('tama_anim1', 'res/tama_anim1.png', 'res/tama_anim1.json');
+        this.load.atlasJSONHash('tama_anim2', 'res/tama_anim2.png', 'res/tama_anim2.json');
+        this.load.atlasJSONHash('tama_anim3', 'res/tama_anim3.png', 'res/tama_anim3.json');
+
 
 		
 
@@ -97,18 +109,8 @@ BasicGame.Preloader.prototype = {
 
 	create: function () {
 
-		var playBtn = this.add.button(this.world.centerX, this.world.height*0.8, "playButton", this.switchToMenu());
-		playBtn.scale.setTo(0.25,0.25);
-		playBtn.anchor.setTo(0.5,0.5);
+		this.state.start('MainMenu');
 
-	},
-
-	switchToMenu: function ()
-	{
-		var pt_game = this;
-		return function() {
-			pt_game.state.start('MainMenu');	
-		}		
 	}
 
 };

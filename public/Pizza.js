@@ -3,85 +3,20 @@ BasicGame.Pizza = function (game) {
     this.pizzasY = 360;
     this.pizzasScaleTo = 0.20;
 
-    this.pizzas = ["pizza1","pizza2","pizza3","pizza4"];
-
-    this.alreadyChosenOne = false;
-
-    this.chosen = 7;
+    this.winnerPizza = "pizza1";
 
 };
 
 BasicGame.Pizza.prototype = {
 
- 
-	create: function () {
+    pt_game: this,
 
-        //this.avatar = new Player(this, this.game.width/2, this.game.height/2);
-        //this.add.existing(this.avatar);
-
-        this.textureA = this.rnd.between(0, this.pizzas.length-1);
-
-        if (this.textureA == 0) {
-            this.alreadyChosenOne = true;
-            this.chosen = 1;
-        }
-        if (this.alreadyChosenOne) {
-            this.textureB = this.rnd.between(1, this.pizzas.length-1);
-        }
-        else {
-            this.textureB = this.rnd.between(0, this.pizzas.length-1);
-        }
-
-        if (this.textureB == 0) {
-            this.alreadyChosenOne = true;
-            this.chosen = 2;
-        }
-        if (this.alreadyChosenOne) {
-            this.textureC = this.rnd.between(1, this.pizzas.length-1);
-        }
-        else {
-            this.textureC = this.rnd.between(0, this.pizzas.length-1);
-        }
-
-        if (this.textureC == 0) {
-            this.alreadyChosenOne = true;
-            this.chosen = 3;
-        }
-        if (this.alreadyChosenOne) {
-            this.textureD = this.rnd.between(1, this.pizzas.length-1);
-        }
-        else {
-            this.textureD = this.rnd.between(0, this.pizzas.length-1);
-        }
-
-        if (this.textureD == 0) {
-            this.alreadyChosenOne = true;
-            this.chosen = 4;
-        }
-        if (this.alreadyChosenOne) {
-            this.textureE = this.rnd.between(1, this.pizzas.length-1);
-        }
-        else {
-            this.textureE = this.rnd.between(0, this.pizzas.length-1);
-        }
-
-        if (this.textureE == 0) {
-            this.alreadyChosenOne = true;
-            this.chosen = 5;
-        }
-        if (this.alreadyChosenOne) {
-            this.textureF = this.rnd.between(1, this.pizzas.length-1);
-        }
-        else {
-            this.textureF = 0;
-            this.chosen = 6;
-        }
-
-        if (this.chosen == 7) {
-            this.textureE = 0;
-            this.chosen = 5;
-        }
-
+    create: function () {
+        this.pizzas = ["pizza1","pizza2","pizza3","pizza4"];
+        this.pizzas.push(this.pizzas[this.rnd.between(1, this.pizzas.length-1)]);
+        this.pizzas.push(this.pizzas[this.rnd.between(1, this.pizzas.length-2)]);
+        console.log(this.pizzas);
+        shuffle(this.pizzas);
         this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
         this.generalBackgroundSprite.scale.setTo(0.26,0.26);
 
@@ -93,39 +28,22 @@ BasicGame.Pizza.prototype = {
         //this.boxSprite.y = this.pizzasY;
         this.boxSprite.scale.setTo(0.26,0.26);
 
-        this.pizzaASprite = this.add.sprite(0, 0, this.pizzas[this.textureA]);
-        this.pizzaASprite.x = 100;
-        this.pizzaASprite.y = this.pizzasY;
-        this.pizzaASprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
+        for (var i = 0; i < this.pizzas.length; ++i) {
+            var pizzaSprite = this.add.sprite(0, 0, this.pizzas[i]);
+            pizzaSprite.x = 100 + i*this.separation;
+            pizzaSprite.y = this.pizzasY;
+            pizzaSprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
+        }
+        this.infotext = this.add.text(this.world.centerX, 100, "Choose the best pizza slice!", {font: "28px Lemiesz", fill: "#000"} )
+        this.infotext.anchor.setTo(0.5,0.5);
 
-        this.pizzaBSprite = this.add.sprite(0, 0, this.pizzas[this.textureB]);
-        this.pizzaBSprite.x = this.pizzaASprite.x + this.separation;
-        this.pizzaBSprite.y = this.pizzasY;
-        this.pizzaBSprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
+        var keys = [];
+        for (var i = 0; i < 10; ++i) {
+            keys[i] = this.input.keyboard.addKey(Phaser.Keyboard.ONE);
+        }
 
-        this.pizzaCSprite = this.add.sprite(0, 0, this.pizzas[this.textureC]);
-        this.pizzaCSprite.x = this.pizzaBSprite.x + this.separation;
-        this.pizzaCSprite.y = this.pizzasY;
-        this.pizzaCSprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
-
-        this.pizzaDSprite = this.add.sprite(0, 0, this.pizzas[this.textureD]);
-        this.pizzaDSprite.x = this.pizzaASprite.x + this.separation*3;
-        this.pizzaDSprite.y = this.pizzasY;
-        this.pizzaDSprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
-
-        this.pizzaESprite = this.add.sprite(0, 0, this.pizzas[this.textureE]);
-        this.pizzaESprite.x = this.pizzaASprite.x + this.separation*4;
-        this.pizzaESprite.y = this.pizzasY;
-        this.pizzaESprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
-
-        this.pizzaFSprite = this.add.sprite(0, 0, this.pizzas[this.textureF]);
-        this.pizzaFSprite.x = this.pizzaASprite.x + this.separation*5;
-        this.pizzaFSprite.y = this.pizzasY;
-        this.pizzaFSprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
-
-        for (i = 0; i < 6; i++)
-        {
-            var labelPizza = this.add.text(200+this.separation*i, this.pizzasY-60, ""+(i+1)+"", { font: '46px Arial', fill: '#fff' });    
+        for (i = 0; i < 6; i++) {
+            var labelPizza = this.add.text(200+this.separation*i, this.pizzasY-60, ""+(i+1)+"", { font: '46px Lemiesz', fill: '#fff' });    
         }
 
         key1 = this.input.keyboard.addKey(Phaser.Keyboard.ONE);
@@ -146,62 +64,61 @@ BasicGame.Pizza.prototype = {
         key6 = this.input.keyboard.addKey(Phaser.Keyboard.SIX);
         key6.onDown.add(this.pressedi(6), this);
 
-
-        this.infotext = this.add.text(this.world.centerX, 100, "Choose one with number keys!", {font: "28px Lemiesz", fill: "#000"} )
-        this.infotext.anchor.setTo(0.5,0.5);
-        //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
-		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-
-	},
+        var self = this;
+        if (socket != null) socket.on('minigameFinished', function(players, winner) {
+            self.backToWaitRoom(players, winner);
+        });
+    },
 
     winner: function () {
-      console.log("wiiiii");
-      socket.emit('pizzaFinished');
+      if (socket != null) socket.emit('pizzaFinished');
     },
 
     looser: function () {
-      console.log("booooo");
+      //console.log("booooo");
     },
 
     pressedi: function (i)
     {
         return function()
         {
-            if (this.chosen == i) {
+            if (this.pizzas[i-1] == this.winnerPizza) {
+                this.add.text(200+this.separation*(i-1), this.pizzasY-100, "Yay!", {font:"28px Lemiesz", fill:"#006400"});
+                
+            console.log("wiiiii "+i);
+
                 this.winner();
             }
             else {
+                this.add.text(200+this.separation*(i-1), this.pizzasY-100, "Nope", {font:"28px Lemiesz", fill:"#640000"});
                 this.looser();
             }    
         }
     },
    
 
-	update: function () {
+    update: function () {
 
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-		//this.avatar.cap.rotation += 0.1;
+        //this.avatar.cap.rotation += 0.1;
 
-	},
+    },
 
 
-	quitGame: function () {
+    quitGame: function () {
         var pt_game = this;
         return function()
         {
-    		//	Here you should destroy anything you no longer need.
-    		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
+            //  Here you should destroy anything you no longer need.
+            //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
-    		//	Then let's go back to the main menu.
+            //  Then let's go back to the main menu.
             pt_game.state.start('MainMenu');
         }
 
-	},
+    },
 
-    pressed: function(key)
-    {
-        this.foodCount ++;
-        console.log(this.foodCount);
+    backToWaitRoom: function (players, winner) {
+        pt_game.state.start('Game', true, false, players, winner);
     }
-
 };

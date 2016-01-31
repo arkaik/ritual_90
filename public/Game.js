@@ -46,7 +46,8 @@ BasicGame.Game.prototype = {
 
         if (this.lastRoundWinner != undefined) {
             console.log('last round winner: ' + this.lastRoundWinner);
-            this.add.text(this.world.centerX, this.world.centerY, this.players[this.lastRoundWinner].username + ' wins!', {font: "40px Lemiesz", fill: "#000"});
+            var text = this.add.text(this.world.centerX, 30, this.players[this.lastRoundWinner].username + ' wins!', {font: "40px Lemiesz", fill: "#000"});
+            text.anchor.setTo(0.5, 0.5);
         }
         else console.log('no winner');
 
@@ -55,7 +56,7 @@ BasicGame.Game.prototype = {
         var myScore = this.players[myPlayerId].score;
         if (myScore == minScore && myScore < maxScore) w0llSm00thFace = "willSmoothSad";
         else if (myScore == maxScore && myScore > minScore) w0llSm00thFace = "willSmoothHappy";
-        this.godCam = this.add.sprite(this.game.width-200, 0, w0llSm00thFace);
+        this.godCam = this.add.sprite(this.game.width-300, 0, w0llSm00thFace);
         //this.wsMeh.anchor.setTo(0.5,0.5);
         this.godCam.scale.setTo(0.25, 0.25);
 

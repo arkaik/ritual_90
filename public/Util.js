@@ -1,11 +1,11 @@
 var socket;
 var myPlayerId;
 
-var games   = ["Tamagotchi", "Pizza"];
+var games   = ["Tamagotchi", "Pizza", "VHS"];
 var bases   = ["base1", "base2"];
 var caps    = ["gorra1","gorra2","pentinatA1","pentinatA2", "pentinatA3","pentinatB1","pentinatB2", "pentinatB3"];
 var tshirts = ["samarreta1", "samarreta2", "samarreta3", "samarreta4", "samarreta5"];
-var jeans = ["pantalons1","pantalons2","pantalons3","pantalons4"]
+var jeans   = ["pantalons1","pantalons2","pantalons3","pantalons4"]
 // Clase Player
 Player = function (game, x, y) {
 	this.id_base = game.rnd.between(0, bases.length-1);
@@ -25,7 +25,7 @@ Player = function (game, x, y) {
     this.jeans.anchor.setTo(0.5,0.5);
 
     this.anchor.setTo(0.5,0.5);
-    this.scale.setTo(0.25,0.25);
+    this.scale.setTo(0.2,0.2);
     
     this.score = 0;
 
@@ -52,11 +52,16 @@ Player = function (game, x, y) {
 Player.prototype = Object.create(Phaser.Sprite.prototype);
 Player.prototype.constructor = Player;
 
-/**
- * Automatically called by World.update
- */
-/*Player.prototype.update = function() {
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
 
-    this.angle += this.rotateSpeed;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
 
-};*/
+  return array;
+}
