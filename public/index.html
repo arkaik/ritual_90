@@ -10,6 +10,7 @@
 	<script src="Boot.js"></script>
 	<script src="Preloader.js"></script>
 	<script src="MainMenu.js"></script>
+	<script src="About.js"></script>
 	<script src="Sync.js"></script>
 	<script src="Game.js"></script>
 	<script src="Tamagotchi.js"></script>
@@ -38,7 +39,8 @@ window.onload = function() {
 	game.state.add('Game', BasicGame.Game);
 	game.state.add('Tamagotchi', BasicGame.Tamagotchi);
 	game.state.add('Pizza' , BasicGame.Pizza);
-	game.state.add('VHS' , BasicGame.Vhs);
+	game.state.add('Vhs' , BasicGame.Vhs);
+	game.state.add('About', BasicGame.About);
 	//	Now start the Boot state.
 	game.state.start('Boot');
 };

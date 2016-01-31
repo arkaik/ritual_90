@@ -34,7 +34,7 @@ BasicGame.Pizza.prototype = {
             pizzaSprite.y = this.pizzasY;
             pizzaSprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
         }
-        this.infotext = this.add.text(this.world.centerX, 100, "Choose!", {font: "28px Lemiesz", fill: "#000"} )
+        this.infotext = this.add.text(this.world.centerX, 100, "Choose the best pizza slice!", {font: "28px Lemiesz", fill: "#000"} )
         this.infotext.anchor.setTo(0.5,0.5);
 
         var keys = [];
@@ -65,7 +65,7 @@ BasicGame.Pizza.prototype = {
         key6.onDown.add(this.pressedi(6), this);
 
         var self = this;
-        socket.on('minigameFinished', function(players, winner) {
+        if (socket != null) socket.on('minigameFinished', function(players, winner) {
             self.backToWaitRoom(players, winner);
         });
     },
@@ -76,7 +76,7 @@ BasicGame.Pizza.prototype = {
     },
 
     looser: function () {
-      console.log("booooo");
+      //console.log("booooo");
     },
 
     pressedi: function (i)
