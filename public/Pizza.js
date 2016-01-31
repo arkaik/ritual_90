@@ -71,8 +71,7 @@ BasicGame.Pizza.prototype = {
     },
 
     winner: function () {
-      console.log("wiiiii");
-      socket.emit('pizzaFinished');
+      if (socket != null) socket.emit('pizzaFinished');
     },
 
     looser: function () {
@@ -84,9 +83,14 @@ BasicGame.Pizza.prototype = {
         return function()
         {
             if (this.pizzas[i-1] == this.winnerPizza) {
+                this.add.text(200+this.separation*(i-1), this.pizzasY-100, "Yay!", {font:"28px Lemiesz", fill:"#006400"});
+                
+            console.log("wiiiii "+i);
+
                 this.winner();
             }
             else {
+                this.add.text(200+this.separation*(i-1), this.pizzasY-100, "Nope", {font:"28px Lemiesz", fill:"#640000"});
                 this.looser();
             }    
         }
