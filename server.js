@@ -31,7 +31,7 @@ io.on('connection', function(socket) {
 
   function startGame() {
     if (socket.room.players.length == MAX_PL_PER_ROOM) {
-      console.log('startMiniGame ' + currentMiniGame);
+      console.log('startMiniGame ' + socket.room.currentMiniGame);
       io.to(socket.room.id).emit('startMiniGame', socket.room.currentMiniGame);
       for (s in socks) s.lastResult = null;
       //setTimeout(endGame, 5000);
@@ -126,7 +126,6 @@ io.on('connection', function(socket) {
         //socks = [];
         currentMiniGame = 0;
         socket.room.currentMiniGame = 0;
-        numPlayers = 0;
         var room = socket.room;
         var roomIndex = rooms.indexOf(room);
         console.log('room to delete: ' + roomIndex);
