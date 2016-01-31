@@ -14,10 +14,11 @@ BasicGame.Floppy = function (game) {
     this.windX = 0;
     this.windY = 0;
 
-    this.sweetPointX = 463;
-    this.sweetPointY = 401;
+    this.sweetPointX = 413;
+    this.sweetPointY = 461;
 
-    this.sweetMargin = 100;
+    this.sweetMarginV = 10;
+    this.sweetMarginH = 30;
 
     this.victory = false;
 
@@ -96,15 +97,15 @@ else if (document.addEventListener) //WC3 browsers
     makeWindX: function () {
         var k = this.rnd.integer();
         var neg = Math.pow(-1, k);
-        this.windX = neg * this.rnd.between(75,150);
-        console.log(this.windX);
+        this.windX = neg * this.rnd.between(120,170);
+        //console.log(this.windX);
     },
 
     makeWindY: function () {
         var k = this.rnd.integer();
         var neg = Math.pow(-1, k);
-        this.windY = neg * this.rnd.between(75,150);
-        console.log(this.windY);
+        this.windY = neg * this.rnd.between(120,170);
+        //console.log(this.windY);
     },
 
     addRewind: function () {
@@ -113,21 +114,29 @@ else if (document.addEventListener) //WC3 browsers
 
     update: function () {
 
-        if (this.floppySprite.x >= this.sweetPointX - this.sweetMargin){
-           if (this.floppySprite.x <= this.sweetPointX + this.sweetMargin){
-            if (this.floppySprite.y <= this.sweetPointY + this.sweetMargin) {
-                if (this.floppySprite.y <= this.sweetPointY + this.sweetMargin) {
-                    console.log('wiiiiii');
-                    this.victory = true;
+
+
+        if (this.floppySprite.x >= this.sweetPointX - this.sweetMarginH){
+            if (this.floppySprite.x <= this.sweetPointX + this.sweetMarginH){
+                if (this.floppySprite.y >= this.sweetPointY - this.sweetMarginV) {
+                    if (this.floppySprite.y <= this.sweetPointY + this.sweetMarginV) {
+                        this.victory = true;
+                    }
+                    else {
+                        this.victory = false;
+                    }
                 }
+                else {
+                    this.victory = false;
+                }
+            }
+            else {
+                this.victory = false;
             }
         }
         else {
             this.victory = false;
         }
-
-        console.log (this.victory)
-    }
 
         //console.log(this.floppySprite.x)
 
@@ -201,7 +210,12 @@ else if (document.addEventListener) //WC3 browsers
 
     pressed: function(key)
     {
-
+        if (this.victory == true) {
+            console.log('you win!!!')
+        }
+        else {
+            console.log('wroooong')
+        }
         //console.log(this.foodCount);
     },
 
