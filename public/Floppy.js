@@ -17,8 +17,8 @@ BasicGame.Floppy = function (game) {
     this.sweetPointX = 413;
     this.sweetPointY = 461;
 
-    this.sweetMarginV = 10;
-    this.sweetMarginH = 30;
+    this.sweetMarginV = 80;
+    this.sweetMarginH = 80;
 
     this.victory = false;
 
@@ -26,7 +26,7 @@ BasicGame.Floppy = function (game) {
     this.vhss = ['VHS1','VHS2','VHS3','VHS4'];
 
 
-        this.texturNow = 0
+    this.texturNow = 0
 };
 
 BasicGame.Floppy.prototype = {
@@ -48,6 +48,9 @@ BasicGame.Floppy.prototype = {
         var quit_btn = this.add.button(0,0, "quitButton", this.quitGame());
         quit_btn.scale.setTo(0.25, 0.25);
 
+        this.infotext = this.add.text(this.world.centerX, 100, "Move with arrow keys!\n  Insert with spacebar!", {font: "28px Lemiesz", fill: "#000"} )
+        this.infotext.anchor.setTo(0.5,0.5);
+        
         this.torreSprite = this.add.sprite(0, 0, 'torre');
         this.torreSprite.x = 60
         this.torreSprite.y = 130
@@ -84,8 +87,6 @@ BasicGame.Floppy.prototype = {
           //  self.backToWaitRoom(players, winner);
         //});
 
-        this.infotext = this.add.text(this.world.centerX, 100, "Move with arrow keys!\n  Insert with spacebar!", {font: "28px Lemiesz", fill: "#000"} )
-        this.infotext.anchor.setTo(0.5,0.5);
         
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
@@ -106,7 +107,7 @@ else if (document.addEventListener) //WC3 browsers
         var neg = Math.pow(-1, k);
 
         this.windX = neg * this.rnd.between(100,190);
-        console.log(this.windX);
+        //console.log(this.windX);
 
     },
 
@@ -115,7 +116,7 @@ else if (document.addEventListener) //WC3 browsers
         var neg = Math.pow(-1, k);
 
         this.windY = neg * this.rnd.between(100,190);
-        console.log(this.windY);
+        //console.log(this.windY);
 
     },
 
@@ -188,7 +189,6 @@ else if (document.addEventListener) //WC3 browsers
 
     rotate: function () {
         if (this.texturNow == 3) {
-            console.log('pene');
             this.texturNow = 0;
             this.vhs.loadTexture(this.vhss[this.texturNow]);
 
@@ -196,7 +196,7 @@ else if (document.addEventListener) //WC3 browsers
         else {
             this.texturNow ++;
             this.vhs.loadTexture(this.vhss[this.texturNow]);
-            console.log(this.texturNow);
+            //console.log(this.texturNow);
         }
     },
 
@@ -229,6 +229,10 @@ else if (document.addEventListener) //WC3 browsers
             this.floppyanim.scale.setTo(0.22,0.22);
             this.floppyanim.animations.add('insert');
             this.floppyanim.animations.play('insert', 60, false);
+
+
+            // console.log('you win!!!')
+            socket.emit('FloppyFinished');
 
         }
         else {

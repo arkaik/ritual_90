@@ -96,8 +96,9 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('failSound','res/audio/fail.wav');
 		this.load.audio('floppyInsert','res/audio/floppyinsert.wav');
 		this.load.audio('floppyMusic','res/audio/floppyMusic.wav');
-
-
+		
+		this.load.audio('winSound','res/audio/win.wav');
+		this.load.audio('loseSound','res/audio/lose.wav');
 
 		this.load.image('tamagotchi1', 'res/tamagotchi1.png');
         this.load.image('tamagotchi2', 'res/tamagotchi2.png');
