@@ -24,7 +24,6 @@ BasicGame.Intro.prototype = {
 		playBtn.anchor.setTo(0.5,0.5);
 
         this.selAudio = this.add.audio('select');
-
 	},
 
 	update: function () {
