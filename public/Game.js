@@ -20,6 +20,8 @@ BasicGame.Game.prototype = {
         this.generalBackgroundSprite = this.add.sprite(0, 0, 'generalBackground');
         this.generalBackgroundSprite.width = this.world.width;
         this.generalBackgroundSprite.height = this.world.height;
+        this.winSound = this.add.audio('winSound');
+        this.loseSound = this.add.audio('loseSound');
 
         var toMenu = this.add.button(0, 0, "quitButton", this.quitGame());
         toMenu.scale.setTo(0.25,0.25);
@@ -46,7 +48,9 @@ BasicGame.Game.prototype = {
 
         if (this.lastRoundWinner != undefined) {
             console.log('last round winner: ' + this.lastRoundWinner);
-            var text = this.add.text(this.world.centerX, 30, this.players[this.lastRoundWinner].username + ' wins!', {font: "40px Lemiesz", fill: "#000"});
+            var text = this.add.text(this.world.centerX, 40, this.players[this.lastRoundWinner].username + ' won!', {font: "40px Lemiesz", fill: "#000"});
+            if (this.lastRoundWinner === myPlayerId) this.winSound.play();
+            else this.loseSound.play();
             text.anchor.setTo(0.5, 0.5);
         }
         else console.log('no winner');

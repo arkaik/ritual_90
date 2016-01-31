@@ -1,7 +1,7 @@
 var socket;
 var myPlayerId;
 
-var games   = ["Tamagotchi", "Pizza", "VHS"];
+var games   = ["Tamagotchi", "Pizza", "VHS", "Floppy"];
 var bases   = ["base1", "base2"];
 var caps    = ["gorra1","gorra2","pentinatA1","pentinatA2", "pentinatA3","pentinatB1","pentinatB2", "pentinatB3"];
 var tshirts = ["samarreta1", "samarreta2", "samarreta3", "samarreta4", "samarreta5"];
