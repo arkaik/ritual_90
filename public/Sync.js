@@ -46,12 +46,14 @@ BasicGame.Sync.prototype = {
         this.avatar = new Player(this, this.game.width/2, this.game.height/2);
         this.add.existing(this.avatar);
 
-        var quit_text = this.add.text(5, 5, "Quit", { font: '24px Arial', fill: '#fff' });
-        quit_text.inputEnabled = true;
-        quit_text.events.onInputUp.add(this.quitGame());
+        var toMenu = this.add.button(0, 0, "quitButton", this.quitGame());
+        toMenu.scale.setTo(0.25,0.25);
+        toMenu.inputEnabled = true;
+        toMenu.events.onInputUp.add(this.quitGame());
 
 
-        var messageText = this.add.text(this.game.width/3, 5, "Looking for opponents...", { font: '24px Arial', fill: '#000' });
+        var messageText = this.add.text(this.game.width/2, 50, "Looking for opponents...", { font: '24px Lemiesz', fill: '#000' });
+        messageText.anchor.setTo(0.5, 0.5);
 
         /*var next_text = this.add.text(0, 200, "Next", { font: '24px Arial', fill: '#fff' });
         next_text.inputEnabled = true;

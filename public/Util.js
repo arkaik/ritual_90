@@ -5,7 +5,7 @@ var games   = ["Tamagotchi", "Pizza", "VHS"];
 var bases   = ["base1", "base2"];
 var caps    = ["gorra1","gorra2","pentinatA1","pentinatA2", "pentinatA3","pentinatB1","pentinatB2", "pentinatB3"];
 var tshirts = ["samarreta1", "samarreta2", "samarreta3", "samarreta4", "samarreta5"];
-var jeans = ["pantalons1","pantalons2","pantalons3","pantalons4"]
+var jeans   = ["pantalons1","pantalons2","pantalons3","pantalons4"]
 // Clase Player
 Player = function (game, x, y) {
 	this.id_base = game.rnd.between(0, bases.length-1);
@@ -52,14 +52,6 @@ Player = function (game, x, y) {
 Player.prototype = Object.create(Phaser.Sprite.prototype);
 Player.prototype.constructor = Player;
 
-/**
- * Automatically called by World.update
- */
-/*Player.prototype.update = function() {
-
-    this.angle += this.rotateSpeed;
-
-};*/
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
