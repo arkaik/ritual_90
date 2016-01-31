@@ -1,5 +1,15 @@
 BasicGame.Vhs = function (game) {
 
+    this.rollUp;
+    this.rewindLimit;
+    this.rewindCount;
+
+    this.percentage;
+
+
+    this.vhss = ['VHS1','VHS2','VHS3','VHS4'];
+
+    this.texturNow;
 };
 
 BasicGame.Vhs.prototype = {
@@ -9,7 +19,7 @@ BasicGame.Vhs.prototype = {
 	create: function () {
 
         this.rollUp = 1;
-        this.rewindLimit = 10000;
+        this.rewindLimit = 20000;
         this.rewindCount = 1;
 
         this.totalFoodSteps = 14;
@@ -48,7 +58,7 @@ BasicGame.Vhs.prototype = {
         else if (document.addEventListener) //WC3 browsers
         document.addEventListener(mousewheelevt, this.displaywheel(), false);
 
-        socket.on('minigameFinished', function(players, winner) {
+        if (socket != null) socket.on('minigameFinished', function(players, winner) {
             self.backToWaitRoom(players, winner);
         });
 
@@ -72,9 +82,9 @@ BasicGame.Vhs.prototype = {
                 }
                 else if (delta >= 200)
                     pt_game.rewindCount +=2;*/
-                if (pt_game.rollUp > 300) {
+                if (pt_game.rollUp >= 240) {
                     pt_game.rotate();
-                    pt_game.rollUp =- 300;
+                    pt_game.rollUp =- 240;
                 }
             }
         };
@@ -92,12 +102,18 @@ BasicGame.Vhs.prototype = {
 
             this.labelP.setText("Rewinded "+100+" out of 100");
             //console.log('wiiiiiii')
-            socket.emit('VHSFinished');
+            if (socket != null) socket.emit('VHSFinished');
 
         }
         else {
+<<<<<<< HEAD
+            this.percentage = this.rewindCount/this.rewindLimit*100;
+        
+            this.labelP.setText("Rewinded "+Math.floor(this.percentage)+" of 100");
+=======
             this.percentage = this.rewindCount/100;
             this.labelP.setText("Rewinded "+Math.floor(this.percentage)+" out of 100");
+>>>>>>> c0e54913968d4ecb128b784e57bcefb0aeab5e10
         }
     },
 

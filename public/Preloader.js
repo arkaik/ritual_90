@@ -82,6 +82,7 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('tamamusic', 'res/audio/tamaMusic.wav');
 		this.load.audio('tamafeed', 'res/audio/tamaFeed.wav');
 		this.load.audio('select', 'res/audio/Select.wav');
+		this.load.audio('menumusic','res/audio/menuMusic.mp3');
 
 		this.load.image('tamagotchi1', 'res/tamagotchi1.png');
         this.load.image('tamagotchi2', 'res/tamagotchi2.png');

@@ -70,7 +70,7 @@ BasicGame.Tamagotchi.prototype = {
         this.tamamusic.loop = true;
         this.tamamusic.play();
 
-        socket.on('minigameFinished', function(players, winner) {
+        if (socket != null) socket.on('minigameFinished', function(players, winner) {
             self.backToWaitRoom(players, winner);
         });
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
