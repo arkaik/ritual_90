@@ -47,8 +47,18 @@ BasicGame.Pizza.prototype = {
             pizzaSprite.scale.setTo(this.pizzasScaleTo,this.pizzasScaleTo);
             pizzaSprite.inputEnabled = true;
             
-            pizzaSprite.events.onInputUp.add(callb(i));
+            pizzaSprite.events.onInputUp.add(this.handCallback(i));
         }
+
+        this.hand = this.add.sprite(0, 0, 'armselect');
+        this.hand.scale.setTo(0.25,0.25);
+        this.hand.anchor.setTo(0.5,0.5);
+        var handh = this.hand.height;
+        var handw = this.hand.width;
+        this.hand.position.x = handw/2;
+        this.hand.position.y = this.world.height - handh/2;
+
+
         this.infotext = this.add.text(this.world.centerX, 100, "Choose the best pizza slice!", {font: "28px Lemiesz", fill: "#000"} )
         this.infotext.anchor.setTo(0.5,0.5);
 
@@ -98,14 +108,14 @@ BasicGame.Pizza.prototype = {
         return function()
         {
             if (this.pizzas[i-1] == this.winnerPizza) {
-                this.add.text(200+this.separation*(i-1), this.pizzasY-100, "Yay!", {font:"28px Lemiesz", fill:"#006400"});
+                this.add.text(200+this.separation*(i-1), this.pizzasY-100, "Yay!", {font:"30px Lemiesz", fill:"#006400"});
                 
             console.log("wiiiii "+i);
 
                 this.winner();
             }
             else {
-                this.add.text(200+this.separation*(i-1), this.pizzasY-100, "Nope", {font:"28px Lemiesz", fill:"#640000"});
+                this.add.text(200+this.separation*(i-1), this.pizzasY-100, "Nope", {font:"30px Lemiesz", fill:"#640000"});
                 this.looser();
             }    
         }
@@ -114,6 +124,9 @@ BasicGame.Pizza.prototype = {
 
     update: function () {
 
+        var mx = this.input.mousePointer.x;
+        var my = this.input.mousePointer.y;
+        this.hand.position.x = mx;
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         //this.avatar.cap.rotation += 0.1;
 
@@ -126,7 +139,6 @@ BasicGame.Pizza.prototype = {
         {
             //  Here you should destroy anything you no longer need.
             //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-            pt_game.pizzamusic.stop();
             //  Then let's go back to the main menu.
             pt_game.state.start('MainMenu');
         }
@@ -135,5 +147,32 @@ BasicGame.Pizza.prototype = {
 
     backToWaitRoom: function (players, winner) {
         pt_game.state.start('Game', true, false, players, winner);
+    },
+    shutdown: function ()
+    {
+        this.world.forEach(function (item){
+            item.destroy();
+        });
+
+        this.pizzamusic.stop();
+    },
+
+    handCallback: function (k) {
+        var game = this;
+        return function()
+        {
+            game.hand.loadTexture('armgrab');
+            game.pizzagrab.play();
+            console.log("Gotcha "+(k+1));
+            if (game.pizzas[k] == game.winnerPizza) {
+                game.add.text(200+game.separation*(k), game.pizzasY-100, "Yay!", {font:"28px Lemiesz", fill:"#006400"});
+                game.winner();
+            }
+            else {
+                game.add.text(200+game.separation*(k), game.pizzasY-100, "Nope", {font:"28px Lemiesz", fill:"#640000"});
+                game.looser();
+            }
+            game.time.events.add(Phaser.Timer.SECOND * 0.25, function() { this.hand.loadTexture('armselect');}, game);
+        } 
     }
 };

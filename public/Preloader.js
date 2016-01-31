@@ -80,7 +80,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image('godcam_ok', 'res/godCamOk.png');
 
 		this.load.image('armgrab','res/armGrab.png');
-		this.load.image('armSelect','res/armSelect.png');
+		this.load.image('armselect','res/armSelect.png');
 
 		this.load.image('retroFont', 'res/font.png');
 

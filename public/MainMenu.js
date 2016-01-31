@@ -19,6 +19,7 @@ BasicGame.MainMenu.prototype = {
 
 		this.menumusic = this.add.audio('menumusic');
 		this.menumusic.loop = true;
+		this.menumusic.volume += 0.25;
         this.menumusic.play();
 
 		var toTama = this.add.text(100, 300, "Tamagotchi", { font: '24px Lemiesz', fill: '#000' });

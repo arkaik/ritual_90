@@ -56,7 +56,7 @@ BasicGame.Vhs.prototype = {
 
         var self = this;
 
-        this.infotext = this.add.text(this.world.centerX, 100, "Scroll your mouse WHEEL\nto rewind the cassette!", {font: "28px Lemiesz", fill: "#000"} )
+        this.infotext = this.add.text(this.world.centerX, 100, "Scroll your mouse WHEEL to rewind!", {font: "28px Lemiesz", fill: "#000"} )
         this.infotext.anchor.setTo(0.5,0.5);
         
         var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel"; //FF doesn't recognize mousewheel as of FF3.x

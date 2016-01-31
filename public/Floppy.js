@@ -77,7 +77,7 @@ BasicGame.Floppy.prototype = {
           //  self.backToWaitRoom(players, winner);
         //});
 
-        this.infotext = this.add.text(this.world.centerX, 100, "Stick it in!", {font: "28px Lemiesz", fill: "#000"} )
+        this.infotext = this.add.text(this.world.centerX, 100, "Move with arrow keys!\n  Insert with spacebar!", {font: "28px Lemiesz", fill: "#000"} )
         this.infotext.anchor.setTo(0.5,0.5);
         
         //this.add.sprite(this.game.width/3, this.game.height/2, "base1");
