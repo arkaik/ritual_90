@@ -67,6 +67,7 @@ BasicGame.Tamagotchi.prototype = {
         this.feedSound.volume -= 0.5;
 
         this.tamamusic = this.add.audio('tamamusic');
+        this.tamamusic.volume -= 0.5;
         this.tamamusic.loop = true;
         this.tamamusic.play();
 
