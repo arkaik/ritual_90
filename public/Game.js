@@ -10,6 +10,7 @@ BasicGame.Game.prototype = {
         this.receivedPlayers = arguments[0];
         if (arguments.length === 2) {
             var winnerId = arguments[1];
+            this.lastRoundWinner = winnerId;
             console.log('The winner is ' + arguments[0][winnerId].username);
         } 
     },
@@ -31,15 +32,22 @@ BasicGame.Game.prototype = {
             var x = (this.world.width/5)*(i+1) + 20;
             var y = this.world.centerY + 80;
             var player = new Player(this, x, y);
-            this.players.push(player);
             player.setFromData(pData);
+            this.players.push(player);
             this.add.existing(player);
             if (pData.score > maxScore) maxScore = pData.score;
             if (pData.score < minScore) minScore = pData.score;
 
             this.add.text((this.world.width/5)*(i+1), this.world.height*0.9, pData.username, {font: '24px Lemiesz', fill: '#000' });
             this.add.text((this.world.width/5)*(i+1), this.world.height*0.9 + 32, pData.score, {font: "24px Lemiesz", fill: "#000"});
+            
         }
+
+        if (this.lastRoundWinner != undefined) {
+            console.log('last round winner: ' + this.lastRoundWinner);
+            this.add.text(this.world.centerX, this.world.centerY, this.players[this.lastRoundWinner].username + ' wins!', {font: "40px Lemiesz", fill: "#000"});
+        }
+        else console.log('no winner');
 
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         var w0llSm00thFace = "willSmoothMeh";
@@ -56,7 +64,6 @@ BasicGame.Game.prototype = {
 
         console.log('Your player id is ' + myPlayerId + '!');
         console.log('YOUR score is... ' + myScore + '!');
-
 
 	},
 
