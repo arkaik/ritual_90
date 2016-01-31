@@ -56,11 +56,11 @@ BasicGame.Tamagotchi.prototype = {
         this.jumpButton.onDown.add(this.pressed,this);
         this.jumpButton.onUp.add(this.released,this);
         
-        //this.secretButton = this.input.keyboard.addKey(Phaser.Keyboard.NINE);
-        //this.secretButton.onDown.add(socket.emit('tamagotchiFinished', this.timeSpent), this);
 
         this.timeSpent = new Date().getTime();
         var self = this;
+        this.secretButton = this.input.keyboard.addKey(Phaser.Keyboard.NINE);
+        this.secretButton.onDown.add(function(){socket.emit('tamagotchiFinished', self.timeSpent)}, self);
 
         this.evoSound = this.add.audio('tamavolution');
         this.feedSound = this.add.audio('tamafeed');
